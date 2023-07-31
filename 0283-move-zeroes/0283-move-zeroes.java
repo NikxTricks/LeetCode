@@ -1,3 +1,4 @@
+
 class Solution {
     public void moveZeroes(int[] nums) {
         int removed = 0;
@@ -10,6 +11,7 @@ class Solution {
                 removed++;
                 i--;
             } 
+
             
         }
     }
