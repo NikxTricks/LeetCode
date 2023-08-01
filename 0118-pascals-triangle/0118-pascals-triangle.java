@@ -3,7 +3,7 @@ class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> out = new ArrayList<>();
         for (int row = 0; row < numRows; row++) {
-            List<Integer> temp = new ArrayList<>();
+            List<Integer> temp = new ArrayList<>(row + 1);
             for (int col = 0; col <= row; col++) {
                if (col == 0 || col == row) {
                    temp.add(1);
