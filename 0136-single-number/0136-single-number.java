@@ -1,17 +1,19 @@
-import java.util.List;
+import java.util.Set;
 class Solution {
     public int singleNumber(int[] nums) {
-        HashMap<Integer, Integer> data = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int count = data.getOrDefault(nums[i], 0);
-                data.put(nums[i], count + 1);
-        }
-        
-        for (Integer num: data.keySet()) {
-            if (data.get(num) == 1) {
-                return num;
+        HashSet<Integer> data = new HashSet<>();
+        for (int num: nums) {
+            if (data.contains(num)) {
+                data.remove(num); 
+            }
+            else {
+                data.add(num);
             }
         }
-        return -1;
+        int result = -1;
+        for (Integer num: data) {
+            result = num;
+        }
+        return result;
     }
 }
