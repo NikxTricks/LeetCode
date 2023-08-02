@@ -3,8 +3,8 @@ class Solution {
     public int singleNumber(int[] nums) {
         HashSet<Integer> data = new HashSet<>();
         for (int num: nums) {
-            if (data.contains(num)) {
-                data.remove(num); 
+            if (data.remove(num)) {
+                continue;
             }
             else {
                 data.add(num);
