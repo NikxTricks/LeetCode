@@ -1,7 +1,7 @@
 import java.util.Set;
 class Solution {
     public int singleNumber(int[] nums) {
-        HashSet<Integer> data = new HashSet<>((nums.length - 1)/2 + 1);
+        HashSet<Integer> data = new HashSet<>((nums.length));
         for (int num: nums) {
             if (data.remove(num)) {
                 continue;
