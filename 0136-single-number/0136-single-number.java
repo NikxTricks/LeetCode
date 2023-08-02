@@ -10,10 +10,7 @@ class Solution {
                 data.add(num);
             }
         }
-        int result = -1;
-        for (Integer num: data) {
-            result = num;
-        }
-        return result;
+        
+        return data.iterator().next();
     }
 }
