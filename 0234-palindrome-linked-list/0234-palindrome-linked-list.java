@@ -14,33 +14,33 @@ import java.util.Stack;
 class Solution {
     public boolean isPalindrome(ListNode head) {
         
-        ListNode slow = head;
-        ListNode fast = head;
-        
+        ListNode cur = head;
+        int size = 0;
         Stack<Integer> reverse = new Stack<>();
         
-        while (fast.next != null &&  fast.next.next != null) {
-            reverse.push(slow.val);
-            slow = slow.next;
-            fast = fast.next.next;
+        while (cur != null) {
+            size++;
+            cur = cur.next;
         }
         
-        reverse.push(slow.val);
+        int mid = size/2;
         
-        if (fast.next == null) {
-            reverse.pop();
+        cur = head;
+        for (int i = 0;i < mid; i++) {
+            reverse.push(cur.val);
+            cur = cur.next;
         }
-                    slow = slow.next;
-
         
-        while (slow != null) {
-            if (reverse.pop() != slow.val) {
-                return false;
+        if (size%2==1) {
+            cur = cur.next;
+        }
+        
+        while (cur != null) {
+            if (reverse.pop() != cur.val) {
+              return false;  
             }
-            slow = slow.next;
+            cur = cur.next;
         }
-        
-
         
         
         return true;
