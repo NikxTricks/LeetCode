@@ -9,29 +9,40 @@
  * }
  */
 
-import java.util.Deque;
-import java.util.ArrayDeque;
+import java.util.Stack;
 
 class Solution {
     public boolean isPalindrome(ListNode head) {
         
         ListNode cur = head;
-        
-        Deque<Integer> data = new ArrayDeque<>();
+        int size = 0;
+        Stack<Integer> reverse = new Stack<>();
         
         while (cur != null) {
-            data.addLast(cur.val);
+            size++;
             cur = cur.next;
         }
         
-        while (data.size() != 0) {
-            if (data.size() == 1) {
-                return true;
-            }
-            if (data.removeFirst() != data.removeLast()) {
-                return false;
-            }
+        int mid = size/2;
+        
+        cur = head;
+        for (int i = 0;i < mid; i++) {
+            reverse.push(cur.val);
+            cur = cur.next;
         }
+        
+        if (size%2==1) {
+            cur = cur.next;
+        }
+        
+        while (cur != null) {
+            if (reverse.pop() != cur.val) {
+              return false;  
+            }
+            cur = cur.next;
+        }
+        
+        
         return true;
         
         
