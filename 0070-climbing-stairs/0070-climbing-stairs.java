@@ -1,7 +1,7 @@
 import java.util.HashMap;
 class Solution {
     public int climbStairs(int n) {
-        HashMap<Integer, Integer> data = new HashMap<>(n - 1);
+        HashMap<Integer, Integer> data = new HashMap<>();
         return getStairs(n, data);
     }
     
