@@ -4,7 +4,7 @@ class Solution {
         HashSet<Integer> done = new HashSet<>();
         int total = 0;
         int cur = n;
-        try {
+    
             while (total != 1) {
             total = 0;
             while (cur != 0) {
@@ -20,10 +20,8 @@ class Solution {
         
             return true;
         
-            }
-        catch (Exception timeout) {
-            return false;
-        }
+            
+
         }
 
 
