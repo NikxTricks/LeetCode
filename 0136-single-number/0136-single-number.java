@@ -1,16 +1,13 @@
 import java.util.Set;
 class Solution {
     public int singleNumber(int[] nums) {
-        HashSet<Integer> data = new HashSet<>((nums.length));
-        for (int num: nums) {
-            if (data.remove(num)) {
-                continue;
-            }
-            else {
-                data.add(num);
-            }
+        int cur = nums[0];
+        
+        for (int i = 1; i < nums.length; i++) {
+            cur = cur^nums[i];
         }
         
-        return data.iterator().next();
+        return cur;
+
     }
 }
