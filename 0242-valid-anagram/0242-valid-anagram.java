@@ -1,25 +1,21 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
+        int[] data = new int[26];
         if (s.length() != t.length()) {
             return false;
         }
         
-        int[] sarr = new int[s.length()];
-        int[] tarr = new int[s.length()];
-        
         for (int i = 0; i < s.length(); i++) {
-            sarr[i] = (int) s.charAt(i);
-            tarr[i] = (int) t.charAt(i);
+            data[((int) s.charAt(i)) - 97] = data[((int) s.charAt(i)) - 97] + 1;
+            data[((int) t.charAt(i)) - 97] = data[((int) t.charAt(i)) - 97] - 1;
         }
         
-        Arrays.sort(sarr);
-        Arrays.sort(tarr);
-        
-        for (int i = 0; i < s.length(); i++) {
-            if (sarr[i] != tarr[i]) {
+        for (int num: data) {
+            if (num != 0) {
                 return false;
             }
         }
+        
         return true;
     }
 }
