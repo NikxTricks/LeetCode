@@ -6,8 +6,8 @@ class Solution {
         }
         
         for (int i = 0; i < s.length(); i++) {
-            data[(s.charAt(i)) - 'a'] = data[(s.charAt(i)) - 'a'] + 1;
-            data[(t.charAt(i)) - 'a'] = data[(t.charAt(i)) - 'a'] - 1;
+            data[(s.charAt(i)) - 'a']++;
+            data[(t.charAt(i)) - 'a']--;
         }
         
         for (int num: data) {
