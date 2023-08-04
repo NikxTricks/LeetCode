@@ -6,8 +6,8 @@ class Solution {
         }
         
         for (int i = 0; i < s.length(); i++) {
-            data[((int) s.charAt(i)) - 97] = data[((int) s.charAt(i)) - 97] + 1;
-            data[((int) t.charAt(i)) - 97] = data[((int) t.charAt(i)) - 97] - 1;
+            data[(s.charAt(i)) - 'a'] = data[(s.charAt(i)) - 'a'] + 1;
+            data[(t.charAt(i)) - 'a'] = data[(t.charAt(i)) - 'a'] - 1;
         }
         
         for (int num: data) {
