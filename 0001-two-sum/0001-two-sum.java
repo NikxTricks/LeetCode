@@ -4,9 +4,8 @@ class Solution {
         HashMap<Integer, Integer> data = new HashMap<>();
         
         for (int i = 0; i < nums.length; i++) {
-            int diff = data.getOrDefault(target - nums[i], -1);
-            if (diff != -1) {
-                int[] out = {diff, i};
+            if (data.containsKey(target - nums[i])) {
+                int[] out = {data.get(target - nums[i]), i};
                 return out;
             }
             data.put(nums[i], i);
