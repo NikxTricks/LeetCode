@@ -13,14 +13,16 @@ public class Solution {
     public boolean hasCycle(ListNode head) {
         HashSet<ListNode> track = new HashSet<>();
         
-        ListNode cur = head;
-        while (cur != null) {
-            if (track.contains(cur)) {
+        ListNode cur1 = head;
+        ListNode cur2 = head;
+        while (cur2 != null && cur2.next != null && cur2.next.next != null) {
+            if (track.contains(cur2)) {
                 return true;
             }
         
-            track.add(cur);
-            cur = cur.next;
+            track.add(cur1);
+            cur1 = cur1.next;
+            cur2 = cur2.next.next;
         }
         
         return false;
