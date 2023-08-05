@@ -22,7 +22,7 @@ public class Solution {
         
             track.add(cur1);
             cur1 = cur1.next;
-            cur2 = cur2.next.next;
+            cur2 = cur2.next.next.next;
         }
         
         return false;
