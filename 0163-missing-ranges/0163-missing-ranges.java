@@ -1,7 +1,7 @@
 class Solution {
     public List<List<Integer>> findMissingRanges(int[] nums, int lower, int upper) {
-        LinkedList<List<Integer>> out = new LinkedList<>();
-        LinkedList<Integer> bucket = new LinkedList<>();
+        List<List<Integer>> out = new LinkedList<>();
+        List<Integer> bucket = new LinkedList<>();
         if (nums.length == 0) {
             bucket.add(lower);
             bucket.add(upper);
