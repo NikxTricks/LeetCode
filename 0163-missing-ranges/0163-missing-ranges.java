@@ -1,6 +1,6 @@
 class Solution {
     public List<List<Integer>> findMissingRanges(int[] nums, int lower, int upper) {
-        ArrayList<List<Integer>> out = new ArrayList<>();
+        LinkedList<List<Integer>> out = new LinkedList<>();
         LinkedList<Integer> bucket = new LinkedList<>();
         if (nums.length == 0) {
             bucket.add(lower);
