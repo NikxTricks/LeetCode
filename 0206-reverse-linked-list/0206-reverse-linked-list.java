@@ -22,6 +22,7 @@ class Solution {
             slow.val = reverse.pop();
             slow = slow.next;
         }
+        reverse.clear();
         return head;
     }
 }
