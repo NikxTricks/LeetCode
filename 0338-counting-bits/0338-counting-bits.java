@@ -18,6 +18,10 @@ class Solution {
                 max *= 2;
                 continue;
             }
+            if (out[i]%2 == 0) {
+                out[i] = out[i/2];
+                continue;
+            }
             out[i] = out[i - (max/2)] + out[(max/2)];
         }
         
