@@ -22,7 +22,6 @@ class Solution {
                 out[i] = out[i/2];
                 continue;
             }
-            out[i] = out[i - (max/2)] + out[(max/2)];
         }
         
         return out;
