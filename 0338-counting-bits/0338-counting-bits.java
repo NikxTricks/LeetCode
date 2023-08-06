@@ -16,6 +16,7 @@ class Solution {
             if (i == max) {
                 out[i] = 1;
                 max *= 2;
+                continue;
             }
             out[i] = out[i - (max/2)] + out[(max/2)];
         }
