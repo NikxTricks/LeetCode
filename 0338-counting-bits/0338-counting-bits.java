@@ -7,6 +7,10 @@ class Solution {
                     out[i] = out[i - 1] + 1;
                     continue;
             }
+            if (i == max) {
+                out[i] = 1;
+                max *= 2;
+            }
             for (int j = 0; j < 32; j++) {
                 out[i]+= (i>>j) & 1;
             }
