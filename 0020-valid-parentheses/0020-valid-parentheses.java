@@ -23,9 +23,11 @@ class Solution {
                 return false;
             }
         }
+        
         if (reverse.size() != 0) {
             return false;
         }
+        
         return true;
     }
 }
