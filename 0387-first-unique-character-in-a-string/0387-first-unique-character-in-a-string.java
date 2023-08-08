@@ -10,7 +10,6 @@ for (int i = 0; i < s.length(); i++) {
     }
 }
         for (int i = 0; i < s.length(); i++) {
-            System.out.print(data.get(s.charAt(i)));
             if (data.get(s.charAt(i)) == 1) {
                 return i;
             }
