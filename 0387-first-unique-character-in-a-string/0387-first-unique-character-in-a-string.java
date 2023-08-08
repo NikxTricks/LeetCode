@@ -1,18 +1,21 @@
 class Solution {
     public int firstUniqChar(String s) {
-
-        int[] data = new int[26];
-        
+    HashMap<Character, Integer> data = new HashMap<>();
+for (int i = 0; i < s.length(); i++) {
+          if (!data.containsKey(s.charAt(i))) {
+           data.put(s.charAt(i), 1);
+        }  
+    else {
+        data.put(s.charAt(i), data.get(s.charAt(i)) + 1);
+    }
+}
         for (int i = 0; i < s.length(); i++) {
-            data[s.charAt(i) - 'a'] = data[s.charAt(i) - 'a'] + 1;
-        }
-        
-        for (int i = 0; i < s.length(); i++) {
-            
-            if (data[s.charAt(i) - 'a'] == 1) {
+            System.out.print(data.get(s.charAt(i)));
+            if (data.get(s.charAt(i)) == 1) {
                 return i;
             }
         }
+
         
         return -1;
         
