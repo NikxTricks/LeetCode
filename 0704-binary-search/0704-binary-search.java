@@ -8,13 +8,7 @@ class Solution {
         if (nums[mid] == target) {
             return mid;
         }
-        if (mid == start) {
-            if (nums[start] == target) {
-                return start;
-            }
-            if (nums[end] == target) {
-              return end;  
-            }
+        if (start > end) {
             return -1;
         }
         if (nums[mid] > target) {
