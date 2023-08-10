@@ -6,14 +6,11 @@ class Solution {
             char[] chars = str.toCharArray();
             Arrays.sort(chars);
             String sorted = new String(chars);
-            if (data.containsKey(sorted)) {
+            if (!data.containsKey(sorted)) {
+                data.put(sorted, new LinkedList<String>());
+            }
                 data.get(sorted).add(str);
-            }
-            else {
-                List<String> temp = new LinkedList<>();
-                temp.add(str);
-                data.put(sorted, temp);
-            }
+
         }
         
         return new LinkedList<List<String>>(data.values());
