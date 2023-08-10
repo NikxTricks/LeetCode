@@ -22,8 +22,7 @@ class Solution {
             }
         }
         
-        List<List<String>> out = new LinkedList<>(data.values());
         
-        return out;
+        return new LinkedList<List<String>>(data.values());
     }
 }
