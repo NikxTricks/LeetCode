@@ -17,7 +17,6 @@ class Solution {
             for (int c: chars) {
                 sorted = sorted + ((char) c);
             }
-            System.out.println(sorted);
             if (data.containsKey(sorted)) {
                 data.get(sorted).add(str);
             }
