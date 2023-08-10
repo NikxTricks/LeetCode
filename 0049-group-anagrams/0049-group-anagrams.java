@@ -18,14 +18,11 @@ class Solution {
             else {
                 List<String> temp = new LinkedList<>();
                 temp.add(str);
-                data.put(sorted,temp);
+                data.put(sorted, temp);
             }
         }
         
-        List<List<String>> out = new LinkedList<>();
-        for (String key: data.keySet()) {
-            out.add(data.get(key));
-        }
+        List<List<String>> out = new LinkedList<>(data.values());
         
         return out;
     }
