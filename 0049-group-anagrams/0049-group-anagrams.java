@@ -2,8 +2,6 @@ class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         
         HashMap<String, List<String>> data = new HashMap<>();
-
-        List<String> temp;
         int[] chars;
         String sorted = "";
         
@@ -21,14 +19,13 @@ class Solution {
                 data.get(sorted).add(str);
             }
             else {
-                temp = new LinkedList<>();
+                List<String> temp = new LinkedList<>();
                 temp.add(str);
                 data.put(sorted,temp);
             }
         }
         
-                List<List<String>> out = new LinkedList<>();
-        
+        List<List<String>> out = new LinkedList<>();
         for (String key: data.keySet()) {
             out.add(data.get(key));
         }
