@@ -22,9 +22,9 @@ class Solution {
         if (cur == null) {
            return null; 
         }
-        TreeNode temp = helper(cur.left);
+        TreeNode temp = cur.left;
         cur.left = helper(cur.right);
-        cur.right = temp;
+        cur.right = helper(temp);
         return cur;
     }
 }
