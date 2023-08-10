@@ -3,15 +3,9 @@ class Solution {
         
         HashMap<String, List<String>> data = new HashMap<>();
         for (String str: strs) {
-            String sorted = "";
-            int[] chars = new int[str.length()];
-            for (int i = 0; i < str.length(); i++) {
-                chars[i] = (int) str.charAt(i);
-            }
+            char[] chars = str.toCharArray();
             Arrays.sort(chars);
-            for (int c: chars) {
-                sorted = sorted + ((char) c);
-            }
+            String sorted = new String(chars);
             if (data.containsKey(sorted)) {
                 data.get(sorted).add(str);
             }
@@ -21,7 +15,6 @@ class Solution {
                 data.put(sorted, temp);
             }
         }
-        
         
         return new LinkedList<List<String>>(data.values());
     }
