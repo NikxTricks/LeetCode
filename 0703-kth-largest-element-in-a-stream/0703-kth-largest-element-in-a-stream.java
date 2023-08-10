@@ -4,9 +4,9 @@ class KthLargest {
     public KthLargest(int k, int[] nums) {
         for (int num: nums) {
             data.add(num);
-        }
-        while (data.size() > k) {
-            data.remove();
+            if (data.size() > k) {
+                data.remove();
+            }
         }
         this.k = k;
     }
