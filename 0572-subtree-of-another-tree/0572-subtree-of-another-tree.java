@@ -14,15 +14,12 @@
  * }
  */
 class Solution {
-    List<TreeNode> roots = new LinkedList<>();
+    boolean result = false;
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-        boolean out = false;
+       
         find(root, subRoot);
-        for (TreeNode node: roots) {
-            System.out.println(node.val);
-            out = out || helper(node, subRoot);
-        }
-        return out;
+        return result;
+        
     }
     
     public void find(TreeNode cur, TreeNode subroot) {
@@ -30,7 +27,7 @@ class Solution {
             return;
         }
         if (cur.val == subroot.val) {
-            roots.add(cur);
+            result = result || helper(cur, subroot);
         }
         find(cur.left, subroot);
         find(cur.right, subroot);
