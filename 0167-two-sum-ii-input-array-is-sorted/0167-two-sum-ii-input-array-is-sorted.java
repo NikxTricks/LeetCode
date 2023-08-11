@@ -7,7 +7,7 @@ class Solution {
                 continue;
             }
         
-            int temp = Math.max(binarySearch(numbers, target - numbers[i], 0,i), binarySearch(numbers, target - numbers[i], i + 1, numbers.length - 1));
+            int temp = binarySearch(numbers, target - numbers[i], i + 1, numbers.length - 1);
             System.out.println(temp);
             if (temp != -1) {
                 out[0] = Math.min(temp, i) + 1;
