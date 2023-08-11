@@ -3,10 +3,17 @@ class Solution {
         //HashMap<Integer, Integer> data = new HashMap<>();
         int[] out = new int[2];
         for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] > target - numbers[i]) {
+                
+                continue;
+            }
+        
             int temp = Math.max(binarySearch(numbers, target - numbers[i], 0,i), binarySearch(numbers, target - numbers[i], i + 1, numbers.length - 1));
+            System.out.println(temp);
             if (temp != -1) {
                 out[0] = Math.min(temp, i) + 1;
                 out[1] = Math.max(temp, i) + 1;
+                return out;
             }
         }
         
