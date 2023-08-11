@@ -1,6 +1,5 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        //HashMap<Integer, Integer> data = new HashMap<>();
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] > target - numbers[i]) {
                 continue;
