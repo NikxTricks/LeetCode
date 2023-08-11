@@ -1,7 +1,6 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
         //HashMap<Integer, Integer> data = new HashMap<>();
-        int[] out = new int[2];
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] > target - numbers[i]) {
                 continue;
@@ -9,13 +8,14 @@ class Solution {
             int temp = binarySearch(numbers, target - numbers[i], i + 1, numbers.length - 1);
  
             if (temp != -1) {
+                int[] out = new int[2];
                 out[0] = Math.min(temp, i) + 1;
                 out[1] = Math.max(temp, i) + 1;
                 return out;
             }
         }
         
-        return out;
+        return new int[2];
     }
     
     public int binarySearch(int[] numbers, int target, int start, int end) {
