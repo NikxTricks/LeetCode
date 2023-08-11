@@ -6,10 +6,7 @@ class Solution {
         
         HashMap<Integer, Integer> freq = new HashMap<>();        
         for (int i = 0; i < nums.length; i++) {
-            if (!freq.containsKey(nums[i])) {
-                freq.put(nums[i], 0);
-            }
-            freq.put(nums[i], freq.get(nums[i]) + 1);
+                freq.put(nums[i], freq.getOrDefault(nums[i], 0) + 1);
         }
         
         for (Map.Entry<Integer, Integer> entry: freq.entrySet()) {
