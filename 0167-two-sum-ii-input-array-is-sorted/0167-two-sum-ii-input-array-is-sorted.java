@@ -6,9 +6,8 @@ class Solution {
             if (numbers[i] > target - numbers[i]) {
                 continue;
             }
-        
             int temp = binarySearch(numbers, target - numbers[i], i + 1, numbers.length - 1);
-            System.out.println(temp);
+ 
             if (temp != -1) {
                 out[0] = Math.min(temp, i) + 1;
                 out[1] = Math.max(temp, i) + 1;
