@@ -10,8 +10,7 @@ class Solution {
             front++;
         }
         else {
-            int[] out = {front + 1, back + 1};
-            return out;
+            return new int[] {front + 1, back + 1};
         }
 
     }
