@@ -4,7 +4,6 @@ class Solution {
         int[] out = new int[2];
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] > target - numbers[i]) {
-                
                 continue;
             }
         
