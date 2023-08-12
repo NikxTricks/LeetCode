@@ -1,5 +1,3 @@
-import java.util.HashMap;
-import java.util.List;
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         int max = 0;
