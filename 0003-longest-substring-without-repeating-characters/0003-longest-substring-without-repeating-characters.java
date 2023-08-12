@@ -11,11 +11,11 @@ class Solution {
                 max = Math.max(max, data.size());
             }
             else {
-                while (data.contains(chars[right])) {
+
                     data.remove(chars[left]);
                     left++;
-                }
-                data.add(chars[right]);
+                    continue;
+                
                 
             }
             right++;
