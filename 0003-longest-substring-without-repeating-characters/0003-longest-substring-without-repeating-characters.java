@@ -4,15 +4,15 @@ class Solution {
         HashSet<Character> data = new HashSet<>();
         int left = 0;
         int right = 0;
-        char[] chars = s.toCharArray();
-        while (right < chars.length) {
-            if (!data.contains(chars[right])) {
-                data.add(chars[right]);
+        //char[] chars = s.toCharArray();
+        while (right < s.length()) {
+            if (!data.contains(s.charAt(right))) {
+                data.add(s.charAt(right));
                 max = Math.max(max, data.size());
             }
             else {
 
-                    data.remove(chars[left]);
+                    data.remove(s.charAt(left));
                     left++;
                     continue;
                 
