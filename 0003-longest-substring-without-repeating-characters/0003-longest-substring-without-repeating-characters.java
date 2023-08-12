@@ -11,10 +11,7 @@ class Solution {
                 max = Math.max(max, substring.length());
             }
             else {
-                if (s.charAt(i - 1) != s.charAt(i)) {
-                    i -= (substring.length() - 1);
-                }
-                
+                i -= (substring.length() - 1);
                 substring = "";
                 substring += chars[i];
             }
