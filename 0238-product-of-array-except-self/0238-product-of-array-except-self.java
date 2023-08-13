@@ -1,14 +1,14 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        int i = 1;
+        
         int[] prefix = new int[nums.length];
         int[] out = new int[nums.length];
+        
         prefix[0] = nums[0];
         int suffix = nums[nums.length - 1];
 
-        while (i < nums.length) {
+        for (int i = 1; i < nums.length; i++) {
             prefix[i] = nums[i] * prefix[i - 1];
-            i++;
         }
         
         
@@ -19,6 +19,7 @@ class Solution {
             suffix *= nums[z];
             
         }
+        
         out[0] = suffix;
         return out;
     }
