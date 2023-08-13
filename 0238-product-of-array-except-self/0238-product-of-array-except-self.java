@@ -15,16 +15,10 @@ class Solution {
             j--;
         }
         
-        for (int z = 0; z < nums.length; z++) {
-            if (z == 0) {
-                out[z] = suffix[z + 1];
-                continue;
-            }
-            if (z == nums.length - 1) {
-                out[z] = prefix[z - 1];
-                continue;
-            }
-            
+        out[0] = suffix[1];
+        out[nums.length - 1] = prefix[nums.length - 2];
+        
+        for (int z = 1; z < nums.length - 1; z++) {
             out[z] = prefix[z - 1] * suffix[z + 1];
         }
         return out;
