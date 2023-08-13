@@ -1,11 +1,10 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int i = 1;
-        int j = nums.length;
-        int[] prefix = new int[j];
-        int[] out = new int[j];
+        int[] prefix = new int[nums.length];
+        int[] out = new int[nums.length];
         prefix[0] = nums[0];
-        int suffix = nums[j - 1];
+        int suffix = nums[nums.length - 1];
 
         while (i < nums.length) {
             prefix[i] = nums[i] * prefix[i - 1];
