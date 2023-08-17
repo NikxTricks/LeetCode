@@ -6,6 +6,7 @@ class Solution {
     int target = 0;
         while (target < nums.length) {
             if (target > 0 && nums[target] == nums[target] - 1) {
+                target++;
                  continue;   
             }
             int i = target + 1;
