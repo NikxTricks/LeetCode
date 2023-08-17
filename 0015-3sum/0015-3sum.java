@@ -1,48 +1,38 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<>();
-
-        // Sort the array
         Arrays.sort(nums);
-
-        for (int i = 0; i < nums.length - 2; i++) {
-            // Skip duplicate elements for i
-            if (i > 0 && nums[i] == nums[i - 1]) {
+        List<List<Integer>> out = new LinkedList<>();
+        int target = 0;
+        while (target < nums.length - 2) {
+            if (target > 0 && nums[target] == nums[target - 1]) {
+                target++;
                 continue;
             }
-
-            int j = i + 1;
-            int k = nums.length - 1;
-
-            while (j < k) {
-                int sum = nums[i] + nums[j] + nums[k];
-
+            int i = target + 1;
+            int j = nums.length - 1;
+            while (i < j) {
+                int sum = nums[i] + nums[j] + nums[target];
                 if (sum == 0) {
-                    // Found a triplet with zero sum
-                    ans.add(Arrays.asList(nums[i], nums[j], nums[k]));
-
-                    // Skip duplicate elements for j
-                    while (j < k && nums[j] == nums[j + 1]) {
-                        j++;
+                    out.add(Arrays.asList(nums[target], nums[i], nums[j])); // Adding the triplet
+                    // Skip duplicates for i
+                    while (i < j && nums[i] == nums[i + 1]) {
+                        i++;
                     }
-
-                    // Skip duplicate elements for k
-                    while (j < k && nums[k] == nums[k - 1]) {
-                        k--;
+                    // Skip duplicates for j
+                    while (i < j && nums[j] == nums[j - 1]) {
+                        j--;
                     }
-
                     // Move the pointers
-                    j++;
-                    k--;
+                    i++;
+                    j--;
                 } else if (sum < 0) {
-                    // Sum is less than zero, increment j to increase the sum
-                    j++;
+                    i++;
                 } else {
-                    // Sum is greater than zero, decrement k to decrease the sum
-                    k--;
+                    j--;
                 }
             }
+            target++;
         }
-        return ans;
+        return out;
     }
 }
