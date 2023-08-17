@@ -1,21 +1,22 @@
 class MinStack {
 
-    List<Integer> data;
+    Stack<Integer> data;
     PriorityQueue<Integer> min;
+    
     public MinStack() {
-        data = new LinkedList<>();
+        data = new Stack<>();
         min = new PriorityQueue<>();
     }
     
     public void push(int val) {
-        data.add(0, val);
+        data.push(val);
         min.add(val);
     }
     
     public void pop() {
         if (data.size() > 0) {
             List<Integer> temp = new LinkedList<>();
-            int cur = data.remove(0);
+            int cur = data.pop();
             int check = min.remove();
             while (cur != check) {
                 temp.add(0, check);
@@ -29,7 +30,7 @@ class MinStack {
     
     public int top() {
         if (data.size() > 0) {
-            return data.get(0);
+            return data.peek();
         }
         
         return -1;
