@@ -3,8 +3,9 @@ class Solution {
     Arrays.sort(nums);
     HashSet<List<Integer>> data = new HashSet<>();
     List<List<Integer>> out = new LinkedList<>();
-        for (int target = 0; target < nums.length; target++) {
-            int i = 0;
+    int target = 0;
+        while (target < nums.length) {
+            int i = target + 1;
             int j = nums.length - 1;
 
             while (i < j) {
@@ -37,6 +38,9 @@ class Solution {
                     j--;
                 }
             }
+            
+            target++;
+
         }
         
         return out;
