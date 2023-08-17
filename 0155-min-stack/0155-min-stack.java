@@ -8,20 +8,20 @@ class MinStack {
     }
     
     public void push(int val) {
-        data.add(val);
+        data.add(0, val);
         min.add(val);
     }
     
     public void pop() {
         if (data.size() > 0) {
             List<Integer> temp = new LinkedList<>();
-            int cur = data.remove(data.size() - 1);
+            int cur = data.remove(0);
             int check = min.remove();
             while (cur != check) {
-                temp.add(check);
+                temp.add(0, check);
                 check = min.remove();
             }
-            min.addAll(temp);
+                min.addAll(temp);
         }
         return;
         
@@ -29,7 +29,7 @@ class MinStack {
     
     public int top() {
         if (data.size() > 0) {
-            return data.get(data.size() - 1);
+            return data.get(0);
         }
         
         return -1;
