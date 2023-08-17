@@ -4,7 +4,7 @@ class Solution {
     HashSet<List<Integer>> data = new HashSet<>();
     List<List<Integer>> out = new LinkedList<>();
     int target = 0;
-        while (target < nums.length) {
+        while (target < nums.length - 2) {
             if (target > 0 && nums[target] == nums[target] - 1) {
                 target++;
                  continue;   
