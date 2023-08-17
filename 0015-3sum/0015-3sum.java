@@ -5,23 +5,15 @@ class Solution {
     List<List<Integer>> out = new LinkedList<>();
     int target = 0;
         while (target < nums.length - 2) {
-            if (target > 0 && nums[target] == nums[target] - 1) {
-                target++;
-                 continue;   
-            }
             int i = target + 1;
             int j = nums.length - 1;
-
             while (i < j) {
                 int sum = nums[i] + nums[j] + nums[target];
                 if (sum == 0) {
-                    //List<Integer> triplet = new LinkedList<>(Arrays.asList(nums[i], nums[j], nums[target]));
-                    //Collections.sort(triplet);
                         data.add(Arrays.asList(nums[i], nums[j], nums[target]));
                     i++;
                     j--;
                     continue;
-                    
                 }
                 if (sum < 0) {
                     i++;
@@ -30,9 +22,7 @@ class Solution {
                     j--;
                 }
             }
-            
             target++;
-
         }
         out.addAll(data);
         return out;
