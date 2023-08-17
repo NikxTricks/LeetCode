@@ -15,9 +15,9 @@ class Solution {
             while (i < j) {
                 int sum = nums[i] + nums[j] + nums[target];
                 if (sum == 0) {
-                    List<Integer> triplet = new LinkedList<>(Arrays.asList(nums[i], nums[j], nums[target]));
-                    Collections.sort(triplet);
-                        data.add(triplet);
+                    //List<Integer> triplet = new LinkedList<>(Arrays.asList(nums[i], nums[j], nums[target]));
+                    //Collections.sort(triplet);
+                        data.add(Arrays.asList(nums[i], nums[j], nums[target]));
                     i++;
                     j--;
                     continue;
