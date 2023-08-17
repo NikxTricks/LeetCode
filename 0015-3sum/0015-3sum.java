@@ -27,7 +27,6 @@ class Solution {
                     List<Integer> triplet = new LinkedList<>(Arrays.asList(nums[i], nums[j], nums[target]));
                     Collections.sort(triplet);
                     if (!data.contains(triplet)) {
-                        out.add(triplet);
                         data.add(triplet);
                     }
                     i++;
@@ -46,7 +45,7 @@ class Solution {
             target++;
 
         }
-        
+        out.addAll(data);
         return out;
     }
 }
