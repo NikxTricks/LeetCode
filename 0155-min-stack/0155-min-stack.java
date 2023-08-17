@@ -16,13 +16,8 @@ class MinStack {
         if (data.size() > 0) {
             List<Integer> temp = new LinkedList<>();
             int cur = data.remove(data.size() - 1);
-            System.out.println(cur);
-            for (Integer num: min) {
-                System.out.print(num);
-            }
             int check = min.remove();
             while (cur != check) {
-                //System.out.print(cur);
                 temp.add(check);
                 check = min.remove();
             }
