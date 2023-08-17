@@ -13,22 +13,11 @@ class Solution {
             int j = nums.length - 1;
 
             while (i < j) {
-                if (i == target) {
-                   i++; 
-                }
-                if (j == target) {
-                    j--;
-                }
-                if (i >= j) {
-                    break;   
-                }
                 int sum = nums[i] + nums[j] + nums[target];
                 if (sum == 0) {
                     List<Integer> triplet = new LinkedList<>(Arrays.asList(nums[i], nums[j], nums[target]));
                     Collections.sort(triplet);
-                    if (!data.contains(triplet)) {
                         data.add(triplet);
-                    }
                     i++;
                     j--;
                     continue;
