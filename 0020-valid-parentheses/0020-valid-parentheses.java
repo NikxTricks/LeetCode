@@ -1,33 +1,27 @@
 class Solution {
     public boolean isValid(String s) {
+        Stack<Character> check = new Stack<>();
         if (s.length()%2 != 0) {
             return false;
         }
         
-        Stack<Character> reverse = new Stack<>();
-        
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
-                reverse.push(')');
-                
+        for (char c: s.toCharArray()) {
+            if (c == '(') {
+                check.push(')');
             }
-            else if (s.charAt(i) == '[') {
-                reverse.push(']');
-                
+            else if (c == '{') {
+                check.push('}');
             }
-            else if (s.charAt(i) == '{') {
-                reverse.push('}');
-                
+            else if (c == '[') {
+                check.push(']');
             }
-            else if (reverse.size() == 0 || reverse.pop() != s.charAt(i)) {
+            else if (check.isEmpty() || c != check.pop()) {
                 return false;
             }
         }
-        
-        if (reverse.size() != 0) {
+        if (check.size() != 0) {
             return false;
         }
-        
         return true;
     }
 }
