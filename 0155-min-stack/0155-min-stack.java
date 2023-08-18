@@ -10,7 +10,6 @@ class MinStack {
     
     public void push(int val) {
         if (min.isEmpty() || val <= min.peek()) {
-            System.out.println(val);
             min.push(val);
         }
         data.push(val);
