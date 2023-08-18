@@ -17,29 +17,20 @@ class MinStack {
     }
     
     public void pop() {
-        if (data.size() > 0) {
             int out = data.pop();
             if (out == min.peek()) {
             min.pop();
             }
-        }
+        
 
     }
     
     public int top() {
-        if (data.size() > 0) {
             return data.peek();
-        }
-        
-        return -1;
     }
     
     public int getMin() {
-            if (min.size() > 0) {
                 return min.peek();
-            }
-        
-        return -1;
 
         
     }
