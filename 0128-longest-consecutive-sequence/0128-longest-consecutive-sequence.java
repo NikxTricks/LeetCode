@@ -11,6 +11,9 @@ class Solution {
         
         for (int i = 0; i < nums.length; i++) {
             int count = 1;
+            if (data.contains(nums[i] - 1)) {
+                continue;
+            }
             int temp = nums[i];
             while (data.contains(--temp)) {
                 count++;
