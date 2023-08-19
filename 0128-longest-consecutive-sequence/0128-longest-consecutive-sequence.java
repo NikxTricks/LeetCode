@@ -12,17 +12,17 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             int count = 1;
             int temp = nums[i];
-            while (data.contains(temp - 1)) {
+            while (data.contains(--temp)) {
                 count++;
                 data.remove(temp);
-                temp--;
+                //temp--;
             }
             
             temp = nums[i];
-            while (data.contains(temp + 1)) {
+            while (data.contains(++temp)) {
                 count++;
                 data.remove(temp);
-                temp++;
+                //temp++;
             }
             
             if (count > max) {
