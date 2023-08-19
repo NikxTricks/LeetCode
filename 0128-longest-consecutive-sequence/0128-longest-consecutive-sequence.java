@@ -11,6 +11,7 @@ class Solution {
         
         for (int i = 0; i < nums.length; i++) {
             int count = 1;
+            //check whether number is starting a sequence or already in a sequence
             if (data.contains(nums[i] - 1)) {
                 continue;
             }
