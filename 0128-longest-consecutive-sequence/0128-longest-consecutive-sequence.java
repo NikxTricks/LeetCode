@@ -15,11 +15,6 @@ class Solution {
                 continue;
             }
             int temp = nums[i];
-            while (data.contains(--temp)) {
-                count++;
-                data.remove(temp);
-                //temp--;
-            }
             
             temp = nums[i];
             while (data.contains(++temp)) {
