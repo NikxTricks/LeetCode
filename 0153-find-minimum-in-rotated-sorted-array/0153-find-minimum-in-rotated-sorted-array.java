@@ -4,7 +4,7 @@ class Solution {
         int dis = (nums.length)/2;
         while (nums[(i - 1 + nums.length)%nums.length] < nums[i]) {
            
-            if (nums[i] < nums[(i + 1 + nums.length)%nums.length]) {
+            if (nums[i] < nums[(i + 1)%nums.length]) {
                 i-= dis;
                 i += nums.length;
                 i %= nums.length;
