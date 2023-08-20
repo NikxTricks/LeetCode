@@ -5,7 +5,7 @@ class Solution {
         int prev = Integer.MIN_VALUE;
         //System.out.println(-1%4);
         while (nums[(i - 1 + nums.length)%nums.length] < nums[i]) {
-           System.out.println(i);
+           //System.out.println(i);
             if (nums[i] < prev) {
                 prev = nums[i];
                 i-= dis;
