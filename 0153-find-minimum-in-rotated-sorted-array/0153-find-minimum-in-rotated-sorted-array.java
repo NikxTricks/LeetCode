@@ -26,9 +26,7 @@ class Solution {
         }
         
         return nums[i];
-        
-        //return helper(0, nums.length - 1, nums, Integer.MAX_VALUE);
-        
+                
 
     }
     
