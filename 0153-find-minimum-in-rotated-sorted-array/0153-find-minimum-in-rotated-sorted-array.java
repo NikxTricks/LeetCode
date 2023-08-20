@@ -1,23 +1,26 @@
-public class Solution {
-    public int findMin(int[] num) {
-        if (num == null || num.length == 0) {
-            return 0;
-        }
-        if (num.length == 1) {
-            return num[0];
-        }
-        int start = 0, end = num.length - 1;
-        while (start < end) {
-            int mid = (start + end) / 2;
-            if (mid > 0 && num[mid] < num[mid - 1]) {
-                return num[mid];
+class Solution {
+    public int findMin(int[] nums) {
+        int i = (nums.length )/2;
+        int dis = (nums.length)/2;
+        while (nums[(i - 1 + nums.length)%nums.length] < nums[i]) {
+            if (nums[i] < nums[(i + 1)%nums.length]) {
+                i-= dis;
+                i += nums.length;
+                i %= nums.length;
             }
-            if (num[start] <= num[mid] && num[mid] > num[end]) {
-                start = mid + 1;
-            } else {
-                end = mid - 1;
+            else {
+                i += dis;
+                i += nums.length;
+                i %= nums.length;
             }
+            if (dis > 1) {
+               dis /= 2; 
+            }
+        
         }
-        return num[start];
+        
+        return nums[i];
+                
     }
+    
 }
