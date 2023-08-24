@@ -8,7 +8,7 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-
+//next solution is to introduce dummy node at head and return dummy.next
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode cur1 = head;
