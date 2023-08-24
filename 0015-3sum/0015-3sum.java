@@ -18,12 +18,11 @@ class Solution {
                 j++;
                 continue;
             }
-            int sum = nums[i] + nums[j] + nums[k];
-            if (sum == 0) {
+            if (nums[i] + nums[j] + nums[k] == 0) {
                 out.add(new LinkedList(Arrays.asList(nums[i], nums[j], nums[k])));
                 j++;
             }
-            else if (sum < 0) {
+            else if (nums[i] + nums[j] + nums[k] < 0) {
                 j++;
             }
             else {
