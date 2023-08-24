@@ -4,12 +4,10 @@ class Solution {
     Arrays.sort(nums);
         
     List<List<Integer>> out = new LinkedList<>();
-    int i = 0;
-    while (i < nums.length) {
+    for (int i = 0; i < nums.length; i++) {
         int j = i + 1;
         int k = nums.length - 1;
         if (i > 0 && nums[i] == nums[i - 1]) {
-            i++;
             continue;
         }
         
@@ -29,7 +27,6 @@ class Solution {
                 k--;
             }
         }
-        i++;
     }
         
         return out;
