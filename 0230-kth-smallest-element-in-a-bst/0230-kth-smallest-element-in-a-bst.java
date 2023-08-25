@@ -14,26 +14,30 @@
  * }
  */
 class Solution {
+    private int min = 0;
+    private int count = 0;
     public int kthSmallest(TreeNode root, int k) {
-        LinkedList<Integer> out = new LinkedList<>();
-        kHelper(root, out, k);
-        return out.get(out.size() - 1);
+        //LinkedList<Integer> out = new LinkedList<>();
+        int count = 0;
+        kHelper(root, k);
+        return min;
         //return min.poll();
     }
     
-   public List<Integer> kHelper(TreeNode cur, List<Integer> out, int max) {
+   public void kHelper(TreeNode cur, int k) {
         if (cur == null) {
-            return out;
+            return;
         }
-        kHelper(cur.left, out, max);
-        if (out.size() == max) {
-            return out;
+        kHelper(cur.left, k);
+        count++;
+        if (count == k) {
+            min = cur.val;
+            return;
         } 
        
-        out.add(out.size(), cur.val);
-        kHelper(cur.right, out, max);
+        //out.add(out.size(), cur.val);
+        kHelper(cur.right, k);
 
-        return out;
 
     }
 }
