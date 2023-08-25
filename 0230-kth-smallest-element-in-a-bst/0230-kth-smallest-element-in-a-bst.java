@@ -19,7 +19,6 @@ class Solution {
     
     
     public int kthSmallest(TreeNode root, int k) {
-        int count = 0;
         kHelper(root, k);
         return min;
     }
@@ -28,6 +27,7 @@ class Solution {
         if (cur == null) {
             return;
         }
+       
         kHelper(cur.left, k);
         count++;
         if (count == k) {
