@@ -14,8 +14,8 @@
  * }
  */
 class Solution {
-    private int min = 0;
-    private int count = 0;
+    private int min;
+    private int count;
     
     
     public int kthSmallest(TreeNode root, int k) {
