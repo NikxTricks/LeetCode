@@ -14,9 +14,7 @@
  * }
  */
 class Solution {
-    TreeNode root;
     public boolean isValidBST(TreeNode root) {
-        this.root = root;
         return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
         
     }
