@@ -29,6 +29,7 @@ class Solution {
         if (out.size() == max) {
             return out;
         } 
+       
         out.add(out.size(), cur.val);
         kHelper(cur.right, out, max);
 
