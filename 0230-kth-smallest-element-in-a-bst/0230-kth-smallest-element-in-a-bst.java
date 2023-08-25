@@ -34,6 +34,9 @@ class Solution {
             min = cur.val;
             return;
         } 
+       if (count > k) {
+           return;
+       }
        
         kHelper(cur.right, k);
 
