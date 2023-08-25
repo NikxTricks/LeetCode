@@ -15,21 +15,25 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
-        PriorityQueue<Integer> min = new PriorityQueue<>(Collections.reverseOrder());
-        helper(root, min, k);
-        return min.poll();
+        LinkedList<Integer> out = new LinkedList<>();
+        kHelper(root, out, k);
+        return out.get(out.size() - 1);
+        //return min.poll();
     }
     
-    public void helper(TreeNode cur, PriorityQueue<Integer> min, int k) {
+   public List<Integer> kHelper(TreeNode cur, List<Integer> out, int max) {
         if (cur == null) {
-            return;
+            return out;
         }
-        
-        min.add(cur.val);
-        if (min.size() > k) {
-            min.remove();
+        kHelper(cur.left, out, max);
+        if (out.size() == max) {
+            return out;
+        } else {
+            out.add(out.size(), cur.val);
+            kHelper(cur.right, out, max);
         }
-        helper(cur.left, min, k);
-        helper(cur.right, min, k);
+
+        return out;
+
     }
 }
