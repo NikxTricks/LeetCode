@@ -28,10 +28,9 @@ class Solution {
         kHelper(cur.left, out, max);
         if (out.size() == max) {
             return out;
-        } else {
-            out.add(out.size(), cur.val);
-            kHelper(cur.right, out, max);
-        }
+        } 
+        out.add(out.size(), cur.val);
+        kHelper(cur.right, out, max);
 
         return out;
 
