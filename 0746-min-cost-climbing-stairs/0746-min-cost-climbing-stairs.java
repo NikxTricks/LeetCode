@@ -1,11 +1,11 @@
 class Solution {
-    int[] data;
+    
     public int minCostClimbingStairs(int[] cost) {
-        data = new int[cost.length];
-        return Math.min(helper(cost.length - 1, cost), helper(cost.length - 2, cost));
+        int[] data = new int[cost.length];
+        return Math.min(helper(cost.length - 1, cost, data), helper(cost.length - 2, cost, data));
     }
     
-    public int helper(int n, int[] cost) {
+    public int helper(int n, int[] cost, int[] data) {
         if (n < 0) {
             return 0;
         }
@@ -16,7 +16,7 @@ class Solution {
             return data[n];
         }
         
-        int out = cost[n] + Math.min(helper(n - 1, cost), helper(n - 2, cost));
+        int out = cost[n] + Math.min(helper(n - 1, cost, data), helper(n - 2, cost, data));
         data[n] = out;
         return out;
         
