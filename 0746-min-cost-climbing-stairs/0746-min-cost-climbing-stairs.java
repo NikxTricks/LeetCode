@@ -16,9 +16,8 @@ class Solution {
             return data[n];
         }
         
-        int out = cost[n] + Math.min(helper(n - 1, cost, data), helper(n - 2, cost, data));
-        data[n] = out;
-        return out;
+        data[n] = cost[n] + Math.min(helper(n - 1, cost, data), helper(n - 2, cost, data));
+        return data[n];
         
         
         
