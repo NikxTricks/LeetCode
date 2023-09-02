@@ -28,6 +28,7 @@ class Solution {
         if (min != -1) {
             out.add(new int[]{min, max});
         }
+        
         return out.toArray(new int[out.size()][]);
     }
 }
