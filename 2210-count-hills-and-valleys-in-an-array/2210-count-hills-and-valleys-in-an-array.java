@@ -1,7 +1,6 @@
 class Solution {
     public int countHillValley(int[] nums) {
         int total = 0;
-        int diff = 0;
         int cur = 1;
         int i = 1;
         while (cur < nums.length - 1) {
