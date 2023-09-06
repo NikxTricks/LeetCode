@@ -15,9 +15,6 @@ class Solution {
     else if (nums[mid] < nums[mid + 1] && (start == mid || nums[mid] > nums[mid  - 1])) {
         return helper(nums, mid + 1, end);
     }
-    else if (nums[mid] > nums[mid + 1] && nums[mid] < nums[mid - 1]) {
-        return helper(nums, start, mid - 1);
-    }
     else {
         return helper(nums, start, mid - 1);
     }
