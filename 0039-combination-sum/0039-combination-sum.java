@@ -17,7 +17,7 @@ class Solution {
         }
         
         for (int i = start; i < candidates.length; i++) {
-            if (candidates[i] > target) {
+            if (candidates[i] > target || (i > start && candidates[i] == candidates[i - 1])) {
                 return;
             }
             cur.add(candidates[i]);
