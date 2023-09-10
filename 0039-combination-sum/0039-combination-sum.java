@@ -1,5 +1,6 @@
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        Arrays.sort(candidates);
         List<List<Integer>> out = new ArrayList<>();
         List<Integer> cur = new LinkedList<>();
         helper(candidates, target, 0, 0, out, cur);
@@ -16,6 +17,9 @@ class Solution {
         }
         
         for (int i = start; i < candidates.length; i++) {
+            if (candidates[i] > target) {
+                return;
+            }
             cur.add(candidates[i]);
             helper(candidates, target, sum + candidates[i], i, out, cur);
             cur.remove(cur.size() - 1);
