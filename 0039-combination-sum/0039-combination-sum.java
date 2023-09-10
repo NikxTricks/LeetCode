@@ -9,9 +9,7 @@ class Solution {
     
     public void helper(int[] candidates, int target, int sum, int start, List<List<Integer>> out, List<Integer> cur) {
         if (sum == target) {
-            List<Integer> temp = new LinkedList<>(cur);
-                out.add(temp);
-
+                out.add(new LinkedList<>(cur));
         }
         if (sum > target) {
             return;   
