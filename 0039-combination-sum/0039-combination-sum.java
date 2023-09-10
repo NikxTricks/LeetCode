@@ -12,6 +12,7 @@ class Solution {
             List<Integer> temp = new LinkedList<>(cur);
             Collections.sort(temp);
             if (!out.contains(temp)) {
+                
                 out.add(temp); 
             }
         }
