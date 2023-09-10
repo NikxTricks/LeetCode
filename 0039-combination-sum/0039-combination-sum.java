@@ -1,7 +1,6 @@
 class Solution {
-    HashSet<List<Integer>> data = new HashSet<>();
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> out = new LinkedList<>();
+        List<List<Integer>> out = new ArrayList<>();
         List<Integer> cur = new LinkedList<>();
         helper(candidates, target, 0, out, cur);
         return out;
@@ -12,9 +11,8 @@ class Solution {
         if (sum == target) {
             List<Integer> temp = new LinkedList<>(cur);
             Collections.sort(temp);
-            if (!data.contains(temp)) {
+            if (!out.contains(temp)) {
                 out.add(temp);
-                data.add(temp);
             }
         }
         if (sum > target) {
