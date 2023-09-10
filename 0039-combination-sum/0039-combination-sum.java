@@ -10,10 +10,8 @@ class Solution {
     public void helper(int[] candidates, int target, int sum, int start, List<List<Integer>> out, List<Integer> cur) {
         if (sum == target) {
             List<Integer> temp = new LinkedList<>(cur);
-            Collections.sort(temp);
-            if (!out.contains(temp)) {
                 out.add(temp);
-            }
+
         }
         if (sum > target) {
             return;   
