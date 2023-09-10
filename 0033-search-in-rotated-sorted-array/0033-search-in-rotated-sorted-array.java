@@ -8,10 +8,10 @@ class Solution {
         if (start > end) {
             return -1;
         }
-      int mid = (start + end)/2;
+   
         
-        if (nums[mid] == target) {
-            return mid;
+        if (nums[(start + end)/2] == target) {
+            return  (start + end)/2;
         }
         if (nums[start] == target) {
            return start; 
@@ -20,19 +20,19 @@ class Solution {
             return end;
         }
     
-        if (nums[mid] > nums[end]) {
-            if (target > nums[mid] || target < nums[end]) {
-                return helper(nums, target, mid + 1, end - 1);
+        if (nums[(start + end)/2] > nums[end]) {
+            if (target > nums[(start + end)/2] || target < nums[end]) {
+                return helper(nums, target,  (start + end)/2 + 1, end - 1);
             }
             else {
-                return helper(nums, target, start + 1, mid - 1);
+                return helper(nums, target, start + 1,  (start + end)/2 - 1);
             }
         }
-        if (target > nums[mid] && target < nums[end]) {
-            return helper(nums, target, mid + 1, end - 1);
+        if (target > nums[(start + end)/2] && target < nums[end]) {
+            return helper(nums, target,  (start + end)/2 + 1, end - 1);
         }
         else {
-            return helper(nums, target, start + 1, mid - 1);
+            return helper(nums, target, start + 1,  (start + end)/2 - 1);
         }
     }
 }
