@@ -1,15 +1,15 @@
 class Solution {
     boolean[][] visited;
-    boolean[][] added;
+    //boolean[][] added;
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
         List<List<Integer>> out = new LinkedList<>();
-        added = new boolean[heights.length][heights[0].length];
+        //added = new boolean[heights.length][heights[0].length];
         visited = new boolean[heights.length][heights[0].length];
         for (int i = 0; i < heights.length; i++) {
             for (int j = 0; j < heights[0].length; j++) {
-                if (!added[i][j]) {
-                                    helper(heights, i, j, out);
-                visited = new boolean[heights.length][heights[0].length];
+                if (!out.contains(Arrays.asList(i, j))) {
+                    helper(heights, i, j, out);
+                    visited = new boolean[heights.length][heights[0].length];
                 }
             }
         }
@@ -52,9 +52,8 @@ class Solution {
                 sum = sum | helper(heights, i, j + 1, out);
             }
         }
-        if (sum == 3 && !added[i][j]) {
+        if (sum == 3 && !out.contains(Arrays.asList(i, j))) {
             out.add(new LinkedList<>(Arrays.asList(i, j)));
-            added[i][j] = true;
         }
         
         return sum;
