@@ -7,8 +7,10 @@ class Solution {
         visited = new boolean[heights.length][heights[0].length];
         for (int i = 0; i < heights.length; i++) {
             for (int j = 0; j < heights[0].length; j++) {
-                helper(heights, i, j, out);
+                if (!added[i][j]) {
+                                    helper(heights, i, j, out);
                 visited = new boolean[heights.length][heights[0].length];
+                }
             }
         }
         
