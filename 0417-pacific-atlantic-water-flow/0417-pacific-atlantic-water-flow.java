@@ -59,7 +59,6 @@ class Solution {
             }
         }
         if (sum == 3 && !added[i][j]) {
-            //out.add(new LinkedList<>(Arrays.asList(i, j)));
             added[i][j] = true;
         }
         
