@@ -27,7 +27,6 @@ class Solution {
             int out = 0;
             out += helper(n/2, data);
             out += helper(n/2 + 1, data);
-
             return out;
         }
         
