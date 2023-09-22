@@ -43,7 +43,6 @@ class Solution {
             else {
                 out += helper(n/2 + 1, data);
             }
-            data[n] = out;
             return out;
         }
         
