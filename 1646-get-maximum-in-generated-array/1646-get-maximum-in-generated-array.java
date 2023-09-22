@@ -1,12 +1,9 @@
 class Solution {
     public int getMaximumGenerated(int n) {
-        if (n <= 1) {
-            return n;
-        }
         int[] data = new int[n + 1];
         Arrays.fill(data, -1);
         int max = 0;
-        for (int i = n; i > 1; i--) {
+        for (int i = n; i >= 0; i--) {
             max = Math.max(max, helper(i, data));
         }
         
