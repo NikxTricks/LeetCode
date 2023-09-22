@@ -20,29 +20,14 @@ class Solution {
            return data[n]; 
         }
         if (n%2 == 0) {
-            if (data[n/2] != -1) {
-                data[n] = data[n/2];
-                return data[n];
-            }
-            else {
                 data[n] = helper(n/2, data);
                 return data[n];
-            }
         }
         else {
             int out = 0;
-            if (data[n/2] != -1) {
-                out += data[n/2];
-            }
-            else {
-                out += helper(n/2, data);
-            }
-            if (data[n/2 + 1] != -1) {
-                out += data[n/2 + 1];
-            }
-            else {
-                out += helper(n/2 + 1, data);
-            }
+            out += helper(n/2, data);
+            out += helper(n/2 + 1, data);
+
             return out;
         }
         
