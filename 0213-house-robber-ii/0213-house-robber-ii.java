@@ -5,7 +5,6 @@ class Solution {
         }
         int[] data1 = new int[nums.length - 1];
         int[] data2 = new int[nums.length];
-        //int[] nums1 = Arrays.copyOfRange(nums, 1, nums.length);
         Arrays.fill(data1, -1);
         Arrays.fill(data2, -1);
         
