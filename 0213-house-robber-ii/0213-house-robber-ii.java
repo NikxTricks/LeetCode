@@ -5,11 +5,11 @@ class Solution {
         }
         int[] data1 = new int[nums.length - 1];
         int[] data2 = new int[nums.length];
-        int[] nums1 = Arrays.copyOfRange(nums, 1, nums.length);
+        //int[] nums1 = Arrays.copyOfRange(nums, 1, nums.length);
         Arrays.fill(data1, -1);
         Arrays.fill(data2, -1);
         
-            return Math.max(helper(nums1.length - 1, nums1, data1), helper(nums.length - 2, nums, data2));
+            return Math.max(helper(nums.length - 2, Arrays.copyOfRange(nums, 1, nums.length), data1), helper(nums.length - 2, nums, data2));
 
     }
     
