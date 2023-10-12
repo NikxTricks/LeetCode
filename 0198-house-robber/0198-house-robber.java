@@ -1,23 +1,16 @@
 class Solution {
     public int rob(int[] nums) {
-        int[] data = new int[nums.length];
-        Arrays.fill(data, -1);
-        return Math.max(helper(nums.length - 1, nums, data), helper(nums.length - 2, nums, data));
-    }
-    
-    public int helper(int n, int[] nums, int[] data) {
-        if (n < 0) {
-            return 0;
-        }
-        if (n == 0) {
+        if (nums.length == 1) {
             return nums[0];
         }
-        if (data[n] != -1) {
-            return data[n];
+        int[] data = new int[nums.length];
+        data[0] = nums[0];
+        data[1] = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length; i++) {
+            data[i] = Math.max(data[i - 2] + nums[i], data[i - 1]);
         }
-        else {
-            data[n] = Math.max(helper(n - 2, nums, data) + nums[n], helper(n - 1, nums, data));
-            return data[n];
-        }
+        
+        return data[nums.length - 1];
     }
+    
 }
