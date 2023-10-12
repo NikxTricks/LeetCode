@@ -3,28 +3,27 @@ class Solution {
         if (nums.length == 1) {
             return nums[0];
         }
-        int[] data1 = new int[nums.length - 1];
-        int[] data2 = new int[nums.length];
-        Arrays.fill(data1, -1);
-        Arrays.fill(data2, -1);
+        if (nums.length == 2) {
+           return Math.max(nums[0], nums[1]); 
+        }
         
-            return Math.max(helper(nums.length - 2, Arrays.copyOfRange(nums, 1, nums.length), data1), helper(nums.length - 2, nums, data2));
+        int[] data1 = new int[nums.length - 1];
+        data1[0] = nums[0];
+        data1[1] = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length - 1; i++) {
+            data1[i] = Math.max(data1[i - 2] + nums[i], data1[i - 1]);
+        }
+        int[] data2 = new int[nums.length - 1];
+        data2[0] = nums[1];
+        data2[1] = Math.max(nums[1], nums[2]);
+        for (int i = 2; i < nums.length - 1; i++) {
+            data2[i] = Math.max(data2[i - 2] + nums[i + 1], data2[i - 1]);
+        }
+        
+        
+        
+            return Math.max(data1[nums.length - 2], data2[nums.length - 2]);
 
     }
-    
-    public int helper(int n, int[] nums, int[] data) {
-        if (n < 0) {
-            return 0;
-        }
-        if (n == 0) {
-            return nums[0];
-        }
-        if (data[n] != -1) {
-            return data[n];
-        }
-        else {
-            data[n] = Math.max(helper(n - 2, nums, data) + nums[n], helper(n - 1, nums, data));
-            return data[n];
-        }
-    }
+
 }
