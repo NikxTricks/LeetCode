@@ -1,5 +1,6 @@
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
+        //optimize using previous row and column values only...
         if (text2.length() == 0) {
             return 0;
         }
