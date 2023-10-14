@@ -4,7 +4,7 @@ class Solution {
         dp[0] = true;
         
         for (int i = 1; i < nums.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
+            for (int j = 0; j < i; j++) {
                 if (dp[j] == false) {
                     continue;
                 }
