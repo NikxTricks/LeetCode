@@ -5,10 +5,10 @@ class Solution {
         
         for (int i = 1; i < nums.length; i++) {
             for (int j = 0; j < nums.length; j++) {
-                if (dp[i] == true) {
+                if (dp[j] == false) {
                     continue;
                 }
-                if (nums[j] >= i - j && dp[j] == true) {
+                if (nums[j] >= i - j) {
                     dp[i] = true;
                 }
             }
