@@ -9,6 +9,7 @@ class Solution {
             for (int j = 0; j < i; j++) {
                 if (dict.contains(s.substring(j, i)) && dp[j] == true) {
                     dp[i] = true;
+                    break;
                 }
             }
         }
