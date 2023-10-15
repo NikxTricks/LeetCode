@@ -1,5 +1,6 @@
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
+        //use tries to implement
         HashSet<String> dict = new HashSet<>(wordDict);
         
         boolean[] dp = new boolean[s.length() + 1];
