@@ -1,7 +1,7 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
+        //optimize with binary search
         int[] dp = new int[nums.length];
-        //Arrays.fill(dp, 1);
         int max = 0;
         int start = 0;
         while (start < nums.length - 1 && nums[start] > nums[start + 1]) {
