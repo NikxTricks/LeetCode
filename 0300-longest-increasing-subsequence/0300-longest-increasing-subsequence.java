@@ -1,8 +1,8 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
         int[] dp = new int[nums.length];
-        Arrays.fill(dp, 1);
-        int max = 1;
+        //Arrays.fill(dp, 1);
+        int max = 0;
         int start = 0;
         while (start < nums.length - 1 && nums[start] > nums[start + 1]) {
             start++;
@@ -16,7 +16,7 @@ class Solution {
             }
         }
         
-        return max;
+        return ++max;
     }
     
     
