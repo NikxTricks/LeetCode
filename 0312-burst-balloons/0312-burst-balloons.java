@@ -9,13 +9,11 @@ class Solution {
         }
         
         for (int d = 2; d < nums.length + 2; d++) {
-            //System.out.println(d);
             int i = 0;
             int j = d;
             while (i < nums.length + 2 && j < nums.length + 2) {
                 for (int k = i + 1; k < j; k++) {
                     dp[i][j] = Math.max(dp[i][k] + dp[k][j] + data[i] * data[k] * data[j], dp[i][j]);
-                    //System.out.println(dp[i][j]);
                 }
                 i++;
                 j++;
