@@ -18,12 +18,6 @@ class Solution {
             }
         }
         
-        for (int[] row: dp) {
-            for (int i: row) {
-                System.out.print(i + " ");
-            }
-            System.out.println("");
-        }
         
         return dp[word1.length()][word2.length()];
     }
