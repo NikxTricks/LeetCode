@@ -1,26 +1,18 @@
 class Solution {
     
     public int minCostClimbingStairs(int[] cost) {
-        int[] data = new int[cost.length];
-        return Math.min(helper(cost.length - 1, cost, data), helper(cost.length - 2, cost, data));
+        int[] dp = new int[cost.length + 1];
+        if (cost.length < 2) {
+            return cost[0];
+        }
+        dp[0] = 0;
+        dp[1] = 0;
+        for (int i = 2; i <= cost.length; i++) {
+            dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+        }
+        
+        
+        return dp[cost.length];
     }
-    
-    public int helper(int n, int[] cost, int[] data) {
-        if (n < 0) {
-            return 0;
-        }
-        if (n <= 1) {
-           return cost[n]; 
-        }
-        if (data[n] != 0) {
-            return data[n];
-        }
-        
-        data[n] = cost[n] + Math.min(helper(n - 1, cost, data), helper(n - 2, cost, data));
-        return data[n];
-        
-        
-        
-        
-    }
+ 
 }
