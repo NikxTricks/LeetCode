@@ -18,15 +18,10 @@ class Solution {
         ListNode cur1 = l1;
         ListNode cur2 = l2;
         int carry = 0;
-        int sum = 0;
-        int digit = 0;
         while (cur1 != null && cur2 != null) {
             carry = 0;
-            sum = 0;
-            sum = cur1.val + cur2.val + cur.val;
-            digit = sum%10;
-            carry = sum/10;
-            cur.val = digit;
+            carry = (cur1.val + cur2.val + cur.val)/10;
+            cur.val = (cur1.val + cur2.val + cur.val)%10;;
             cur1 = cur1.next;
             cur2 = cur2.next;
             if (carry > 0 || cur1 != null || cur2 != null) {
@@ -36,11 +31,8 @@ class Solution {
         }
         while (cur1 != null) {
             carry = 0;
-            sum = 0;
-            sum = cur1.val + cur.val;
-            digit = sum%10;
-            carry = sum/10;
-            cur.val = digit;
+            carry = (cur1.val + cur.val)/10;
+            cur.val = (cur1.val + cur.val)%10;
             cur1 = cur1.next;
             if (carry > 0 || cur1 != null) {
                 cur.next = new ListNode(carry);
@@ -49,11 +41,8 @@ class Solution {
         }
         while (cur2 != null) {
             carry = 0;
-            sum = 0;
-            sum = cur2.val + cur.val;
-            digit = sum%10;
-            carry = sum/10;
-            cur.val = digit;
+            carry = (cur2.val + cur.val)/10;
+            cur.val = (cur2.val + cur.val)%10;
             cur2 = cur2.next;
             if (carry > 0 || cur2 != null) {
                 cur.next = new ListNode(carry);
