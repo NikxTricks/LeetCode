@@ -7,6 +7,9 @@ class Solution {
                 for (int j = 1; j <= nums[i]; j++) {
                     if (i + j < nums.length) {
                         dp[i + j] = true;
+                        if (i + j == nums.length - 1) {
+                            return true;
+                        }
                     }
                 } 
             }
