@@ -16,19 +16,29 @@ class Solution {
         numerals.put(4, "IV");
         numerals.put(1, "I");
         
-        List<Integer> nums = new LinkedList<>(numerals.keySet());
-        Collections.sort(nums, Collections.reverseOrder());
+        List<Integer> nums = new ArrayList<>();
+        nums.add(1000);
+        nums.add(900);
+        nums.add(500);
+        nums.add(400);
+        nums.add(100);
+        nums.add(90);
+        nums.add(50);
+        nums.add(40);
+        nums.add(10);
+        nums.add(9);
+        nums.add(5);
+        nums.add(4);
+        nums.add(1);
         
         int i = 0;
         while (num > 0) {
             while (nums.get(i) > num) {
-                //System.out.println("Current check: " + nums.get(i));
                 i++;
             }
             int sub = nums.get(i);
             numeral += numerals.get(sub);
             num -= sub;
-            //System.out.println("Current num: " + num);
             
         }
         
