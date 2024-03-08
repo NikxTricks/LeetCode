@@ -19,9 +19,8 @@ class Solution {
         List<Integer> nums = new LinkedList<>(numerals.keySet());
         Collections.sort(nums, Collections.reverseOrder());
         
-        
+        int i = 0;
         while (num > 0) {
-            int i = 0;
             while (nums.get(i) > num) {
                 //System.out.println("Current check: " + nums.get(i));
                 i++;
