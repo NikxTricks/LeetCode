@@ -37,9 +37,8 @@ class Solution {
             while (cur > num) {
                 cur = nums.get(++i);
             }
-            int sub = nums.get(i);
-            numeral += numerals.get(sub);
-            num -= sub;
+            numeral += numerals.get(cur);
+            num -= cur;
             
         }
         
