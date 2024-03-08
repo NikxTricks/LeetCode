@@ -32,9 +32,10 @@ class Solution {
         nums.add(1);
         
         int i = 0;
+        int cur = 1000;
         while (num > 0) {
-            while (nums.get(i) > num) {
-                i++;
+            while (cur > num) {
+                cur = nums.get(++i);
             }
             int sub = nums.get(i);
             numeral += numerals.get(sub);
