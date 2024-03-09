@@ -1,6 +1,6 @@
 class Solution {
     public String intToRoman(int num) {
-        String numeral = "";
+        StringBuilder numeral = new StringBuilder();
         HashMap<Integer, String> numerals = new HashMap<>();
         numerals.put(1000, "M");
         numerals.put(900, "CM");
@@ -37,11 +37,11 @@ class Solution {
             while (cur > num) {
                 cur = nums.get(++i);
             }
-            numeral += numerals.get(cur);
+            numeral.append(numerals.get(cur));
             num -= cur;
             
         }
         
-        return numeral;
+        return numeral.toString();
     }
 }
