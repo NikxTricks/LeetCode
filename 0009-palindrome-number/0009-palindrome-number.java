@@ -17,8 +17,6 @@ class Solution {
         int i = 0;
         int j = length - 1;
         while (i < j) {
-            //System.out.println(chars[i]);
-            //System.out.println(chars[j]);
             if (chars[i] != chars[j]) {
                 return false;
             }
