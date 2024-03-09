@@ -7,7 +7,7 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             rows[i] = new StringBuilder();
         }
-        //int rowIndex = 0;
+        
         int i = 0;
         while (i < s.length()) {
             for (int rowIndex = 0; rowIndex < numRows && i < s.length(); rowIndex++) {
