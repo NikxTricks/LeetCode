@@ -3,19 +3,9 @@ class Solution {
         if (x < 0) {
             return false;
         }
-        int length = 0;
-        int temp = x;
-        while (temp > 0) {
-            temp /= 10;
-            length++;
-        }
-        char[] chars = new char[length];
-        for (int i = 0; i < length; i++) {
-            chars[i] = (char) (x%10);
-            x /=10;
-        }
+        char[] chars = String.valueOf(x).toCharArray();
         int i = 0;
-        int j = length - 1;
+        int j = chars.length - 1;
         while (i < j) {
             if (chars[i] != chars[j]) {
                 return false;
