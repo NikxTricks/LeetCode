@@ -15,42 +15,33 @@
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        Queue<TreeNode> q = new LinkedList<>();
-        Stack<TreeNode> s = new Stack<>();
-        List<List<Integer>> out = new LinkedList<>();
-        if (root == null) {
-            return out;
+   TreeNode c=root;
+   List<List<Integer>> ans =new ArrayList<List<Integer>>();
+   if(c==null) return ans;
+   Stack<TreeNode> s1=new Stack<TreeNode>();
+   Stack<TreeNode> s2=new Stack<TreeNode>();
+   s1.push(root);
+   while(!s1.isEmpty()||!s2.isEmpty())
+   {
+       List<Integer> tmp=new ArrayList<Integer>();
+        while(!s1.isEmpty())
+        {
+            c=s1.pop();
+            tmp.add(c.val);
+            if(c.left!=null) s2.push(c.left);
+            if(c.right!=null) s2.push(c.right);
         }
-
-        q.add(root);
-        boolean zig = true;
-        while (q.size() != 0) {
-            int levelSize = q.size();
-            List<Integer> subOut = new LinkedList<>();
-            for (int i = 0; i < levelSize; i++) {
-                if (q.peek().left != null) {
-                    q.add(q.peek().left);
-                    if (zig) {
-                       s.add(q.peek().left); 
-                    }
-                }
-                if (q.peek().right != null) {
-                    q.add(q.peek().right);
-                    if (zig) {
-                        s.add(q.peek().right);
-                    }
-                }  
-                if (zig) {
-                    subOut.add(q.remove().val);
-                }
-                else {
-                    subOut.add(s.pop().val);
-                    q.remove();
-                }
-            }
-            out.add(subOut);
-            zig = !zig;
+        ans.add(tmp);
+        tmp=new ArrayList<Integer>();
+        while(!s2.isEmpty())
+        {
+            c=s2.pop();
+            tmp.add(c.val);
+            if(c.right!=null)s1.push(c.right);
+            if(c.left!=null)s1.push(c.left);
         }
-        return out;
+        if(!tmp.isEmpty()) ans.add(tmp);
+   }
+   return ans;
     }
 }
