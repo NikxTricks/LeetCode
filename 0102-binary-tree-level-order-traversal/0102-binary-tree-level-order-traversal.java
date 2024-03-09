@@ -25,19 +25,17 @@ class Solution {
         }
         f.add(root);
         
-        TreeNode cur = null;
         while (f.size() != 0) {
             int levelSize = f.size();
             List<Integer> subOut = new LinkedList<>();
             for (int i = 0; i < levelSize; i++) {
-                cur = f.remove();
-                subOut.add(cur.val);
-                if (cur.left != null) {
-                    f.add(cur.left);
+                if (f.peek().left != null) {
+                    f.add(f.peek().left);
                 }
-                if (cur.right != null) {
-                    f.add(cur.right);
+                if (f.peek().right != null) {
+                    f.add(f.peek().right);
                 }
+                 subOut.add(f.remove().val);
             }
             out.add(subOut);
         }
