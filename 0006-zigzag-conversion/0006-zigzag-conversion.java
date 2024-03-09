@@ -4,14 +4,14 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             rows[i] = new StringBuilder();
         }
-        
+        char[] chars = s.toCharArray();
         int i = 0;
         while (i < s.length()) {
             for (int rowIndex = 0; rowIndex < numRows && i < s.length(); rowIndex++) {
-                rows[rowIndex].append(s.charAt(i++));
+                rows[rowIndex].append(chars[i++]);
             }
             for (int rowIndex = numRows - 2; rowIndex >= 1 && i < s.length(); rowIndex--) {
-                rows[rowIndex].append(s.charAt(i++));
+                rows[rowIndex].append(chars[i++]);
             }
         }
         
