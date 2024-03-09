@@ -9,7 +9,6 @@ class Solution {
         int cur = gap;
         int move = cur;
         for (int i = 0; i < numRows; i++) {
-            //System.out.println("Row: " + i);
             if (cur == 0) {
                 cur = gap;
             }
@@ -17,7 +16,6 @@ class Solution {
             move = cur;
             while (i + j < s.length()) {
                 out.append(String.valueOf(s.charAt(i + j)));
-                //System.out.println("Added: " + (i + j));
                 j += move;
                 if (cur != gap) {
                     move = gap - move;
