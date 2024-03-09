@@ -23,24 +23,24 @@ class Solution {
         }
 
         q.add(root);
-        boolean zig = true;
+        //boolean zig = true;
         while (q.size() != 0) {
             int levelSize = q.size();
             List<Integer> subOut = new LinkedList<>();
             for (int i = 0; i < levelSize; i++) {
                 if (q.peek().left != null) {
                     q.add(q.peek().left);
-                    if (zig) {
+                    if ((out.size() + 1)%2 == 1) {
                        s.add(q.peek().left); 
                     }
                 }
                 if (q.peek().right != null) {
                     q.add(q.peek().right);
-                    if (zig) {
+                    if ((out.size() + 1)%2 == 1) {
                         s.add(q.peek().right);
                     }
                 }  
-                if (zig) {
+                if ((out.size() + 1)%2 == 1) {
                     subOut.add(q.remove().val);
                 }
                 else {
@@ -49,7 +49,6 @@ class Solution {
                 }
             }
             out.add(subOut);
-            zig = !zig;
         }
         return out;
     }
