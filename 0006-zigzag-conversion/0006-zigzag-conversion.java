@@ -7,13 +7,12 @@ class Solution {
         StringBuilder out = new StringBuilder();
         
         int cur = gap;
-        int move = cur;
         for (int i = 0; i < numRows; i++) {
             if (cur == 0) {
                 cur = gap;
             }
             int j = 0;
-            move = cur;
+            int move = cur;
             while (i + j < s.length()) {
                 out.append(String.valueOf(s.charAt(i + j)));
                 j += move;
