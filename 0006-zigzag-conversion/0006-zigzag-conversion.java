@@ -1,8 +1,5 @@
 class Solution {
     public String convert(String s, int numRows) {
-        if (numRows == 1) {
-            return s;
-        }
         StringBuilder[] rows = new StringBuilder[s.length()];
         for (int i = 0; i < s.length(); i++) {
             rows[i] = new StringBuilder();
