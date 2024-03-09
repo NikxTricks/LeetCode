@@ -3,28 +3,24 @@ class Solution {
         if (numRows == 1) {
             return s;
         }
-        int gap = 2 * numRows - 2; //decrements by 2 each time
-        StringBuilder out = new StringBuilder();
-        
-        int cur = gap;
-        for (int i = 0; i < numRows; i++) {
-            if (cur == 0) {
-                cur = gap;
+        StringBuilder[] rows = new StringBuilder[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            rows[i] = new StringBuilder();
+        }
+        //int rowIndex = 0;
+        int i = 0;
+        while (i < s.length()) {
+            for (int rowIndex = 0; rowIndex < numRows && i < s.length(); rowIndex++) {
+                rows[rowIndex].append(s.charAt(i++));
             }
-            int j = 0;
-            int move = cur;
-            while (i + j < s.length()) {
-                out.append(String.valueOf(s.charAt(i + j)));
-                j += move;
-                if (cur != gap) {
-                    move = gap - move;
-                }
-                
+            for (int rowIndex = numRows - 2; rowIndex >= 1 && i < s.length(); rowIndex--) {
+                rows[rowIndex].append(s.charAt(i++));
             }
-            cur -= 2;
-            
         }
         
-        return out.toString();
+        for (int j = 1; j < rows.length; j++) {
+            rows[0].append(rows[j]);
+        }
+        return rows[0].toString();
     }
 }
