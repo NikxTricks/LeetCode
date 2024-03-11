@@ -4,16 +4,7 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             chars[i] = s.charAt(i);
         }
-        //char[] chars = s.toCharArray();
-        Comparator<Character> custom = new Comparator<>() {
-            @Override
-            public int compare(Character a, Character b) {
-                return order.indexOf(a) - order.indexOf(b);
-
-            }
-        };
-        
-        Arrays.sort(chars, custom); 
+        Arrays.sort(chars, (a, b) -> order.indexOf(a) - order.indexOf(b)); 
         
         
         StringBuilder out = new StringBuilder();
