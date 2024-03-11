@@ -3,14 +3,14 @@ class Solution {
         if (s.length() == 0) {
             return 0;
         }
-        while (s.length() > 0 && s.charAt(0) == ' ') {
-           s = s.replaceFirst(" ", ""); 
+        int i = 0;
+        while (i < s.length() && s.charAt(i) == ' ') {
+          i++;
         }
-        if (s.length() == 0) {
+        if (i == s.length()) {
             return 0;
         }
         char c = 0;
-        int i = 0;
         int sign = 1;
         if (s.charAt(i) == '-') {
             sign *= -1;
