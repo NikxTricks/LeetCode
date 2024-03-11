@@ -1,6 +1,6 @@
 class Solution {
     public List<String> letterCombinations(String digits) {
-         List<String> out = new ArrayList<>();
+        List<String> out = new ArrayList<>();
         if (digits.length() == 0) {
             return out; 
         }
@@ -14,7 +14,6 @@ class Solution {
         keys[6] = "tuv";
         keys[7] = "wxyz";
         
-       
         int count = 0;
         StringBuilder output = new StringBuilder();
         helper(out, keys, output, count, digits);
