@@ -16,23 +16,23 @@ class Solution {
         
        
         int count = 0;
-        String output = "";
+        StringBuilder output = new StringBuilder();
         helper(out, keys, output, count, digits);
         return out;
     }
     
-    public void helper(List<String> out, String[] keys, String output, int count, String digits) {
+    public void helper(List<String> out, String[] keys, StringBuilder output, int count, String digits) {
         String cur = keys[Integer.valueOf(String.valueOf(digits.charAt(count))) - 2];
         for (int i = 0; i < cur.length(); i++) {
             char c = cur.charAt(i);
-            output += c;
+            output.append(c);
             if (output.length() == digits.length()) {
-                out.add(output);
+                out.add(output.toString());
             }
             else {
                 helper(out, keys, output, count + 1, digits);
             }
-            output = output.substring(0, output.length() - 1);
+            output.delete(output.length() - 1, output.length());
         }
     }
 }
