@@ -4,19 +4,9 @@ class Solution {
         if (digits.length() == 0) {
             return out; 
         }
-        String[] keys = new String[8];
-        keys[0] = "abc";
-        keys[1] = "def";
-        keys[2] = "ghi";
-        keys[3] = "jkl";
-        keys[4] = "mno";
-        keys[5] = "pqrs";
-        keys[6] = "tuv";
-        keys[7] = "wxyz";
-        
+        String[] keys = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         int count = 0;
-        StringBuilder output = new StringBuilder();
-        helper(out, keys, output, count, digits);
+        helper(out, keys, new StringBuilder(), count, digits);
         return out;
     }
     
