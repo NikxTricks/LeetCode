@@ -16,29 +16,23 @@ class Solution {
         
        
         int count = 0;
-        String cur = "";
-        helper(out, keys, cur, count, digits);
+        String output = "";
+        helper(out, keys, output, count, digits);
         return out;
     }
     
-    public void helper(List<String> out, String[] keys, String cur, int count, String digits) {
-        //System.out.println(count);
-        for (char c: keys[Integer.valueOf(String.valueOf(digits.charAt(count))) - 2].toCharArray()) {
-            cur += c;
-            //System.out.println("Start cur: " + cur);
-            if (cur.length() == digits.length()) {
-                //System.out.println(cur);
-                out.add(cur);
-                //System.out.println("Cur: " + cur);
-                //cur = cur.substring(0, cur.length() - 1);
+    public void helper(List<String> out, String[] keys, String output, int count, String digits) {
+        String cur = keys[Integer.valueOf(String.valueOf(digits.charAt(count))) - 2];
+        for (int i = 0; i < cur.length(); i++) {
+            char c = cur.charAt(i);
+            output += c;
+            if (output.length() == digits.length()) {
+                out.add(output);
             }
             else {
-                //System.out.println("Cur: " + cur);
-                //System.out.println(count);
-                helper(out, keys, cur, count + 1, digits);
+                helper(out, keys, output, count + 1, digits);
             }
-            cur = cur.substring(0, cur.length() - 1);
-            //System.out.println(cur);
+            output = output.substring(0, output.length() - 1);
         }
     }
 }
