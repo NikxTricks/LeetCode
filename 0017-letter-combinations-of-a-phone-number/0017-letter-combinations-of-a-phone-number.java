@@ -11,7 +11,7 @@ class Solution {
     }
     
     public void helper(List<String> out, String[] keys, StringBuilder output, int count, String digits) {
-        String cur = keys[Integer.valueOf(String.valueOf(digits.charAt(count))) - 2];
+        String cur = keys[(digits.charAt(count) - '0') - 2];
         for (int i = 0; i < cur.length(); i++) {
             char c = cur.charAt(i);
             output.append(c);
