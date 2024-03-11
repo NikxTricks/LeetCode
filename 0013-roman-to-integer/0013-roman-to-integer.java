@@ -10,12 +10,13 @@ class Solution {
         numbers.put('D', 500);
         numbers.put('M', 1000);
         for (int i = 0; i < s.length(); i++) {
-            if (i < s.length() - 1 && numbers.get(s.charAt(i + 1)) > numbers.get(s.charAt(i))) {
-                decimal += numbers.get(s.charAt(i + 1)) - numbers.get(s.charAt(i));
+            int f = numbers.get(s.charAt(i));
+            if (i < s.length() - 1 && numbers.get(s.charAt(i + 1)) > f) {
+                decimal += numbers.get(s.charAt(i + 1)) - f;
                 i++;
             }
             else {
-                decimal += numbers.get(s.charAt(i));
+                decimal += f;
             }
 
         }
