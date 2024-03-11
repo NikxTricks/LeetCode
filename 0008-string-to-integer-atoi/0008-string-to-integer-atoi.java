@@ -25,29 +25,23 @@ class Solution {
                 return 0;
             }
             if (sum > Integer.MAX_VALUE/10) {
-                sum = Integer.MAX_VALUE;
-                break;
+                if (sign == -1) {
+                    return Integer.MIN_VALUE;
+                }
+                return Integer.MAX_VALUE;
             }
             if (sum == Integer.MAX_VALUE/10 && (s.charAt(i) - '0') > 7) {
-                sum = Integer.MAX_VALUE;
-                break;
+                if (sign == -1) {
+                    return Integer.MIN_VALUE;
+                }
+                return Integer.MAX_VALUE;
             }
-            if (sum < Integer.MIN_VALUE/10) {
-                sum = Integer.MIN_VALUE;
-                break;
-            }
-            if (sum == Integer.MIN_VALUE/10 && (s.charAt(i) - '0') > 8) {
-                sum = Integer.MIN_VALUE;
-                break;
-            }
-            
-            
             sum *= 10;
-            sum += sign * (s.charAt(i) - '0');
+            sum += (s.charAt(i) - '0');
             i++;
         }
         
-        return sum;
+        return sum * sign;
         
     }
 }
