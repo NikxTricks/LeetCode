@@ -14,35 +14,37 @@
  * }
  */
 class Solution {
-    boolean result = false;
+    //boolean out = false;
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-       
-        find(root, subRoot);
-        return result;
+        return findRoot(root, subRoot, subRoot);
+        //return out;
+        
         
     }
     
-    public void find(TreeNode cur, TreeNode subroot) {
-        if (cur == null) {
-            return;
-        }
-        if (cur.val == subroot.val) {
-            result = result || helper(cur, subroot);
-        }
-        find(cur.left, subroot);
-        find(cur.right, subroot);
-    }
-    
-    public boolean helper(TreeNode cur1, TreeNode cur2) {
-        if (cur1 == null && cur2 == null) {
+    public boolean findRoot(TreeNode root, TreeNode subRoot, TreeNode origin) {
+        if (root == null && subRoot == null) {
             return true;
         }
-        if (cur1 == null || cur2 == null) {
+        if (root == null || subRoot == null) {
             return false;
         }
-        if (cur1.val == cur2.val) {
-            return helper(cur1.right, cur2.right) && helper(cur1.left, cur2.left);
+        if (root.val == subRoot.val) {
+            if (findRoot(root.left, subRoot.left, origin) && findRoot(root.right, subRoot.right, origin)) {
+                return true;
+            }
+
         }
-        return false;
+        if (subRoot != origin) {
+            return false;
+        }
+            return findRoot(root.left, subRoot, origin) || findRoot(root.right, subRoot, origin);
+
     }
+    /*
+    public boolean checkSubtree(TreeNode root, TreeNode subroot) {
+        return true;
+    }
+    */
+    
 }
