@@ -14,8 +14,8 @@
  * }
  */
 class Solution {
-    //boolean out = false;
     TreeNode origin = null;
+    
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
         this.origin = subRoot;
         return findRoot(root, subRoot);
