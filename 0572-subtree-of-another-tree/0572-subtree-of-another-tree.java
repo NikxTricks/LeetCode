@@ -15,12 +15,14 @@
  */
 class Solution {
     //boolean out = false;
+    TreeNode origin = null;
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-        return findRoot(root, subRoot, subRoot);
+        this.origin = subRoot;
+        return findRoot(root, subRoot);
 
     }
     
-    public boolean findRoot(TreeNode root, TreeNode subRoot, TreeNode origin) {
+    public boolean findRoot(TreeNode root, TreeNode subRoot) {
         if (root == null && subRoot == null) {
             return true;
         }
@@ -28,16 +30,16 @@ class Solution {
             return false;
         }
         if (root.val == subRoot.val) {
-            if (findRoot(root.left, subRoot.left, origin) && findRoot(root.right, subRoot.right, origin)) {
+            if (findRoot(root.left, subRoot.left) && findRoot(root.right, subRoot.right)) {
                 return true;
             }
         }
         
-        if (subRoot != origin) {
+        if (subRoot != this.origin) {
             return false;
         }
             
-        return findRoot(root.left, subRoot, origin) || findRoot(root.right, subRoot, origin);
+        return findRoot(root.left, subRoot) || findRoot(root.right, subRoot);
 
     }
 
