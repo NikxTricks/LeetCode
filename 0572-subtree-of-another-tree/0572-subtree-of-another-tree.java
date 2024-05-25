@@ -17,9 +17,7 @@ class Solution {
     //boolean out = false;
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
         return findRoot(root, subRoot, subRoot);
-        //return out;
-        
-        
+
     }
     
     public boolean findRoot(TreeNode root, TreeNode subRoot, TreeNode origin) {
@@ -42,10 +40,6 @@ class Solution {
         return findRoot(root.left, subRoot, origin) || findRoot(root.right, subRoot, origin);
 
     }
-    /*
-    public boolean checkSubtree(TreeNode root, TreeNode subroot) {
-        return true;
-    }
-    */
+
     
 }
