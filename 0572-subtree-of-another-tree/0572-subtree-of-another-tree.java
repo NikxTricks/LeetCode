@@ -33,12 +33,13 @@ class Solution {
             if (findRoot(root.left, subRoot.left, origin) && findRoot(root.right, subRoot.right, origin)) {
                 return true;
             }
-
         }
+        
         if (subRoot != origin) {
             return false;
         }
-            return findRoot(root.left, subRoot, origin) || findRoot(root.right, subRoot, origin);
+            
+        return findRoot(root.left, subRoot, origin) || findRoot(root.right, subRoot, origin);
 
     }
     /*
