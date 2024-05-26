@@ -11,17 +11,27 @@
 class Solution {
     public void reorderList(ListNode head) {
         ListNode cur = head;
-        ListNode pointer;
+        ListNode mid = head;
         
-        while (cur.next != null && cur.next.next != null) {
-            pointer = cur;
-            while (pointer.next.next != null) {
-               pointer = pointer.next;
-            }
-            pointer.next.next = cur.next;
-            cur.next = pointer.next;
-            pointer.next = null;
-            
+        while (mid.next != null && mid.next.next != null) {
+            cur = cur.next;
+            mid = mid.next.next;
+        }
+        
+        mid = cur.next;
+        cur.next = null;
+        cur = head;
+
+        Stack<ListNode> reverse = new Stack<>();
+        while (mid != null) {
+            reverse.add(mid);
+            mid = mid.next;
+        }
+        
+        while (reverse.size() != 0) {
+            ListNode tempCur = cur.next;
+            cur.next = reverse.pop();
+            cur.next.next = tempCur;
             cur = cur.next.next;
         }
     }
