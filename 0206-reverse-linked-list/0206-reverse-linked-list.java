@@ -16,7 +16,6 @@ class Solution {
         ListNode cur = head;
         
         while (cur.next != null) {
-            //System.out.println(cur.next.val);
             ListNode temp = head;
             head = cur.next;
             cur.next = head.next;
