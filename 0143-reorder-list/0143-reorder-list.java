@@ -10,6 +10,10 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
+        if (head.next == null) {
+            return;
+        }
+        
         ListNode cur = head;
         ListNode mid = head;
         
@@ -24,10 +28,7 @@ class Solution {
 
         
         ListNode tail = mid;
-        
-        if (tail == null) {
-            return;
-        }
+
         
         while (tail.next != null) {
             ListNode temp = mid;
