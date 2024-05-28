@@ -14,32 +14,24 @@
  * }
  */
 class Solution {
-    private int min;
-    private int count;
-    
+    public int k; //number traversed
+    public int min; //return
     
     public int kthSmallest(TreeNode root, int k) {
-        kHelper(root, k);
-        return min;
+        helper(root, k);
+        return this.min;
     }
     
-   public void kHelper(TreeNode cur, int k) {
+    public void helper(TreeNode cur, int k) {
         if (cur == null) {
             return;
         }
-       
-        kHelper(cur.left, k);
-        count++;
-        if (count == k) {
-            min = cur.val;
-            return;
-        } 
-       if (count > k) {
-           return;
-       }
-       
-        kHelper(cur.right, k);
-
-
+        helper(cur.left, k);
+        this.k++;
+        if (this.k == k) {
+                this.min = cur.val;
+        }
+        helper(cur.right, k);
     }
+
 }
