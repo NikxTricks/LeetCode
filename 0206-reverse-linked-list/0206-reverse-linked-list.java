@@ -14,10 +14,8 @@ class Solution {
         if (head == null) {
             return head;
         }
-        this.head = head;
         helper(head);
-        head = this.head;
-        return head;
+        return this.head;
         
     }
     
