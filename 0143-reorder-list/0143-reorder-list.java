@@ -22,15 +22,24 @@ class Solution {
         cur.next = null;
         cur = head;
 
-        Stack<ListNode> reverse = new Stack<>();
-        while (mid != null) {
-            reverse.add(mid);
-            mid = mid.next;
+        
+        ListNode tail = mid;
+        
+        if (tail == null) {
+            return;
         }
         
-        while (reverse.size() != 0) {
+        while (tail.next != null) {
+            ListNode temp = mid;
+            mid = tail.next;
+            tail.next = mid.next;
+            mid.next = temp;
+        }
+        
+        while (mid != null) {
             ListNode tempCur = cur.next;
-            cur.next = reverse.pop();
+            cur.next = mid;
+            mid = mid.next;
             cur.next.next = tempCur;
             cur = cur.next.next;
         }
