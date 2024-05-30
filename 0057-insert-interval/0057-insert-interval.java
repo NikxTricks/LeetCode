@@ -1,6 +1,5 @@
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        //return new int[2][2];
         List<int[]> out = new LinkedList<>();
         if (intervals.length == 0) {
             int[][] outArr = new int[1][2];
@@ -14,14 +13,11 @@ class Solution {
             i++;
         }
         if (i >= intervals.length) {
-            out.add(newInterval);
-            int[][] done = new int[out.size()][2];
-            for (int j = 0; j < out.size(); j++) {
-                done[j] = out.get(j);
-            }
-            return done;
+            add[0] = newInterval[0];
         }
-        add[0] = Math.min(newInterval[0], intervals[i][0]);
+        else {
+          add[0] = Math.min(newInterval[0], intervals[i][0]);  
+        }
         while (i < intervals.length && newInterval[1] > intervals[i][1]) {
             i++;
         }
@@ -30,19 +26,12 @@ class Solution {
         }
         if (newInterval[1] < intervals[i][0]) {
             add[1] = newInterval[1];
-            out.add(add);
-            for (int j = i; j < intervals.length; j++) {
-                out.add(intervals[j]);
-            }
-            int[][] done = new int[out.size()][2];
-            for (int j = 0; j < out.size(); j++) {
-                done[j] = out.get(j);
-            }
-            return done;
         }
-        add[1] = Math.max(newInterval[1], intervals[i][1]);
+        else {
+            add[1] = Math.max(newInterval[1], intervals[i][1]);
+            i++;
+        }
         out.add(add);
-        i++;
         for (int j = i; j < intervals.length; j++) {
             out.add(intervals[j]);
         }
