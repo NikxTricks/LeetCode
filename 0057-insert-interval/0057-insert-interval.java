@@ -35,11 +35,8 @@ class Solution {
         for (int j = i; j < intervals.length; j++) {
             out.add(intervals[j]);
         }
-        int[][] done = new int[out.size()][2];
-        for (int j = 0; j < out.size(); j++) {
-                done[j] = out.get(j);
-        }
-        return done;
+
+        return out.toArray(new int[out.size()][]);
         
         
     }
