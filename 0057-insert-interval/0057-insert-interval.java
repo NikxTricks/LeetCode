@@ -34,9 +34,7 @@ class Solution {
         for (int j = i; j < intervals.length; j++) {
             out.add(intervals[j]);
         }
-
         return out.toArray(new int[out.size()][]);
-        
         
     }
 }
