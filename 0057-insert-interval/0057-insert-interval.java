@@ -2,9 +2,8 @@ class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
         List<int[]> out = new LinkedList<>();
         if (intervals.length == 0) {
-            int[][] outArr = new int[1][2];
-            outArr[0] = newInterval;
-            return outArr;
+            int[][] done = {{newInterval[0], newInterval[1]}};
+            return done;
         }
         int[] add = new int[2];
         int i = 0;
