@@ -12,7 +12,6 @@ class Solution {
             out.add(intervals[cur]);
             cur = j;
         }
-        
         return out.toArray(new int[out.size()][2]);
     }
 }
