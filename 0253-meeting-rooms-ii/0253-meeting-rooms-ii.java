@@ -10,10 +10,10 @@ class Solution {
                 order.remove();
             }
             order.add(meetingTime[1]);
-            max = Math.max(max, order.size());
+            //max = Math.max(max, order.size());
         }
         
-        return max;
+        return order.size();
         
     }
 }
