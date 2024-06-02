@@ -10,7 +10,6 @@
 
 class Solution {
     TreeNode out;
-    boolean set = false;
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         out = root;
         helper(root, p.val, q.val, Integer.MIN_VALUE, Integer.MAX_VALUE);
@@ -29,17 +28,12 @@ class Solution {
         if ((a > cur.val && a < max) || (b > cur.val && b < max)) {
             right = helper(cur.right, a, b, cur.val, Integer.MAX_VALUE);
         }
-        if (set) {
-            return false;
-        }
         if (left && right) {
-            set = true;
             out = cur;
             return true;
         }
         if (cur.val == a || cur.val == b) {
-            if ((left || right)) {
-                set = true;
+            if (left || right) {
                 out = cur;  
             }
             return true;
