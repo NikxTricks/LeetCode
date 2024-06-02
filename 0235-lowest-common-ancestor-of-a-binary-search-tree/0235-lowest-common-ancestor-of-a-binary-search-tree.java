@@ -18,18 +18,21 @@ class Solution {
     }
     
     public boolean helper(TreeNode cur, int a, int b) {
-        if (cur == null || set) {
+        if (cur == null) {
             return false;
         }
         boolean left = helper(cur.left, a, b);
         boolean right = helper(cur.right, a, b);
-        if (left && right && !set) {
+        if (set) {
+            return false;
+        }
+        if (left && right) {
             set = true;
             out = cur;
             return true;
         }
         if (cur.val == a || cur.val == b) {
-            if ((left || right) && !set) {
+            if ((left || right)) {
                 set = true;
                 out = cur;  
             }
