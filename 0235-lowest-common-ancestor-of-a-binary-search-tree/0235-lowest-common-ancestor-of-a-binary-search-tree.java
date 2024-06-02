@@ -13,16 +13,22 @@ class Solution {
     boolean set = false;
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         out = root;
-        helper(root, Math.max(p.val, q.val), Math.min(p.val, q.val));
+        helper(root, p.val, q.val, Integer.MIN_VALUE, Integer.MAX_VALUE);
         return out;
     }
     
-    public boolean helper(TreeNode cur, int a, int b) {
+    public boolean helper(TreeNode cur, int a, int b, int min, int max) {
         if (cur == null) {
             return false;
         }
-        boolean left = helper(cur.left, a, b);
-        boolean right = helper(cur.right, a, b);
+        boolean left = false;
+        boolean right = false;
+        if (a >= min || b >= min) {
+            left = helper(cur.left, a, b, Integer.MIN_VALUE, cur.val);
+        }
+        if (a <= max || b <= max) {
+            right = helper(cur.right, a, b, cur.val, Integer.MAX_VALUE);
+        }
         if (set) {
             return false;
         }
