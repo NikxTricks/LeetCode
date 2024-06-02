@@ -9,36 +9,18 @@
  */
 
 class Solution {
-    TreeNode out;
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        out = root;
-        helper(root, p.val, q.val, Integer.MIN_VALUE, Integer.MAX_VALUE);
-        return out;
+        return helper(root, p.val, q.val);
     }
     
-    public boolean helper(TreeNode cur, int a, int b, int min, int max) {
-        if (cur == null) {
-            return false;
+    public TreeNode helper(TreeNode cur, int a, int b) {
+        if (a > cur.val && b > cur.val) {
+            return helper(cur.right, a, b);
         }
-        boolean left = false;
-        boolean right = false;
-        if ((a < cur.val && a > min) || (b < cur.val && b > min)) {
-            left = helper(cur.left, a, b, Integer.MIN_VALUE, cur.val);
+        if (a < cur.val && b < cur.val) {
+            return helper(cur.left, a, b);
         }
-        if ((a > cur.val && a < max) || (b > cur.val && b < max)) {
-            right = helper(cur.right, a, b, cur.val, Integer.MAX_VALUE);
-        }
-        if (left && right) {
-            out = cur;
-            return true;
-        }
-        if (cur.val == a || cur.val == b) {
-            if (left || right) {
-                out = cur;  
-            }
-            return true;
-        }
+        return cur;
         
-        return left || right;
     }
 }
