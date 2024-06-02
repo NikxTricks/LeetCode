@@ -23,10 +23,10 @@ class Solution {
         }
         boolean left = false;
         boolean right = false;
-        if (a > min || b > min) {
+        if ((a < cur.val && a > min) || (b < cur.val && b > min)) {
             left = helper(cur.left, a, b, Integer.MIN_VALUE, cur.val);
         }
-        if (a < max || b < max) {
+        if ((a > cur.val && a < max) || (b > cur.val && b < max)) {
             right = helper(cur.right, a, b, cur.val, Integer.MAX_VALUE);
         }
         if (set) {
