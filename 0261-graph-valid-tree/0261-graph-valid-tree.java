@@ -8,21 +8,18 @@ class Solution {
         }
         HashMap<Integer, Integer> sets = new HashMap<>();
         for (int[] edge: edges) {
-            int parent = edge[0];
             if (sets.containsKey(edge[0]) && sets.containsKey(edge[1]) && sets.get(edge[0]) == sets.get(edge[1])) {
                 return false;
             }
             else if (sets.containsKey(edge[0])) {
-                parent = sets.get(edge[0]);
-                sets.put(edge[1], parent);
+                sets.put(edge[1], sets.get(edge[0]));
             }
             else if (sets.containsKey(edge[1])) {
-                parent = sets.get(edge[1]);
-                sets.put(edge[0], parent);
+                sets.put(edge[0], sets.get(edge[1]));
             }
             else {
-                sets.put(edge[0], parent);
-                sets.put(edge[1], parent);
+                sets.put(edge[0], edge[0]);
+                sets.put(edge[1], edge[0]);
             }
         }
         if (sets.size() != n) {
