@@ -23,10 +23,12 @@ class Solution {
         if (cur == null) {
             return true;
         }
-        if (((cur.val >= max) || (cur.val <= min))) {
+        if (cur.val <= min || cur.val >= max) {
             return false;
         }
         
-        return true && helper(cur.left, min, cur.val) && helper(cur.right, cur.val, max);
+        return helper(cur.left, min, cur.val) && helper(cur.right, cur.val, max);
     }
+    
+    
 }
