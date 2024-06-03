@@ -16,12 +16,16 @@ class Solution {
             }
             else if (sets.containsKey(edge[0])) {
                 parent = unionFind(edge[0], sets);
+                sets.put(edge[1], parent);
             }
             else if (sets.containsKey(edge[1])) {
                 parent = unionFind(edge[1], sets);
+                sets.put(edge[0], parent);
             }
-            sets.put(edge[0], parent);
-            sets.put(edge[1], parent);
+            else {
+                sets.put(edge[0], parent);
+                sets.put(edge[1], parent);
+            }
         }
         if (sets.size() != n) {
             return false;
