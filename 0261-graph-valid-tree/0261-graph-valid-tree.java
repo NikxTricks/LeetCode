@@ -10,8 +10,8 @@ class Solution {
         for (int[] edge: edges) {
             int parent = edge[0];
             if (sets.containsKey(edge[0]) && sets.containsKey(edge[1])) {
-                System.out.println(edge[0] + ": Parent is " + sets.get(edge[0]));
-                System.out.println(edge[1] + ": Parent is " + sets.get(edge[1]));
+               // System.out.println(edge[0] + ": Parent is " + sets.get(edge[0]));
+                //System.out.println(edge[1] + ": Parent is " + sets.get(edge[1]));
                 if (sets.get(edge[0]) == sets.get(edge[1])) {
                     return false;
                 }
