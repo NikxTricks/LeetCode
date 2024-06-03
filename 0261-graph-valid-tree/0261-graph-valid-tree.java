@@ -37,12 +37,4 @@ class Solution {
         
     }
     
-    public int unionFind(int vertex, HashMap<Integer, Integer> sets) {
-        int out = sets.getOrDefault(vertex, -1);
-        if (out != -1 && out != vertex) {
-            return unionFind(sets.get(vertex), sets);
-        }
-        
-        return out;
-    }
 }
