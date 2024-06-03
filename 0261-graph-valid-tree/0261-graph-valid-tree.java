@@ -8,18 +8,20 @@ class Solution {
         }
         HashMap<Integer, Integer> sets = new HashMap<>();
         for (int[] edge: edges) {
-            int parent = Math.min(edge[0], edge[1]);
+            int parent = edge[0];
             if (sets.containsKey(edge[0]) && sets.containsKey(edge[1])) {
-                if (unionFind(edge[0], sets) == unionFind(edge[1], sets)) {
+                System.out.println(edge[0] + ": Parent is " + sets.get(edge[0]));
+                System.out.println(edge[1] + ": Parent is " + sets.get(edge[1]));
+                if (sets.get(edge[0]) == sets.get(edge[1])) {
                     return false;
                 }
             }
             else if (sets.containsKey(edge[0])) {
-                parent = unionFind(edge[0], sets);
+                parent = sets.get(edge[0]);
                 sets.put(edge[1], parent);
             }
             else if (sets.containsKey(edge[1])) {
-                parent = unionFind(edge[1], sets);
+                parent = sets.get(edge[1]);
                 sets.put(edge[0], parent);
             }
             else {
