@@ -9,7 +9,7 @@ class Solution {
         int[] sets = new int[n];
         Arrays.fill(sets, -1);
         for (int[] edge: edges) {
-            System.out.println(edge[0] + ", " + edge[1]);
+            //System.out.println(edge[0] + ", " + edge[1]);
             if (sets[edge[0]] != -1 && sets[edge[1]] != -1 && sets[edge[0]] == sets[edge[1]]) {
                 return false;
             }
