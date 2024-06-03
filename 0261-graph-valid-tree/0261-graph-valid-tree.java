@@ -22,6 +22,7 @@ class Solution {
                 sets.put(edge[1], edge[0]);
             }
         }
+        
         if (sets.size() != n) {
             return false;
         }
