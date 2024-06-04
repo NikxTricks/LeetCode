@@ -32,12 +32,13 @@ class Solution {
     
     public void helper(Node cur, Node original, HashMap<Integer, Node> data) {
         for (Node neighbor: original.neighbors) {
-            if (!data.containsKey(neighbor.val)) {
-                Node myNeighbor = new Node(neighbor.val);
+            Node myNeighbor = data.getOrDefault(neighbor.val, null);
+            if (myNeighbor == null) {
+                myNeighbor = new Node(neighbor.val);
                 data.put(neighbor.val, myNeighbor);
                 helper(myNeighbor, neighbor, data);
             }
-                cur.neighbors.add(data.get(neighbor.val));
+                cur.neighbors.add(myNeighbor);
         }
     }
 }
