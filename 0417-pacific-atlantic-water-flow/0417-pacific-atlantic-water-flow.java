@@ -1,67 +1,68 @@
 class Solution {
-    boolean[][] visited;
-    boolean[][] added;
+    boolean[][] Pstatus;
+    boolean[][] Astatus;
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
-        List<List<Integer>> out = new LinkedList<>();
-        added = new boolean[heights.length][heights[0].length];
-        visited = new boolean[heights.length][heights[0].length];
+        List<List<Integer>> out = new ArrayList<>();
+        Pstatus = new boolean[heights.length][heights[0].length];
+        Astatus = new boolean[heights.length][heights[0].length];
         for (int i = 0; i < heights.length; i++) {
             for (int j = 0; j < heights[0].length; j++) {
-                if (!added[i][j]) {
-                    helper(heights, i, j);
-                    visited = new boolean[heights.length][heights[0].length];
+                boolean[][] visitedA = new boolean[heights.length][heights[0].length];
+                boolean[][] visitedB = new boolean[heights.length][heights[0].length];
+                if (dfsA(i, j, heights, Integer.MAX_VALUE, visitedA) && dfsP(i, j, heights, Integer.MAX_VALUE, visitedB)) {
+                    List<Integer> coord = new ArrayList<>();
+                    coord.add(i);
+                    coord.add(j);
+                    out.add(coord);
                 }
             }
         }
-        for (int i = 0; i < heights.length; i++) {
-            for (int j = 0; j < heights[0].length; j++) {
-                if (added[i][j]) {
-                    out.add(new LinkedList<>(Arrays.asList(i, j)));
-                }
-            }
-        }
+        
         return out;
     }
     
-    public int helper(int[][] heights, int i, int j) {
+    
+    public boolean dfsA(int i, int j, int[][] heights, int prev, boolean[][] visited) {
+        if (i >= heights.length || j >= heights[0].length || i < 0 || j < 0) {
+            return false;
+        }
+        if (heights[i][j] > prev) {
+            return false;
+        }
+        if (visited[i][j]) {
+            return Astatus[i][j];
+        }
         visited[i][j] = true;
-        int sum = 0;
-        if (i - 1 < 0) {
-           sum = sum | 1; 
+        if (i >= heights.length - 1 || j >= heights[0].length - 1) {
+            Astatus[i][j] = true;
+            return true;
         }
-        else {
-            if (heights[i - 1][j] <= heights[i][j] && !visited[i - 1][j]) {
-                sum = sum | helper(heights, i - 1, j);
-            }
-        }
-        if (i + 1 >= heights.length) {
-           sum = sum | 2; 
-        }
-        else {
-            if (heights[i + 1][j] <= heights[i][j] && !visited[i + 1][j]) {
-                sum = sum | helper(heights, i + 1, j);
-            }
-        }
-        if (j - 1 < 0) {
-           sum = sum | 1; 
-        }
-        else {
-            if (heights[i][j - 1] <= heights[i][j] && !visited[i][j - 1]) {
-                sum = sum | helper(heights, i, j - 1);
-            }
-        }
-        if (j + 1 >= heights[0].length) {
-           sum = sum | 2; 
-        }
-        else {
-            if (heights[i][j + 1] <= heights[i][j] && !visited[i][j + 1]) {
-                sum = sum | helper(heights, i, j + 1);
-            }
-        }
-        if (sum == 3 && !added[i][j]) {
-            added[i][j] = true;
-        }
+        Astatus[i][j] = dfsA(i - 1, j, heights, heights[i][j], visited) || dfsA(i, j + 1, heights, heights[i][j], visited) || dfsA(i + 1, j, heights, heights[i][j], visited) || dfsA(i, j - 1, heights, heights[i][j], visited);
         
-        return sum;
+        return Astatus[i][j];
     }
+    
+    public boolean dfsP(int i, int j, int[][] heights, int prev, boolean[][] visited) {
+        if (i >= heights.length || j >= heights[0].length || i < 0 || j < 0) {
+            return false;
+        }
+        if (heights[i][j] > prev) {
+            return false;
+        }
+        if (visited[i][j]) {
+            return Pstatus[i][j];
+        }
+        visited[i][j] = true;
+        if (i <= 0 || j <= 0) {
+            Pstatus[i][j] = true;
+            return true;
+        }
+        Pstatus[i][j] = dfsP(i - 1, j, heights, heights[i][j], visited) || dfsP(i, j + 1, heights, heights[i][j], visited) || dfsP(i + 1, j, heights, heights[i][j], visited) || dfsP(i, j - 1, heights, heights[i][j], visited);
+        
+        return Pstatus[i][j];
+    }
+    
+    
+    
+
 }
