@@ -28,13 +28,13 @@ class Solution {
     }
     
     public Node helper(Node cur, HashMap<Integer, Node> data) {
-        if (data.containsKey(cur.val)) {
-            return data.get(cur.val);
-        }
-        Node out = new Node(cur.val);
-        data.put(cur.val, out);
-        for (Node neighbor: cur.neighbors) {
-            out.neighbors.add(helper(neighbor, data));
+        Node out = data.getOrDefault(cur.val, null);
+        if (out == null) {
+            out = new Node(cur.val);
+            data.put(cur.val, out);
+            for (Node neighbor: cur.neighbors) {
+                out.neighbors.add(helper(neighbor, data));
+            }    
         }
         
         return out;
