@@ -29,6 +29,9 @@ class Solution {
         if (heights[i][j] > prev) {
             return false;
         }
+        if (Astatus[i][j]) {
+            return true;
+        }
         if (visited[i][j]) {
             return Astatus[i][j];
         }
@@ -48,6 +51,9 @@ class Solution {
         }
         if (heights[i][j] > prev) {
             return false;
+        }
+        if (Pstatus[i][j]) {
+            return true;
         }
         if (visited[i][j]) {
             return Pstatus[i][j];
