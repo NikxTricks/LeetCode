@@ -20,25 +20,23 @@ class Node {
 
 class Solution {
     public Node cloneGraph(Node node) {
-        if (node == null) {
-            return null;
-        }
         HashMap<Integer, Node> data = new HashMap<>(); 
-        Node root = new Node(node.val);
-        data.put(node.val, root);
-        helper(root, node, data);
-        return root;
+        return helper(node, data);
     }
     
-    public void helper(Node cur, Node original, HashMap<Integer, Node> data) {
-        for (Node neighbor: original.neighbors) {
-            Node myNeighbor = data.getOrDefault(neighbor.val, null);
-            if (myNeighbor == null) {
-                myNeighbor = new Node(neighbor.val);
-                data.put(neighbor.val, myNeighbor);
-                helper(myNeighbor, neighbor, data);
-            }
-                cur.neighbors.add(myNeighbor);
+    public Node helper(Node cur, HashMap<Integer, Node> data) {
+        if (cur == null) {
+            return null;
         }
+        if (data.containsKey(cur.val)) {
+            return data.get(cur.val);
+        }
+        Node out = new Node(cur.val);
+        data.put(cur.val, out);
+        for (Node neighbor: cur.neighbors) {
+            out.neighbors.add(helper(neighbor, data));
+        }
+        
+        return out;
     }
 }
