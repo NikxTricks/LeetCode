@@ -19,7 +19,6 @@ class Solution {
                         }
                     }  
                     in.remove(i);
-                    break;
                 }
             }
             
