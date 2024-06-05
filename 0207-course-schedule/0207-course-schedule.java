@@ -2,7 +2,6 @@ class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int[] data = new int[numCourses];
         for (int[] prereq: prerequisites) {
-            //in.put(prereq[1], in.getOrDefault(prereq[1], 0) + 1);
             data[prereq[1]]++;
         }
         Queue<Integer> order = new LinkedList<>();
