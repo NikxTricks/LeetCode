@@ -9,25 +9,26 @@ class Solution {
             data[edge[1]]++;
             adj.get(edge[0]).add(edge[1]);
         }
-        HashSet<Integer> visited = new HashSet<>();
         for (int i = 0; i < numCourses; i++) {
             if (data[i] == 0) {
-                dfs(i, adj, data, visited);
+                dfs(i, adj, data);
             }
         }
-        return visited.size() == numCourses;
+        for (int inDegree: data) {
+           if (inDegree > 0) {
+               return false;
+           } 
+        }
+        
+        return true;
     
     }
     
-    public void dfs(int cur, List<List<Integer>> adj, int[] data, HashSet<Integer> visited) {
-        if (visited.contains(cur)) {
-            return;
-        }
-        visited.add(cur);
+    public void dfs(int cur, List<List<Integer>> adj, int[] data) {
         for (int neighbor: adj.get(cur)) {
             data[neighbor]--;
             if (data[neighbor] == 0) {
-                dfs(neighbor, adj, data, visited); 
+                dfs(neighbor, adj, data); 
             }
         }
         
