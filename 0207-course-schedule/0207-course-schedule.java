@@ -1,7 +1,6 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int[] data = new int[numCourses];
-        //int pointer = numCourses - 1;
         HashMap<Integer, Integer> in = new HashMap<>();
         for (int i = 0; i < numCourses; i++) {
             in.put(i, 0);
