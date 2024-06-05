@@ -4,8 +4,13 @@ class Solution {
         dp[0] = true;
         for (int i = 0; i < nums.length; i++) {
             if (dp[i]) {
-                for (int j = i + 1; j < nums.length && j < i + 1 + nums[i]; j++) {
+                int j = i + 1;
+                while (j < nums.length && j < i + 1 + nums[i]) {
                     dp[j] = true;
+                    j++;
+                }
+                if (j == nums.length) {
+                    return true;
                 }
             }
         }
