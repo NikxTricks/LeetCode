@@ -6,6 +6,10 @@ class Solution {
             if (dp[i]) {
                 int j = i + 1;
                 while (j < nums.length && j < i + 1 + nums[i]) {
+                    if (dp[j]) {
+                        j++;
+                        continue;
+                    }
                     dp[j] = true;
                     j++;
                 }
