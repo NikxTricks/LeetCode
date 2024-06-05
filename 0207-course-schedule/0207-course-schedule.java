@@ -1,12 +1,13 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        HashMap<Integer, Integer> in = new HashMap<>();
+        int[] data = new int[numCourses];
         for (int[] prereq: prerequisites) {
-            in.put(prereq[1], in.getOrDefault(prereq[1], 0) + 1);
+            //in.put(prereq[1], in.getOrDefault(prereq[1], 0) + 1);
+            data[prereq[1]]++;
         }
         Queue<Integer> order = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
-            if (in.getOrDefault(i, 0) == 0) {
+            if (data[i] == 0) {
                 order.add(i);
             }
         }
@@ -14,17 +15,16 @@ class Solution {
                 int cur = order.remove();
                     for (int[] prereq: prerequisites) {
                         if (prereq[0] == cur) {
-                            int deg = in.get(prereq[1]) - 1;
-                            in.put(prereq[1], deg);
-                            if (deg == 0) {
+                            data[prereq[1]]--;
+                            if (data[prereq[1]] == 0) {
                                order.add(prereq[1]); 
                             }
                         }
                     }  
-                    in.remove(cur);
+                    numCourses--;
             }
-        if (in.size() > 0) {
-                return false;  
+        if (numCourses != 0) {
+            return false;
         }
         
         return true;
