@@ -1,13 +1,13 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int[] data = new int[numCourses];
-        List<List<Integer>> adj = new LinkedList<>();
+        List<List<Integer>> adj = new ArrayList<>();
         for (int i = 0; i < numCourses; i++) {
-            adj.add(new LinkedList<>());
+            adj.add(new ArrayList<>());
         }
-        for (int[] prereq: prerequisites) {
-            data[prereq[1]]++;
-            adj.get(prereq[0]).add(prereq[1]);
+        for (int[] edge: prerequisites) {
+            data[edge[1]]++;
+            adj.get(edge[0]).add(edge[1]);
         }
         Queue<Integer> order = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
