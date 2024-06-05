@@ -6,14 +6,12 @@ class Solution {
             adj.add(new ArrayList<>());
         }
         for (int[] edge: prerequisites) {
-            //System.out.println("Here");
             data[edge[1]]++;
             adj.get(edge[0]).add(edge[1]);
         }
         HashSet<Integer> visited = new HashSet<>();
         for (int i = 0; i < numCourses; i++) {
             if (data[i] == 0) {
-                //System.out.println(i + ": " + data[i]);
                 dfs(i, adj, data, visited);
             }
         }
@@ -22,11 +20,9 @@ class Solution {
     }
     
     public void dfs(int cur, List<List<Integer>> adj, int[] data, HashSet<Integer> visited) {
-        //System.out.println(cur);
         if (visited.contains(cur)) {
             return;
         }
-        //System.out.println(cur);
         visited.add(cur);
         for (int neighbor: adj.get(cur)) {
             data[neighbor]--;
