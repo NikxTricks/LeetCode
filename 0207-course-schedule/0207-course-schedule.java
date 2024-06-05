@@ -9,16 +9,16 @@ class Solution {
             in.put(prereq[1], in.get(prereq[1]) + 1);
         }
         while (in.size() > 0 && in.containsValue(0)) {
-            for (Integer key: in.keySet()) {
-                int curVertexInDegree = in.get(key);
+            for (int i = 0; i < numCourses; i++) {
+                int curVertexInDegree = in.getOrDefault(i, -1);
                 if (curVertexInDegree == 0) {
-                    System.out.println(key);
+                    System.out.println(i);
                     for (int[] prereq: prerequisites) {
-                        if (prereq[0] == key) {
+                        if (prereq[0] == i) {
                             in.put(prereq[1], in.get(prereq[1]) - 1);
                         }
                     }  
-                    in.remove(key);
+                    in.remove(i);
                     break;
                 }
             }
