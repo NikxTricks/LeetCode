@@ -18,7 +18,7 @@ class MedianFinder {
         if (r.size() - l.size() > 1) {
             l.add(r.remove());
         }
-        if (l.size() - r.size() > 1) {
+        else if (l.size() - r.size() > 1) {
             r.add(l.remove());
         }
     }
