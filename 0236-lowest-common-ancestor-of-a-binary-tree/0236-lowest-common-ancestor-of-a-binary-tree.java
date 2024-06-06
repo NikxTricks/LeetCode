@@ -13,6 +13,7 @@ class Solution {
     }
     
     public TreeNode helper(TreeNode cur, int p, int q) {
+        //could also move helper function directly into main LCA function
         if (cur == null) {
             return null;
         }
