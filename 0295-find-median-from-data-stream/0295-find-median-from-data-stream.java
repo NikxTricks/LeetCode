@@ -4,8 +4,6 @@ class MedianFinder {
     public MedianFinder() {
         l = new PriorityQueue<>(Collections.reverseOrder());
         r = new PriorityQueue<>();
-        //l.add(Integer.MIN_VALUE);
-        //l.add(Integer.MAX_VALUE);
     }
     
     public void addNum(int num) {
