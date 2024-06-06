@@ -4,12 +4,15 @@ class MedianFinder {
     public MedianFinder() {
         l = new PriorityQueue<>(Collections.reverseOrder());
         r = new PriorityQueue<>();
-        l.add(Integer.MIN_VALUE);
-        l.add(Integer.MAX_VALUE);
+        //l.add(Integer.MIN_VALUE);
+        //l.add(Integer.MAX_VALUE);
     }
     
     public void addNum(int num) {
-        if (num > l.peek()) {
+        if (l.isEmpty() && r.isEmpty()) {
+            l.add(num);
+        }
+        else if (num > l.peek()) {
             r.add(num);
         }
         else {
