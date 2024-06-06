@@ -7,7 +7,7 @@ class MedianFinder {
     }
     
     public void addNum(int num) {
-        if (l.isEmpty() && r.isEmpty()) {
+        if (l.isEmpty()) {
             l.add(num);
         }
         else if (num > l.peek()) {
