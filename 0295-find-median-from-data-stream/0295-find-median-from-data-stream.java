@@ -16,7 +16,7 @@ class MedianFinder {
         else {
             l.add(num);
         }
-        if (r.size() - l.size() > 1) {
+        if (r.size() - l.size() >= 1) {
             l.add(r.remove());
         }
         else if (l.size() - r.size() > 1) {
@@ -28,11 +28,8 @@ class MedianFinder {
         if (l.size() == r.size()) {
            return ( (double) l.peek() + r.peek())/2; 
         }
-        if (l.size() > r.size()) {
-            return (double) l.peek();
-        }
+        return (double) l.peek();
 
-        return (double) r.peek();
 
         
     }
