@@ -16,7 +16,7 @@
 
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> out = new LinkedList<>();
+        List<List<Integer>> out = new ArrayList<>();
         if (root == null) {
             return out;
         }
@@ -24,7 +24,7 @@ class Solution {
         order.add(root);
         while (!order.isEmpty()) {
             int size = order.size();
-            List<Integer> level = new LinkedList<>();
+            List<Integer> level = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode cur = order.remove();
                 if (cur == null) {
