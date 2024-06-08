@@ -27,9 +27,6 @@ class Solution {
             List<Integer> level = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode cur = order.remove();
-                if (cur == null) {
-                    continue;
-                }
                 level.add(cur.val);
                 if (cur.left != null) {
                     order.add(cur.left);
