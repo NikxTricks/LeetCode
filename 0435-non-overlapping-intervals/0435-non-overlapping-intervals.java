@@ -8,7 +8,7 @@ class Solution {
         for (int i = 1; i < intervals.length; i++) {
             dp[i] = dp[i - 1];
                     if (prev <= intervals[i][0]) {
-                        dp[i] = Math.max(dp[i], dp[i - 1] + 1);
+                        dp[i] = dp[i - 1] + 1;
                         prev = intervals[i][1];
                     }
                     
