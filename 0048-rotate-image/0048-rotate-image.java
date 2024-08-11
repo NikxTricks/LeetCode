@@ -3,7 +3,6 @@ class Solution {
         int n = matrix.length;
         int start = 0;
         int temp;
-        int tempNext;
         while (start < n) {
             for (int i = start; i < n - 1; i++) {
                 temp = matrix[start][i];
