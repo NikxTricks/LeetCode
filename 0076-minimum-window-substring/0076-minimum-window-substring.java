@@ -25,10 +25,9 @@ class Solution {
                 j++;
             }
             while (i < s.length() && check(sCount, tCount)) {
-                String cur = s.substring(i, j);
-                if (cur.length() < min) {
-                    out = cur;
-                    min = cur.length();
+                if (j - i - 1 < min) {
+                    out = s.substring(i, j);
+                    min = j - i - 1;
                 }
                 if (sCount.containsKey(sArr[i])) {
                     sCount.put(sArr[i], sCount.get(sArr[i]) - 1);
