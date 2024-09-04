@@ -2,7 +2,6 @@ class Solution {
     public boolean backspaceCompare(String s, String t) {
         StringBuilder a = new StringBuilder(s);
         StringBuilder b = new StringBuilder(t);
-        
         for (int i =  0; i < a.length(); i++) {
             if (a.charAt(i) == '#') {
                 a.deleteCharAt(i);
@@ -23,9 +22,6 @@ class Solution {
                 i--;
             }
         }
-        
-        // String outA = a.toString();
-        // String outB = b.toString();
         return a.toString().equals(b.toString());
     }
 }
