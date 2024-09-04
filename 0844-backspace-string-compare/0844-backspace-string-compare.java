@@ -24,8 +24,8 @@ class Solution {
             }
         }
         
-        String outA = a.toString();
-        String outB = b.toString();
-        return outA.equals(outB);
+        // String outA = a.toString();
+        // String outB = b.toString();
+        return a.toString().equals(b.toString());
     }
 }
