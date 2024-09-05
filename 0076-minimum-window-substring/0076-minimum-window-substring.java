@@ -10,19 +10,19 @@ class Solution {
         char[] sArr = s.toCharArray();
         char[] tArr = t.toCharArray();
         
-        int[] sCount = new int[128];
-        int[] tCount = new int[128];
+        int[] sCount = new int[58];
+        int[] tCount = new int[58];
         //Map<Character, Integer> sCount = new HashMap<>();
         //Map<Character, Integer> tCount = new HashMap<>();
         
         for (int w = 0; w < tArr.length; w++) {
-            tCount[tArr[w]]++;
+            tCount[tArr[w] - 'A']++;
         }
         
         while (j < s.length()) {
             while (j < s.length() && !check(sCount, tCount)) {
-                if (tCount[sArr[j]] != 0) {
-                    sCount[sArr[j]]++;
+                if (tCount[sArr[j] - 'A'] != 0) {
+                    sCount[sArr[j] - 'A']++;
                 }
                 j++;
             }
@@ -31,8 +31,8 @@ class Solution {
                     out = s.substring(i, j);
                     min = j - i - 1;
                 }
-                if (sCount[sArr[i]] != 0) {
-                    sCount[sArr[i]]--;
+                if (sCount[sArr[i] - 'A'] != 0) {
+                    sCount[sArr[i] - 'A']--;
                 }
                 i++; 
             }
