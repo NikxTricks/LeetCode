@@ -49,14 +49,5 @@ class Solution {
         }
         return s.substring(minI, minJ);
     }
-    
-//     public boolean check(int[] sCount, int[] tCount) {
-//         for (int i = 0; i < sCount.length; i++) {
-//             if (tCount[i] != 0 && sCount[i] < tCount[i]) {
-//                 return false;
-//             }
-//         }
-        
-//         return true;
-//     }
+
 }
