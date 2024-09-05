@@ -9,18 +9,20 @@ class Solution {
         
         char[] sArr = s.toCharArray();
         char[] tArr = t.toCharArray();
-        Map<Character, Integer> sCount = new HashMap<>();
-        Map<Character, Integer> tCount = new HashMap<>();
+        
+        int[] sCount = new int[128];
+        int[] tCount = new int[128];
+        //Map<Character, Integer> sCount = new HashMap<>();
+        //Map<Character, Integer> tCount = new HashMap<>();
         
         for (int w = 0; w < tArr.length; w++) {
-            sCount.put(tArr[w], 0);
-            tCount.put(tArr[w], tCount.getOrDefault(tArr[w], 0) + 1);
+            tCount[tArr[w]]++;
         }
         
         while (j < s.length()) {
             while (j < s.length() && !check(sCount, tCount)) {
-                if (sCount.containsKey(sArr[j])) {
-                    sCount.put(sArr[j], sCount.get(sArr[j]) + 1);
+                if (tCount[sArr[j]] != 0) {
+                    sCount[sArr[j]]++;
                 }
                 j++;
             }
@@ -29,8 +31,8 @@ class Solution {
                     out = s.substring(i, j);
                     min = j - i - 1;
                 }
-                if (sCount.containsKey(sArr[i])) {
-                    sCount.put(sArr[i], sCount.get(sArr[i]) - 1);
+                if (sCount[sArr[i]] != 0) {
+                    sCount[sArr[i]]--;
                 }
                 i++; 
             }
@@ -38,9 +40,9 @@ class Solution {
         return out;
     }
     
-    public boolean check(Map<Character, Integer> sCount, Map<Character, Integer> tCount) {
-        for (Map.Entry<Character, Integer> entry: sCount.entrySet()) {
-            if (entry.getValue() < tCount.get(entry.getKey())) {
+    public boolean check(int[] sCount, int[] tCount) {
+        for (int i = 0; i < sCount.length; i++) {
+            if (sCount[i] < tCount[i]) {
                 return false;
             }
         }
