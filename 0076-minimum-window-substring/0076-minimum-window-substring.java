@@ -2,6 +2,9 @@ class Solution {
     public String minWindow(String s, String t) {
         int min = Integer.MAX_VALUE;
         
+        int minI = 0;
+        int minJ = 0;
+        
         String out = "";
         
         int i = 0;
@@ -24,14 +27,15 @@ class Solution {
             }
             while (i < s.length() && check(sCount, tCount)) {
                 if (j - i - 1 < min) {
-                    out = s.substring(i, j);
                     min = j - i - 1;
+                    minI = i;
+                    minJ = j;
                 }
                 sCount[sArr[i] - 'A']--;
                 i++; 
             }
         }
-        return out;
+        return s.substring(minI, minJ);
     }
     
     public boolean check(int[] sCount, int[] tCount) {
