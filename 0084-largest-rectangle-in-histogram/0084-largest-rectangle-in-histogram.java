@@ -7,7 +7,7 @@ class Solution {
         int i = 0;
         while (i <= hist.length) {
             int h = (i == hist.length) ? 0 : hist[i];
-            if (inc.size() == 0 || hist[inc.peek()] <= h) {
+            if (inc.isEmpty() || hist[inc.peek()] <= h) {
                 inc.push(i);
                 i++;
             }
