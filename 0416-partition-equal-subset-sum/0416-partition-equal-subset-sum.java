@@ -16,10 +16,6 @@ class Solution {
                 }
             }
         }
-        
-//         for (boolean res: dp) {
-//             System.out.println(res);
-//         }
         return dp[dp.length - 1];
     }
 }
