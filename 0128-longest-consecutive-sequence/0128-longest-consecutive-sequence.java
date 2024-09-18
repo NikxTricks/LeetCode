@@ -11,16 +11,16 @@ class Solution {
         
         for (int i = 0; i < nums.length; i++) {
             int count = 1;
-            //check whether number is starting a sequence or already in a sequence
+            //check whether number can be the start of a sequence or already in a sequence
             if (data.contains(nums[i] - 1)) {
                 continue;
             }
             int temp = nums[i];
-            while (data.contains(--temp)) {
-                count++;
-                data.remove(temp);
-                //temp--;
-            }
+            // while (data.contains(--temp)) {
+            //     count++;
+            //     data.remove(temp);
+            //     //temp--;
+            // }
             
             temp = nums[i];
             while (data.contains(++temp)) {
@@ -35,8 +35,5 @@ class Solution {
         }
         
         return max;
-            
-        
-        
     }
 }
