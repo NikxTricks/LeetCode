@@ -27,6 +27,11 @@ class Solution {
             }
             data.clear();
         }
-        return out.stream().toList();
+        List<List<Integer>> done = new ArrayList<>();
+        for (List<Integer> cur: out) {
+            done.add(cur);
+        }
+        
+        return done;
     }
 }
