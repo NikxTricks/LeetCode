@@ -41,8 +41,6 @@ class DoublyLinkedList {
     }
     
     public Node remove(Node node) {
-        // System.out.printf("Removing for %d time\n", count);
-        // count++;
         if (head.equals(tail)) {
             head = null;
             tail = null;
@@ -83,7 +81,6 @@ class LRUCache {
     public int get(int key) {
         Node cur = data.getOrDefault(key, null);
         if (cur != null) {
-            //System.out.println(cur.val);
             order.add(order.remove(cur)); //add item back into LRU ordering if present
             return cur.val;
         }
@@ -106,7 +103,6 @@ class LRUCache {
             Node out = new Node(key, value);
             order.add(out); 
             data.put(key, out); //iffy
-            //System.out.println(out.next == null);
             
         }
         
