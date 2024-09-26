@@ -2,11 +2,13 @@ class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         Set<Integer> data = new HashSet<>();
         Set<List<Integer>> out = new HashSet<>();
+        Set<Integer> done = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
-            if (i >= 1 && nums[i] == nums[i - 1]) {
+            int target = 0 - nums[i];
+            if (done.contains(target)) {
                 continue;
             }
-            int target = 0 - nums[i];
+            done.add(target);
             for (int j = i + 1; j < nums.length; j++) {
                 boolean cur = data.contains(target - nums[j]);
                 if (!cur) {
