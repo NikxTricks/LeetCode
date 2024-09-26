@@ -1,17 +1,17 @@
 class LRUCache {
     private int capacity;
     private List<Integer> order;
-    private Map<Integer, Integer> data;
+    private int[] data;
     
     public LRUCache(int capacity) {
         this.capacity = capacity;
         this.order = new ArrayList<Integer>();
-        this.data = new HashMap<Integer, Integer>();
-        //Arrays.fill(data, -1);
+        this.data = new int[(int) Math.pow(10, 4) + 1];
+        Arrays.fill(data, -1);
     }
     
     public int get(int key) {
-        int out = data.getOrDefault(key, -1);
+        int out = data[key];
         if (out != -1) {
             order.add(removeItem(key)); //add item back into LRU ordering if present
         }
@@ -19,15 +19,15 @@ class LRUCache {
     }
     
     public void put(int key, int value) {
-        if (data.containsKey(key)) {
-            data.put(key, value);
+        if (data[key] != -1) {
+            data[key] = value;
             order.add(removeItem(key));
         }
         else {
             if (order.size() >= this.capacity) {
-                data.remove(order.remove(0));
+                data[order.remove(0)] = -1;
             }
-            data.put(key, value);
+            data[key] = value;
             order.add(key); 
         }
         
