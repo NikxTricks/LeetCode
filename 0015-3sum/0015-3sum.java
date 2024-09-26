@@ -24,7 +24,7 @@ class Solution {
                     out.add(temp);
                 }
             }
-            data = new HashSet<>();
+            data.clear();
         }
         return out.stream().toList();
     }
