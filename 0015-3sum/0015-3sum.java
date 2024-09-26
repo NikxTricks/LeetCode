@@ -3,6 +3,9 @@ class Solution {
         Set<Integer> data = new HashSet<>();
         Set<List<Integer>> out = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
+            if (i >= 1 && nums[i] == nums[i - 1]) {
+                continue;
+            }
             int target = 0 - nums[i];
             for (int j = i + 1; j < nums.length; j++) {
                 boolean cur = data.contains(target - nums[j]);
