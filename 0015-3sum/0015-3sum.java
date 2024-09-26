@@ -1,5 +1,6 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
+        //more convenient approach
         Set<Integer> data = new HashSet<>();
         Set<List<Integer>> out = new HashSet<>();
         Set<Integer> doneOut = new HashSet<>();
