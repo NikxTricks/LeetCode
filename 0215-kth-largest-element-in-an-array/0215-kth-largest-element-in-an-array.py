@@ -5,9 +5,6 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        if k > len(nums):
-            return -1
-        
         heap = []
         
         for num in nums:
