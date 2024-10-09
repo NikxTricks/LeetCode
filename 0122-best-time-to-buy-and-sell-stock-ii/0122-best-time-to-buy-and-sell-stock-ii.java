@@ -6,13 +6,11 @@ class Solution {
         dp[0] = 0;
         
         for (int i = 1; i < n; i++) {
-            for (int j = 0; j < i; j++) {
-                if (prices[j] >= prices[i]) {
-                    dp[i] = Math.max(dp[i], dp[j]);
-                }
-                else {
-                    dp[i] = Math.max(dp[i], dp[j] + (prices[i] - prices[j]));
-                }
+            if (prices[i - 1] >= prices[i]) {
+                dp[i] = dp[i - 1]; 
+            }
+            else {
+                dp[i] = dp[i - 1] + (prices[i] - prices[i - 1]);
             }
         }
         
