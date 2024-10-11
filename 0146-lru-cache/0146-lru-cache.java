@@ -1,71 +1,70 @@
 class Node {
-    public int key;
-    public int val;
-    public Node next;
-    public Node prev;
-    
-    public Node(int key, int val) {
-        this.key = key;
-        this.val = val;
-    }
+  int key;
+  int val;
+  
+  Node prev;
+  Node next;
+  
+  public Node(int key, int val) {
+    this.key = key;
+    this.val = val;
+    this.prev = null;
+    this.next = null;
+  }
 }
 
 class DoublyLinkedList {
-    public Node head;
-    public Node tail;
-    public int size;
-    private int count;
-    
-    public DoublyLinkedList() {
-        this.head = null;
-        this.tail = null;
-        size = 0;
+  //front represents LRU
+  Node head;
+  Node tail;
+  
+  int size;
+  
+  public DoublyLinkedList() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
+  
+  public void add(Node cur) {
+    if (head == null) {
+      this.head = cur;
+      this.tail = cur;
     }
-    
-    public void add(Node node) {
-        if (head == null) {
-            head = node;
-            tail = node;
-            node.next = node;
-            node.prev = node;
-        }
-        else {
-            tail.next = node;
-            node.prev = tail;
-            tail = node;
-            
-            head.prev = tail;
-            node.next = head;
-        }
-        size++;
+    else {
+      this.tail.next = cur;
+      cur.prev = tail;
+      this.tail = cur;
     }
-    
-    public Node remove(Node node) {
-        if (head.equals(tail)) {
-            head = null;
-            tail = null;
-            return node;
-        }
-        
-        if (tail.equals(node)) {
-            tail = node.prev;
-        }
-        else if (head.equals(node)) {
-            head = node.next;
-        }
-        
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-        
-        node.next = null;
-        node.prev = null;
-        
-        size--;
-        
-        
-        return node;
+    this.size++;
+  }
+  
+  public Node remove(Node cur) {
+    if (this.size == 1) {
+      this.head = null;
+      this.tail = null;
     }
+    else if (this.head == cur) {
+      this.head = this.head.next;
+      this.head.prev.next = null;
+      this.head.prev = null;
+    }
+    else if (this.tail == cur) {
+      this.tail = this.tail.prev;
+      this.tail.next.prev = null;
+      this.tail.next = null;
+    }
+    else { //suboptimal for singly linkedlist
+      cur.prev.next = cur.next;
+      cur.next.prev = cur.prev;
+      cur.prev = null;
+      cur.next = null;
+    }
+    this.size--;
+    return cur;
+  }
 }
+
 
 class LRUCache {
     private int capacity;
