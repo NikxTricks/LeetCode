@@ -2,12 +2,7 @@ class Solution {
     public int countVowelSubstrings(String word) {
         int count = 0;
         
-        Set<Character> vowels = new HashSet<>();
-        vowels.add('a');
-        vowels.add('e');
-        vowels.add('i');
-        vowels.add('o');
-        vowels.add('u');
+        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
         
         for (int i = 0; i < word.length(); i++) {
             int j = i;
