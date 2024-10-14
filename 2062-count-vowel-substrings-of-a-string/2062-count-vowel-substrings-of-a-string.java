@@ -9,7 +9,6 @@ class Solution {
         vowels.add('o');
         vowels.add('u');
         
-        
         for (int i = 0; i < word.length(); i++) {
             int j = i;
             int charcount = 0;
