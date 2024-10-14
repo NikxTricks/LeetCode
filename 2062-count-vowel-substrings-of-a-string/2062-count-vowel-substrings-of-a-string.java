@@ -14,12 +14,6 @@ class Solution {
             int j = i;
             int charcount = 0;
             boolean[] check = new boolean[26];
-            // Set<Character> curvowels = new HashSet<>();
-            // curvowels.add('a');
-            // curvowels.add('e');
-            // curvowels.add('i');
-            // curvowels.add('o');
-            // curvowels.add('u');
             while (j < word.length() && vowels.contains(word.charAt(j))) {
                 if (!check[word.charAt(j) - 'a']) {
                     check[word.charAt(j) - 'a'] = true;
