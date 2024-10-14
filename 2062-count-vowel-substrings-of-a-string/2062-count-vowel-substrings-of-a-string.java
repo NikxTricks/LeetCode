@@ -9,18 +9,23 @@ class Solution {
         vowels.add('o');
         vowels.add('u');
         
-        int[] charcount = new int[128];
+        
         for (int i = 0; i < word.length(); i++) {
             int j = i;
-            Set<Character> curvowels = new HashSet<>();
-            curvowels.add('a');
-            curvowels.add('e');
-            curvowels.add('i');
-            curvowels.add('o');
-            curvowels.add('u');
+            int charcount = 0;
+            boolean[] check = new boolean[26];
+            // Set<Character> curvowels = new HashSet<>();
+            // curvowels.add('a');
+            // curvowels.add('e');
+            // curvowels.add('i');
+            // curvowels.add('o');
+            // curvowels.add('u');
             while (j < word.length() && vowels.contains(word.charAt(j))) {
-                curvowels.remove(word.charAt(j)); 
-                if (curvowels.isEmpty()) {
+                if (!check[word.charAt(j) - 'a']) {
+                    check[word.charAt(j) - 'a'] = true;
+                    charcount++;
+                }
+                if (charcount == 5) {
                     count++;
                 }
                 j++;
