@@ -8,7 +8,7 @@ class Solution {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (!map.containsKey(i + j)) {
-                    map.put(i + j, new LinkedList<Integer>());
+                    map.put(i + j, new ArrayList<Integer>());
                 }
                 
                 map.get(i + j).add(mat[i][j]);
