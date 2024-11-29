@@ -35,13 +35,3 @@ class Solution {
 }
 
 
-class Pair {
-    int[] point;
-    int dist;
-    
-    
-    public Pair(int[] point, int dist) {
-        this.point = this.point;
-        this.dist = dist;
-    }
-}
