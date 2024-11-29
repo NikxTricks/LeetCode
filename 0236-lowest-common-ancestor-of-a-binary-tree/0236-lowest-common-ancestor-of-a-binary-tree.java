@@ -11,9 +11,6 @@ class Solution {
     TreeNode lca = null;
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         helper(root, p.val, q.val);
-        if (lca == null) {
-            lca = root;
-        }
         return lca;
     }
     
