@@ -3,32 +3,28 @@ class Solution {
         int[] out = new int[m + n];
         
         
-        int i = 0;
-        int j = 0;
+        int i = m;
+        int j = n;
         
-        while (i < m & j < n) {
-            if (nums1[i] > nums2[j]) {
-                out[i + j] = nums2[j];
-                j++;
+        while (i > 0 & j > 0) {
+            if (nums1[i - 1] < nums2[j - 1]) {
+                nums1[i + j - 1] = nums2[j - 1];
+                j--;
             }
             else {
-                out[i + j] = nums1[i];
-                i++;
+                nums1[i + j - 1] = nums1[i - 1];
+                i--;
             }
         }
-        
-        while (i < m) {
-            out[i + j] = nums1[i];
-            i++;
+
+        while (i > 0) {
+            nums1[i + j - 1] = nums1[i - 1];
+            i--;
         }
         
-        while (j < n) {
-            out[i + j] = nums2[j];
-            j++;
-        }
-        
-        for (int idx = 0; idx < m + n; idx++) {
-            nums1[idx] = out[idx];
+        while (j > 0) {
+            nums1[i + j - 1] = nums2[j - 1];
+            j--;
         }
     }
 }
