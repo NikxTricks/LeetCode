@@ -2,7 +2,6 @@ class Solution {
     public boolean validPalindrome(String s) {
         int n = s.length();
         
-        boolean removed = false;
         int f = 0;
         int b = n - 1;
         
@@ -22,7 +21,6 @@ class Solution {
     
     
     public boolean helper(String s, int i, int j) {        
-        boolean removed = false;
         int f = i;
         int b = j;
         
