@@ -8,27 +8,33 @@
  * }
  */
 class Solution {
+    TreeNode lca = null;
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        return helper(root, p.val, q.val);
+        helper(root, p.val, q.val);
+        if (lca == null) {
+            lca = root;
+        }
+        return lca;
     }
     
-    public TreeNode helper(TreeNode cur, int p, int q) {
-        //could also move helper function directly into main LCA function
+    
+    public boolean helper(TreeNode cur, int p, int q) {
         if (cur == null) {
-            return null;
-        }
-        if (cur.val == p || cur.val == q) {
-           return cur; 
-        }
-        TreeNode l = helper(cur.left, p, q);
-        TreeNode r = helper(cur.right, p, q);
-        if (l != null && r != null) {
-            return cur;
-        }
-        if (l != null) {
-            return l;
+            return false;
         }
         
-        return r;
+        boolean left = helper(cur.left, p, q);
+        boolean right = helper(cur.right, p, q);
+        
+        if (left && right && lca == null) {
+            lca = cur;
+        }
+        else if ((cur.val == p || cur.val == q) && (left || right) && lca == null) {
+            lca = cur;
+        }
+        
+        return cur.val == p || cur.val == q || left || right;
     }
+    
+
 }
