@@ -22,7 +22,11 @@ class Solution {
         
         boolean left = helper(cur.left, p, q);
         boolean right = helper(cur.right, p, q);
-        if ((left && right) || (cur.val == p || cur.val == q) && (left || right) && lca == null) {
+        
+        if (left && right && lca == null) {
+            lca = cur;
+        }
+        else if ((cur.val == p || cur.val == q) && (left || right) && lca == null) {
             lca = cur;
         }
         
