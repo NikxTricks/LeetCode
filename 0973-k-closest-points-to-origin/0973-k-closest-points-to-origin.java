@@ -5,7 +5,7 @@ class Solution {
         });
         
         for (int[] point: points) {
-            Pair entry = new Pair(point, Math.sqrt(point[0] * point[0] + point[1] * point[1]));
+            Pair entry = new Pair(point, point[0] * point[0] + point[1] * point[1]);
             if (order.size() < k) {
                 order.add(entry);
             }
