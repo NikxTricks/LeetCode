@@ -14,8 +14,6 @@
  * }
  */
 class Solution {
-    int max = Integer.MIN_VALUE;
-    int min = Integer.MAX_VALUE;
     public List<List<Integer>> verticalOrder(TreeNode root) {
         List<List<Integer>> out = new ArrayList<>(); 
         if (root == null) {
@@ -23,7 +21,7 @@ class Solution {
         }
         
         
-        Map<Integer, List<Integer>> cols = new HashMap<>();
+        Map<Integer, List<Integer>> cols = new TreeMap<>();
         Queue<Pair> order = new LinkedList<>();
         order.add(new Pair(root, 0));
         
@@ -31,8 +29,6 @@ class Solution {
             Pair curPair = order.remove();
             TreeNode cur = curPair.node;
             int curCol = curPair.col;
-            max = Math.max(max, curCol);
-            min = Math.min(min, curCol);
 
             if (!cols.containsKey(curCol)) {
                 cols.put(curCol, new ArrayList<>());
@@ -51,8 +47,8 @@ class Solution {
         }
         
         
-        for (int i = min; i <= max; i++) {
-            out.add(cols.get(i));
+        for (Map.Entry<Integer, List<Integer>> entry: cols.entrySet()) {
+            out.add(entry.getValue());
         }
         
         return out;
