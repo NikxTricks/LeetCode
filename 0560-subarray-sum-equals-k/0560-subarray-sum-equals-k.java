@@ -7,10 +7,8 @@ class Solution {
         int sum = 0;
         for (int num: nums) {
             sum += num;
-            int add = sums.getOrDefault(sum - k, -1);
-            if (add > 0) {
-                count += add;
-            }
+            int add = sums.getOrDefault(sum - k, 0);
+            count += add;
             
             sums.put(sum, sums.getOrDefault(sum, 0) + 1);
         }
