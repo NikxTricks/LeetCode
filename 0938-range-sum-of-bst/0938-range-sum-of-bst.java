@@ -24,7 +24,6 @@ class Solution {
         if (cur == null) {
             return 0;
         }
-        
         if (cur.val >= low && cur.val <= high) {
             return cur.val + helper(cur.left, low, high) + helper(cur.right, low, high);
         }
