@@ -5,7 +5,6 @@ class Solution {
         sums.put(0, 1);
         
         int sum = 0;
-        
         for (int num: nums) {
             sum += num;
             int add = sums.getOrDefault(sum - k, -1);
