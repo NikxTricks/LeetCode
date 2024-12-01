@@ -25,6 +25,12 @@ class Solution {
             return 0;
         }
         if (cur.val >= low && cur.val <= high) {
+            if (cur.val == low) {
+                return cur.val + helper(cur.right, low, high);
+            }
+            if (cur.val == high) {
+                return cur.val + helper(cur.left, low, high);
+            }
             return cur.val + helper(cur.left, low, high) + helper(cur.right, low, high);
         }
         else if (cur.val < low) {
