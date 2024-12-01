@@ -1,27 +1,36 @@
 class Solution {
     public boolean isValid(String s) {
-        Stack<Character> check = new Stack<>();
-        if (s.length()%2 != 0) {
-            return false;
-        }
+        Stack<Character> order = new Stack<>();
+        Set<Character> opens = new HashSet<>();
+        opens.add('(');
+        opens.add('{');
+        opens.add('[');
         
-        for (char c: s.toCharArray()) {
-            if (c == '(') {
-                check.push(')');
+        Set<Character> closes = new HashSet<>();
+        closes.add(')');
+        closes.add('}');
+        closes.add(']');
+        
+        char[] chars = s.toCharArray();
+        for (char c: chars) {
+            if (opens.contains(c)) {
+                order.add(c);
             }
-            else if (c == '{') {
-                check.push('}');
+            else if (c == ')' && (order.isEmpty() || order.pop() != '(')) {
+                return false;
             }
-            else if (c == '[') {
-                check.push(']');
+            else if (c == '}' && (order.isEmpty() || order.pop() != '{')) {
+                return false;
             }
-            else if (check.isEmpty() || c != check.pop()) {
+            else if (c == ']' && (order.isEmpty() || order.pop() != '[')) {
                 return false;
             }
         }
-        if (check.size() != 0) {
+        
+        if (!order.isEmpty()) {
             return false;
         }
+        
         return true;
     }
 }
