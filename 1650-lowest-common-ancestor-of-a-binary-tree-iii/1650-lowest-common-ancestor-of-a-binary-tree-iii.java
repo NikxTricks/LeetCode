@@ -12,23 +12,30 @@ class Solution {
     Set<Integer> visited = new HashSet<>();
     Node lca = null;
     public Node lowestCommonAncestor(Node p, Node q) {
-        helper(p);
-        helper(q);
+        helper(p, q);
         return lca;
     }
     
     
-    public void helper(Node cur) {
-        if (cur == null) {
+    public void helper(Node a, Node b) {
+        if (a == null && b == null) {
             return;
         }
+        if (a != null) {
+            if (visited.contains(a.val)) {
+                lca = a;
+                return;
+            }
+            visited.add(a.val);
+        }
+        if (b != null) {
+            if (visited.contains(b.val)) {
+                lca = b;
+                return;
+            }
+            visited.add(b.val);
+        }
         
-        if (visited.contains(cur.val)) {
-            lca = cur;
-        }
-        else {
-            visited.add(cur.val);
-            helper(cur.parent);
-        }
+        helper(a == null ? a : a.parent, b == null ? b : b.parent );
     }
 }
