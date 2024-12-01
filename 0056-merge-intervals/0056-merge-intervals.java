@@ -19,12 +19,7 @@ class Solution {
         
         out.add(cur);
         
-        int[][] done = new int[out.size()][2];
-        for (int i = 0; i < out.size(); i++) {
-            done[i] = out.get(i);
-        }
-        
-        return done;
+        return out.toArray(new int[out.size()][]);
     }
     
 }
