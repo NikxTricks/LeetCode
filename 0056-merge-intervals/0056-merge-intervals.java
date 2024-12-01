@@ -1,23 +1,30 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
-        //implement using in-place array (copy of array)
-        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
         List<int[]> out = new ArrayList<>();
-        int cur = 0;
-        int j = 1;
-        //int index = 0;
-        while (cur < intervals.length) {
-            while (j < intervals.length && intervals[cur][1] >= intervals[j][0]) {
-                intervals[cur][1] = Math.max(intervals[cur][1], intervals[j][1]);
-                j++;
+        
+        Arrays.sort(intervals, (a, b) -> {
+            return a[0] - b[0];
+        });
+        
+        int[] cur = intervals[0];
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] <= cur[1]) {
+                cur[1] = Math.max(cur[1], intervals[i][1]);
             }
-            //intervals[index] = intervals[cur];
-            out.add(intervals[cur]);
-            cur = j;
-            //index++;
+            else {
+                out.add(cur);
+                cur = intervals[i];
+            }
         }
-        //return Arrays.copyOf(intervals, index);
-        return out.toArray(new int[out.size()][]);
+        
+        out.add(cur);
+        
+        int[][] done = new int[out.size()][2];
+        for (int i = 0; i < out.size(); i++) {
+            done[i] = out.get(i);
+        }
+        
+        return done;
     }
     
 }
