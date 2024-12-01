@@ -9,37 +9,15 @@ class Node {
 */
 
 class Solution {
-    Set<Integer> visited = new HashSet<>();
-    Node lca = null;
     public Node lowestCommonAncestor(Node p, Node q) {
-        helper(p, q);
-        return lca;
-    }
-    
-    
-    public void helper(Node a, Node b) {
-        Node an = null;
-        Node bn = null;
-        if (a == null && b == null) {
-            return;
-        }
-        if (a != null) {
-            if (visited.contains(a.val)) {
-                lca = a;
-                return;
-            }
-            visited.add(a.val);
-            an = a.parent;
-        }
-        if (b != null) {
-            if (visited.contains(b.val)) {
-                lca = b;
-                return;
-            }
-            visited.add(b.val);
-            bn = b.parent;
+        Node pn = p;
+        Node qn = q;
+        while (p.val != q.val) {
+            p = (p.parent == null) ? pn : p.parent;
+            q = (q.parent == null) ? qn : q.parent;
         }
         
-        helper(an, bn);
+        return p;
     }
+
 }
