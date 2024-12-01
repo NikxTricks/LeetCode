@@ -13,8 +13,8 @@ class Solution {
         Node pn = p;
         Node qn = q;
         while (pn != qn) {
-            pn = (pn == null) ? q : pn.parent;
-            qn = (qn == null) ? p : qn.parent;
+            pn = (pn == null) ? p : pn.parent;
+            qn = (qn == null) ? q : qn.parent;
         }
         
         return pn;
