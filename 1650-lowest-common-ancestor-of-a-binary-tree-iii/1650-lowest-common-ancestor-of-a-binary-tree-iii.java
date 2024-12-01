@@ -12,9 +12,9 @@ class Solution {
     public Node lowestCommonAncestor(Node p, Node q) {
         Node pn = p;
         Node qn = q;
-        while (p.val != q.val) {
-            p = (p.parent == null) ? pn : p.parent;
-            q = (q.parent == null) ? qn : q.parent;
+        while (p != q) {
+            p = (p == null) ? pn : p.parent;
+            q = (q == null) ? qn : q.parent;
         }
         
         return p;
