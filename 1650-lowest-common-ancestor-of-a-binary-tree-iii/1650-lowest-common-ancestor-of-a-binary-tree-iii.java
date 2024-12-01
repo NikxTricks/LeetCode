@@ -18,6 +18,8 @@ class Solution {
     
     
     public void helper(Node a, Node b) {
+        Node an = null;
+        Node bn = null;
         if (a == null && b == null) {
             return;
         }
@@ -27,6 +29,7 @@ class Solution {
                 return;
             }
             visited.add(a.val);
+            an = a.parent;
         }
         if (b != null) {
             if (visited.contains(b.val)) {
@@ -34,8 +37,9 @@ class Solution {
                 return;
             }
             visited.add(b.val);
+            bn = b.parent;
         }
         
-        helper(a == null ? a : a.parent, b == null ? b : b.parent );
+        helper(an, bn);
     }
 }
