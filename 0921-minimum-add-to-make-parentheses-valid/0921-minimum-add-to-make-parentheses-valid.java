@@ -1,6 +1,6 @@
 class Solution {
     public int minAddToMakeValid(String s) {
-        Stack<Integer> order = new Stack<>();
+        int open = 0;
         
         int n = s.length();
         
@@ -8,18 +8,18 @@ class Solution {
         
         for (int i = 0; i < n; i++) {
             if (s.charAt(i) == '(') {
-                order.push(i);
+                open++;
             }
             else if (s.charAt(i) == ')') {
-                if (order.isEmpty()) {
+                if (open == 0) {
                     count++;
                 }
                 else {
-                    order.pop();
+                    open--;
                 }
             }
         }
         
-        return count + order.size();
+        return count + open;
     }
 }
