@@ -3,14 +3,15 @@ class Solution {
         StringBuilder out = new StringBuilder(s);
         Stack<Integer> order = new Stack<>();
         
-        for (int i = 0; i < out.length(); i++) {
+        int n = out.length();
+        for (int i = 0; i < n; i++) {
             if (out.charAt(i) == '(') {
                 order.push(i);
             }
             else if (out.charAt(i) == ')') {
                 if (order.isEmpty()) {
-                    out.deleteCharAt(i);
-                    i--;
+                    out.deleteCharAt(i--);
+                    n--;
                 }
                 else {
                     order.pop();
