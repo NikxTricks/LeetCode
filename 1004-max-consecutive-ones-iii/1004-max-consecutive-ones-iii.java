@@ -9,7 +9,7 @@ class Solution {
             count++;
         }
         while (i < nums.length) {
-            while (i < nums.length && count - k <= 0) {
+            while (i < nums.length && count <= k) {
                 i++;
                 if (i < nums.length && nums[i] == 0) {
                     count++;
@@ -18,7 +18,7 @@ class Solution {
             
             max = Math.max(max, i - prev);
             
-            while (prev < nums.length && count - k > 0) {
+            while (prev < nums.length && count > k) {
                 if (nums[prev] == 0) {
                     count--;
                 }
