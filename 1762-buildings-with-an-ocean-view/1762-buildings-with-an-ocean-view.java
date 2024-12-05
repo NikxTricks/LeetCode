@@ -2,9 +2,10 @@ class Solution {
     public int[] findBuildings(int[] heights) {
         Stack<Integer> order = new Stack<>();
         
-        int max = heights[heights.length - 1];
-        order.add(heights.length - 1);
-        for (int i = heights.length - 2; i >= 0; i--) {
+        int n = heights.length;
+        int max = heights[n - 1];
+        order.add(n - 1);
+        for (int i = n - 2; i >= 0; i--) {
             if (heights[i] > max) {
                 order.add(i);
                 max = heights[i];
