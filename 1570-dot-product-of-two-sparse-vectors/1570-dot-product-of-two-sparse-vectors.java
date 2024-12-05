@@ -9,7 +9,7 @@ class SparseVector {
     public int dotProduct(SparseVector vec) {
         int out = 0;
         for (int i = 0; i < this.nums.length; i++) {
-            out += this.nums[i] * vec.nums[i];
+            out += (this.nums[i] == 0 || vec.nums[i] == 0) ? 0 : this.nums[i] * vec.nums[i];
         }
         
         return out;
