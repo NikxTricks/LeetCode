@@ -14,8 +14,10 @@ class SparseVector {
 	// Return the dotProduct of two sparse vectors
     public int dotProduct(SparseVector vec) {
         int out = 0;
-        for (Map.Entry<Integer, Integer> pair: this.vals.entrySet()) {
-            out += pair.getValue() * vec.vals.getOrDefault(pair.getKey(), 0);
+        Map<Integer, Integer> iter = (this.vals.size() > vec.vals.size()) ? vec.vals : this.vals;
+        Map<Integer, Integer> other = (this.vals.size() > vec.vals.size()) ? this.vals : vec.vals;
+        for (Map.Entry<Integer, Integer> pair: iter.entrySet()) {
+            out += pair.getValue() * other.getOrDefault(pair.getKey(), 0);
         }
         
         return out;
