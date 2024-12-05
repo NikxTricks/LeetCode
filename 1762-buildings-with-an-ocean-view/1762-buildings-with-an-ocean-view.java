@@ -10,13 +10,10 @@ class Solution {
             }
             order.push(i);
         }
-        
-        
-        Integer[] temp = order.toArray(new Integer[order.size()]);
-        
+    
         int[] out = new int[order.size()];
-        for (int i = 0; i < out.length; i++) {
-            out[i] = temp[i];
+        for (int i = out.length - 1; i >= 0; i--) {
+            out[i] = order.pop();
         }
         
         return out;
