@@ -5,20 +5,25 @@ class Solution {
         int count = 0;
         
         int max = 0;
+        if (nums[i] == 0) {
+            count++;
+        }
         while (i < nums.length) {
-            while (i < nums.length && count - k + (nums[i] == 0 ? 1 : 0) <= 0) {
-                if (nums[i] == 0) {
+            while (i < nums.length && count - k <= 0) {
+                i++;
+                if (i < nums.length && nums[i] == 0) {
                     count++;
                 }
-                i++;
             }
+            
             max = Math.max(max, i - prev);
-            while (prev < nums.length && count - k >= 0) {
+            while (prev < nums.length && count - k > 0) {
                 if (nums[prev] == 0) {
                     count--;
                 }
                 prev++;
             }
+            System.out.println(prev);
         }
         
         return max;
