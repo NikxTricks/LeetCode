@@ -4,8 +4,6 @@ class Solution {
         
         int num = 0;
         int prev = 0;
-        word += " ";
-        abbr += " ";
         
         while (i < abbr.length()) {
             char c = abbr.charAt(i);
@@ -28,7 +26,6 @@ class Solution {
             }
         }
         
-        
-        return true;
+        return prev + num == word.length();
     }
 }
