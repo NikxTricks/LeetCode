@@ -10,8 +10,9 @@ class MovingAverage {
     
     public double next(int val) {
         this.sum -= data[i];
-        data[i] = val;
         this.sum += val;
+        
+        data[i] = val;
         
         i += 1;
         i %= data.length;
