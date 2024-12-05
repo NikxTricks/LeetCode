@@ -17,13 +17,13 @@ class Solution {
             }
             
             max = Math.max(max, i - prev);
+            
             while (prev < nums.length && count - k > 0) {
                 if (nums[prev] == 0) {
                     count--;
                 }
                 prev++;
             }
-            //System.out.println(prev);
         }
         
         return max;
