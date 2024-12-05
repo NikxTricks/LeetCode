@@ -28,27 +28,21 @@
  */
 class Solution {
     public int depthSum(List<NestedInteger> nestedList) {
-        int sum = 0;
-        
-        for (NestedInteger cur: nestedList) {
-            sum += helper(cur, 1);
-        }
-        
-        return sum;
+        return helper(nestedList, 1);
     }
     
-    private int helper(NestedInteger cur, int depth) {
-        if (cur.isInteger()) {
-            return cur.getInteger() * depth;
-        }
-        
+    private int helper(List<NestedInteger> nestedList, int depth) {
         int sum = 0;
         
-        for (NestedInteger next: cur.getList()) {
-            sum += helper(next, depth + 1);
+        for (NestedInteger next: nestedList) {
+            if (next.isInteger()) {
+                sum += next.getInteger() * depth;
+            }
+            else {
+                sum += helper(next.getList(), depth + 1);
+            }
         }
         
         return sum;
-        
     }
 }
