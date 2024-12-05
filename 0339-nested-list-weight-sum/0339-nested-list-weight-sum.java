@@ -28,7 +28,28 @@
  */
 class Solution {
     public int depthSum(List<NestedInteger> nestedList) {
-        return helper(nestedList, 1);
+        //return helper(nestedList, 1);
+        Queue<Pair> order = new LinkedList<>();
+        
+        for (NestedInteger cur: nestedList) {
+            order.add(new Pair(cur, 1));
+        }
+        
+        int sum = 0;
+        
+        while (!order.isEmpty()) {
+            Pair p = order.remove();
+            if (p.cur.isInteger()) {
+                sum += p.cur.getInteger() * p.curDepth;
+            }
+            else {
+                for (NestedInteger cur: p.cur.getList()) {
+                    order.add(new Pair(cur, p.curDepth + 1));
+                }
+            }
+        }
+        
+        return sum;
     }
     
     private int helper(List<NestedInteger> nestedList, int depth) {
@@ -44,5 +65,15 @@ class Solution {
         }
         
         return sum;
+    }
+}
+
+class Pair {
+    NestedInteger cur;
+    int curDepth;
+    
+    public Pair(NestedInteger cur, int curDepth) {
+        this.cur = cur;
+        this.curDepth = curDepth;
     }
 }
