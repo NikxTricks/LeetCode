@@ -4,9 +4,12 @@ class Solution {
         
         
         for (int num: nums) {
-            order.add(num);
-            if (order.size() > k) {
+            if (order.size() < k) {
+                order.add(num);
+            }
+            else if (order.peek() < num) {
                 order.remove();
+                order.add(num);
             }
         }
         
