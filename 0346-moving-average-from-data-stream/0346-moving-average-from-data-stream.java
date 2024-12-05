@@ -9,7 +9,6 @@ class MovingAverage {
     }
     
     public double next(int val) {
-        len = (len + 1 > data.length) ? data.length : len + 1;
         this.sum -= data[i];
         data[i] = val;
         this.sum += val;
@@ -17,7 +16,7 @@ class MovingAverage {
         i += 1;
         i %= data.length;
         
-        return sum / (double) len;
+        return sum / (double) Math.min(++len, data.length);
     }
 }
 
