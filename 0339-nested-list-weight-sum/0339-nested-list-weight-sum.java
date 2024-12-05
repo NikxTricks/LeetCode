@@ -31,9 +31,7 @@ class Solution {
         //return helper(nestedList, 1);
         Queue<NestedInteger> order = new LinkedList<>();
         
-        for (NestedInteger cur: nestedList) {
-            order.add(cur);
-        }
+        order.addAll(nestedList);
         
         int sum = 0;
         int depth = 1;
@@ -47,9 +45,7 @@ class Solution {
                     sum += cur.getInteger() * depth;
                 }
                 else {
-                    for (NestedInteger next: cur.getList()) {
-                        order.add(next);
-                    }
+                    order.addAll(cur.getList());
                 }
             }
             depth++;
