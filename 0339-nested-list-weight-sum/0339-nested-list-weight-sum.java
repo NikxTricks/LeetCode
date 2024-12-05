@@ -29,24 +29,30 @@
 class Solution {
     public int depthSum(List<NestedInteger> nestedList) {
         //return helper(nestedList, 1);
-        Queue<Pair> order = new LinkedList<>();
+        Queue<NestedInteger> order = new LinkedList<>();
         
         for (NestedInteger cur: nestedList) {
-            order.add(new Pair(cur, 1));
+            order.add(cur);
         }
         
         int sum = 0;
-        
+        int depth = 1;
         while (!order.isEmpty()) {
-            Pair p = order.remove();
-            if (p.cur.isInteger()) {
-                sum += p.cur.getInteger() * p.curDepth;
-            }
-            else {
-                for (NestedInteger cur: p.cur.getList()) {
-                    order.add(new Pair(cur, p.curDepth + 1));
+            int size = order.size();
+            
+            for (int i = 0; i < size; i++) {
+                NestedInteger cur = order.remove();
+                
+                if (cur.isInteger()) {
+                    sum += cur.getInteger() * depth;
+                }
+                else {
+                    for (NestedInteger next: cur.getList()) {
+                        order.add(next);
+                    }
                 }
             }
+            depth++;
         }
         
         return sum;
@@ -68,12 +74,12 @@ class Solution {
     }
 }
 
-class Pair {
-    NestedInteger cur;
-    int curDepth;
+// class Pair {
+//     NestedInteger cur;
+//     int curDepth;
     
-    public Pair(NestedInteger cur, int curDepth) {
-        this.cur = cur;
-        this.curDepth = curDepth;
-    }
-}
+//     public Pair(NestedInteger cur, int curDepth) {
+//         this.cur = cur;
+//         this.curDepth = curDepth;
+//     }
+// }
