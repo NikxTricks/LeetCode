@@ -3,18 +3,20 @@ class Solution {
         Stack<Integer> order = new Stack<>();
         
         int n = heights.length;
-        int max = heights[n - 1];
-        order.add(n - 1);
-        for (int i = n - 2; i >= 0; i--) {
-            if (heights[i] > max) {
-                order.add(i);
-                max = heights[i];
+        
+        for (int i = 0; i < n; i++) {  
+            while (!order.isEmpty() && heights[order.peek()] <= heights[i]) {
+                order.pop();
             }
+            order.push(i);
         }
+        
+        
+        Integer[] temp = order.toArray(new Integer[order.size()]);
         
         int[] out = new int[order.size()];
         for (int i = 0; i < out.length; i++) {
-            out[i] = order.pop();
+            out[i] = temp[i];
         }
         
         return out;
