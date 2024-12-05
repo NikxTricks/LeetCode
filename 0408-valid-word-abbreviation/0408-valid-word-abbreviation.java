@@ -8,17 +8,16 @@ class Solution {
         abbr += " ";
         
         while (i < abbr.length()) {
-            char c = abbr.charAt(i);
-            if (Character.isDigit(c)) {
-                if (num == 0 && (c - '0') == 0) {
+            if (Character.isDigit(abbr.charAt(i))) {
+                if (num == 0 && (abbr.charAt(i) - '0') == 0) {
                     return false;
                 }
                 num *= 10;
-                num += (c - '0');
+                num += (abbr.charAt(i) - '0');
                 i++;
             }
             else {
-                if (prev + num >= word.length() || c != word.charAt(prev + num)) {
+                if (prev + num >= word.length() || abbr.charAt(i) != word.charAt(prev + num)) {
                     return false;
                 }
                 prev += (num + 1);
