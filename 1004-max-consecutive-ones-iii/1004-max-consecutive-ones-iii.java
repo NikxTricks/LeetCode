@@ -9,19 +9,16 @@ class Solution {
             if (nums[i] == 0) {
                 count++;
             }
-                        
-            while (prev < nums.length && count > k) {
+            i++;
+            
+            if (count > k) {
                 if (nums[prev] == 0) {
                     count--;
                 }
                 prev++;
             }
-            
-            max = Math.max(max, i - prev + 1);
-            i++;
-
         }
         
-        return max;
+        return i - prev;
     }
 }
