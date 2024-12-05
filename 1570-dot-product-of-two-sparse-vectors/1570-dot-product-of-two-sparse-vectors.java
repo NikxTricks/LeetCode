@@ -2,7 +2,7 @@ class SparseVector {
     
     Map<Integer, Integer> vals;
     SparseVector(int[] nums) {
-        vals = new TreeMap<>();
+        vals = new HashMap<>();
         
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != 0) {
