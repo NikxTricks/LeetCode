@@ -24,7 +24,6 @@ class Solution {
             i++; 
         }
         
-        
         StringBuilder out = new StringBuilder();
         for (String cur: stack) {
             out.append("/");
