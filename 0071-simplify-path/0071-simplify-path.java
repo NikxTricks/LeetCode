@@ -2,8 +2,6 @@ class Solution {
     public String simplifyPath(String path) {
         Stack<String> stack = new Stack<>();
         
-        stack.push("/");
-        
         int i = 1;
         while (i < path.length()) {
             int prev = i;
@@ -14,39 +12,29 @@ class Solution {
                 i++;
                 continue;
             }
-            StringBuilder cur = new StringBuilder(path.substring(prev, i));
-            if (cur.toString().equals("..")) {
-                if (stack.size() == 1) {
-                    i++;
-                    continue;
-                }
-                stack.pop();
-                while (!stack.peek().equals("/")) {
+            String cur = path.substring(prev, i);
+            if (cur.equals("..")) {
+                if (!stack.isEmpty()) {
                     stack.pop();
                 }
-                stack.pop();
             }
-            else if (cur.toString().equals(".")) {
-                i += 1;
-                continue;
+            else if (!cur.equals(".")) {
+                stack.push(cur);
             }
-            else {
-                stack.push(cur.reverse().toString());
-            }
-                stack.push("/");
-                i++; 
+            i++; 
         }
         
-        if (stack.size() > 1 && stack.peek().equals("/")) {
-            stack.pop();
-        }
         
         StringBuilder out = new StringBuilder();
-        while (!stack.isEmpty()) {
-            out.append(stack.pop());
+        for (String cur: stack) {
+            out.append("/");
+            out.append(cur);
+        }
+        if (stack.size() == 0) {
+            out.append("/");
         }
         
-        return out.reverse().toString();
+        return out.toString();
     }
     
 }
