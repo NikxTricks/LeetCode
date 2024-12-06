@@ -17,8 +17,7 @@ class Solution {
             }
             visited[cur[0]][cur[1]] = true;
             if (cur[0] == grid.length - 1 && cur[1] == grid[0].length - 1) {
-                len = Math.min(cur[2], len);
-                continue;
+                return cur[2];
             }
             order.add(new int[]{cur[0] + 1, cur[1], cur[2] + 1}); //down
             order.add(new int[]{cur[0] - 1, cur[1], cur[2] + 1}); //up
@@ -30,6 +29,6 @@ class Solution {
             order.add(new int[]{cur[0] - 1, cur[1] - 1, cur[2] + 1}); //up and left
         }
         
-        return (len == Integer.MAX_VALUE) ? -1 : len;
+        return -1;
     }
 }
