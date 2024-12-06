@@ -2,31 +2,27 @@ class Solution {
     public int shortestPathBinaryMatrix(int[][] grid) {
         Queue<int[]> order = new LinkedList<>();
         
-        int len = Integer.MAX_VALUE;
-        
         boolean[][] visited = new boolean[grid.length][grid[0].length];
+        int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}, {1, 1}, {-1, 1}, {1, -1}, {-1, -1}};
         
         order.add(new int[]{0, 0, 1});
         while (!order.isEmpty()) {
             int[] cur = order.remove();
-            if (cur[0] > grid.length - 1 || cur[1] > grid[0].length - 1 || cur[0] < 0 || cur[1] < 0) {
+            if (grid[cur[0]][cur[1]] == 1) {
                 continue;
             }
-            if (grid[cur[0]][cur[1]] == 1 || visited[cur[0]][cur[1]]) {
-                continue;
-            }
-            visited[cur[0]][cur[1]] = true;
             if (cur[0] == grid.length - 1 && cur[1] == grid[0].length - 1) {
                 return cur[2];
             }
-            order.add(new int[]{cur[0] + 1, cur[1], cur[2] + 1}); //down
-            order.add(new int[]{cur[0] - 1, cur[1], cur[2] + 1}); //up
-            order.add(new int[]{cur[0], cur[1] + 1, cur[2] + 1}); //right
-            order.add(new int[]{cur[0], cur[1] - 1, cur[2] + 1}); //left
-            order.add(new int[]{cur[0] + 1, cur[1] + 1, cur[2] + 1}); //down and right
-            order.add(new int[]{cur[0] - 1, cur[1] + 1, cur[2] + 1}); //up and right
-            order.add(new int[]{cur[0] + 1, cur[1] - 1, cur[2] + 1}); //down and left
-            order.add(new int[]{cur[0] - 1, cur[1] - 1, cur[2] + 1}); //up and left
+            for (int[] dir: dirs) {
+                if (cur[0] + dir[0] >= 0 && cur[0] + dir[0] < grid.length && cur[1] + dir[1] >= 0 && cur[1] + dir[1] < grid[0].length) 
+                {
+                    if (!visited[cur[0] + dir[0]][cur[1] + dir[1]]) {
+                        order.add(new int[]{cur[0] + dir[0], cur[1] + dir[1], cur[2] + 1});
+                        visited[cur[0] + dir[0]][cur[1] + dir[1]] = true;
+                    }
+                }
+            }
         }
         
         return -1;
