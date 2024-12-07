@@ -43,9 +43,9 @@ class Solution {
                 if (count == k) {
                     out.add(cur.val);
                 }
-//                 if (count ) {
-                    
-//                 }
+                if (count > k) {
+                    break;
+                }
                 if (cur.left != null && !visited.contains(cur.left)) {
                     order.add(cur.left);
                     visited.add(cur.left);
