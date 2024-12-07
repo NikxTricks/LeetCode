@@ -36,9 +36,6 @@ class Solution {
                 if (i < size - 1) {
                     cur.next = bfs.peek();
                 }
-                else {
-                    cur.next = null;
-                }
                 if (cur.left != null) {
                     bfs.add(cur.left);
                 }
