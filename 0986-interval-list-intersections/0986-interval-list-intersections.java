@@ -1,10 +1,8 @@
 class Solution {
     public int[][] intervalIntersection(int[][] firstList, int[][] secondList) {
-            //return new int[][]{{0, 0}};
         List<int[]> temp = new ArrayList<>();
         int i = 0;
         int j = 0;
-        
         
         int[] cur = new int[2];
         while (i < firstList.length && j < secondList.length) {
