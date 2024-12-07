@@ -55,8 +55,6 @@ class Solution {
             tail = tail.right;
         }
         
-
-        
         helper(cur.right);  
     }
 }
