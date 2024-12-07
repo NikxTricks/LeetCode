@@ -23,7 +23,6 @@ class Solution {
         ListNode i = helper(lists, start, (start + end) / 2);
         ListNode j = helper(lists, ((start + end) / 2) + 1, end);
         
-        
         ListNode head = new ListNode(0);
         ListNode out = head;
         while (i != null && j != null) {
