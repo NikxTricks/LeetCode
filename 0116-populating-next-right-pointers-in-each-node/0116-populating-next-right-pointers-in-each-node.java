@@ -35,7 +35,6 @@ class Solution {
                 Node cur = bfs.remove();
                 if (i < size - 1) {
                     cur.next = bfs.peek();
-                    //System.out.println(cur.val);
                 }
                 else {
                     cur.next = null;
