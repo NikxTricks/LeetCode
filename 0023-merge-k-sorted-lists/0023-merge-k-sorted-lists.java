@@ -24,7 +24,7 @@ class Solution {
         ListNode head = out;
         while (!order.isEmpty()) {
             ListNode cur = order.remove();
-            out.next = new ListNode(cur.val);
+            out.next = cur;
             out = out.next;
             cur = cur.next;
             if (cur != null) {
