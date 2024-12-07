@@ -16,22 +16,19 @@
 class Solution {
     int sum = 0;
     public int sumNumbers(TreeNode root) {
-        helper(root, 0);
-        return sum;
+        return helper(root, 0);
+        //return sum;
     }
     
     
-    private void helper(TreeNode cur, int curSum) {
+    private int helper(TreeNode cur, int curSum) {
         if (cur == null) {
-            return;
+            return 0;
         }
         int newSum = (curSum * 10) + cur.val;
         if (cur.left == null && cur.right == null) {
-            sum += newSum;
+            return newSum;
         }
-        else {
-            helper(cur.left, newSum);
-            helper(cur.right, newSum);
-        }
+        return helper(cur.left, newSum) + helper(cur.right, newSum);
     }
 }
