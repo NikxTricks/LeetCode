@@ -5,12 +5,11 @@ class Solution {
             p--;
         }
         if (p >= 0) {
-            int min = Integer.MAX_VALUE;
             int idx = -1;
-            for (int i = p + 1; i < nums.length; i++) {
-                if (nums[p] < nums[i] && nums[i] <= min) {
-                    min = nums[i];
+            for (int i = nums.length - 1; i > p; i--) {
+                if (nums[p] < nums[i]) {
                     idx = i;
+                    break;
                 }
             }
             int temp = nums[idx];
