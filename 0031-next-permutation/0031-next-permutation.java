@@ -4,11 +4,10 @@ class Solution {
         while (p >= 0 && nums[p] >= nums[p + 1]) {
             p--;
         }
-        //System.out.println(p);
         if (p >= 0) {
             int min = Integer.MAX_VALUE;
             int idx = -1;
-            for (int i = p; i < nums.length; i++) {
+            for (int i = p + 1; i < nums.length; i++) {
                 if (nums[p] < nums[i] && nums[i] <= min) {
                     min = nums[i];
                     idx = i;
@@ -17,8 +16,6 @@ class Solution {
             int temp = nums[idx];
             nums[idx] = nums[p];
             nums[p] = temp;
-            //System.out.println(idx);
-            //Arrays.sort(nums, p + 1, nums.length);
         }
         
         reverse(nums, p + 1, nums.length - 1);
