@@ -10,45 +10,30 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        if (lists.length == 0) {
-            return null;
-        }
-        return helper(lists, 0, lists.length - 1);
-    }
-    
-    private ListNode helper(ListNode[] lists, int start, int end) {
-        if (start == end) {
-            return lists[start];
-        }
-        ListNode i = helper(lists, start, (start + end) / 2);
-        ListNode j = helper(lists, ((start + end) / 2) + 1, end);
+        PriorityQueue<ListNode> order = new PriorityQueue<>((a, b) -> a.val - b.val);
+
         
-        ListNode head = new ListNode(0);
-        ListNode out = head;
-        while (i != null && j != null) {
-            if (i.val > j.val) {
-                out.next = new ListNode(j.val);
-                out = out.next;
-                j = j.next;
-            }
-            else {
-                out.next = new ListNode(i.val);
-                out = out.next;
-                i = i.next;
+        for (ListNode list: lists) {
+            if (list != null) {
+                order.add(list);
             }
         }
-        while (i != null) {
-            out.next = new ListNode(i.val);
-            out = out.next; 
-            i = i.next;  
+        
+        
+        ListNode out = new ListNode(0);
+        ListNode head = out;
+        while (!order.isEmpty()) {
+            ListNode cur = order.remove();
+            out.next = new ListNode(cur.val);
+            out = out.next;
+            cur = cur.next;
+            if (cur != null) {
+                order.add(cur);
+            }
+            
         }
-        while (j != null) {
-            out.next = new ListNode(j.val);
-            out = out.next; 
-            j = j.next;  
-        }
+        
         
         return head.next;
     }
-    
 }
