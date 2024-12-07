@@ -15,9 +15,6 @@ class Node {
 
 class Solution {
     public Node copyRandomList(Node head) {
-        // if (head == null) {
-        //     return;
-        // }
         Map<Node, Node> origin = new HashMap<>();
         
         Node cur = head;
