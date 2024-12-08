@@ -37,6 +37,8 @@ class Solution {
     
     private String find(String email, Map<String, String> parents) {
         if (!email.equals(parents.get(email))) {
+            //System.out.println(email);
+            //System.out.println(parents.get(email));
             parents.put(email, find(parents.get(email), parents));
         }
         
