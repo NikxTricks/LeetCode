@@ -5,15 +5,8 @@ class Solution {
         
         while (s < e) {
             int mid = s + (e - s) / 2;
-            //System.out.println(mid);
             
-            long prev = (mid - 1 >= 0) ? nums[mid - 1] : Long.MIN_VALUE;
-            long next = (mid + 1 < nums.length) ? nums[mid + 1] : Long.MIN_VALUE;
-            
-            if (nums[mid] > prev && nums[mid] > next) {
-                return mid;
-            }
-            if (nums[mid] > prev && nums[mid] < next) {
+            if (nums[mid] < nums[mid + 1]) {
                 s = mid + 1;
             }
             else {
