@@ -24,7 +24,6 @@ class Solution {
             int ir = 0;
             int ic = i;
             int s = matrix[ir][ic];
-            //System.out.println(s);
             while (ir < n && ic < m) {
                 if (matrix[ir][ic] != s) {
                     return false;
