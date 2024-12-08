@@ -20,22 +20,17 @@ class Solution {
         
         boolean e = false;
         while (!bfs.isEmpty()) {
-            //int size = bfs.size();
-            //for (int i = 0; i < size; i++) {
-                TreeNode cur = bfs.remove();
-                if (cur != null) {
-                    if (e) {
-                        return false;
-                    }
-                    bfs.add(cur.left);
-                    bfs.add(cur.right);
+            TreeNode cur = bfs.remove();
+            if (cur != null) {
+                if (e) {
+                    return false;
                 }
-                else {
-                    e = true;
-                }
-                
-           // }
-            //scol--;
+                bfs.add(cur.left);
+                bfs.add(cur.right);
+            }
+            else {
+                e = true;
+            }
         }
         
         return true;
