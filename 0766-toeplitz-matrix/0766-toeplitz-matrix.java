@@ -6,7 +6,7 @@ class Solution {
         for (int i = n - 1; i >= 0; i--) {
             int ir = i;
             int ic = 0;
-            int s = matrix[ir][ic];
+            int s = matrix[ir++][ic++];
             while (ir < n && ic < m) {
                 if (matrix[ir][ic] != s) {
                     return false;
@@ -20,10 +20,10 @@ class Solution {
         //[40,11,74,7]]
         //
         
-        for (int i = 0; i < m; i++) {
+        for (int i = 1; i < m; i++) {
             int ir = 0;
             int ic = i;
-            int s = matrix[ir][ic];
+            int s = matrix[ir++][ic++];
             while (ir < n && ic < m) {
                 if (matrix[ir][ic] != s) {
                     return false;
