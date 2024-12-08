@@ -13,13 +13,11 @@ class Solution {
     }
     
     public int pickIndex() {
-        int pick = r.nextInt(prefixSum[prefixSum.length - 1]) + 1;
-        int prev = 0;
+        int pick = r.nextInt(prefixSum[prefixSum.length - 1]);
         for (int i = 0; i < prefixSum.length; i++) {
-            if (pick > prev && pick <= prefixSum[i]) {
+            if (pick < prefixSum[i]) {
                 return i;
             }
-            prev = prefixSum[i];
         }
         
         return -1;
