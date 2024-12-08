@@ -20,15 +20,14 @@ class Solution {
         
         while (l < h) {
             int mid = l + (h - l) / 2;
-            
             if (prefixSum[mid] == pick) {
                 return mid;
             }
-            if (prefixSum[mid] < pick) {
-                l = mid + 1;
+            if (prefixSum[mid] > pick) {
+                h = mid;
             }
             else {
-                h = mid;
+                l = mid + 1;
             }
             
         }
