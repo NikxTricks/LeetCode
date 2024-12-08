@@ -2,11 +2,8 @@ class Solution {
     public int maximumSwap(int num) {
         char[] digits = String.valueOf(num).toCharArray();
         
-        
-        
-        int[] data = new int[2];
+        int[] data = new int[]{-1, -1};
         int maxidx = digits.length - 1;
-        int idxr = -1;
         int i = digits.length - 2;
         
         while (i >= 0) {
@@ -15,14 +12,13 @@ class Solution {
                 maxidx = i;
             }
             else if (digits[maxidx] - '0' > digit) {
-                idxr = i;
-                data[0] = idxr;
+                data[0] = i;
                 data[1] = maxidx;
             }
             i--;  
         }
         
-        if (idxr == -1) {
+        if (data[0] == -1) {
             return num;
         }
         
