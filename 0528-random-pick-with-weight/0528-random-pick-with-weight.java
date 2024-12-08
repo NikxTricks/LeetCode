@@ -1,33 +1,39 @@
 //import java.util.Random;
 class Solution {
-    int nums[];
+    int prefixSum[];
     Random r;
     public Solution(int[] w) {
         int sum = 0;
-        nums = new int[w.length];
+        prefixSum = new int[w.length];
         for (int i = 0; i < w.length; i++) {
             sum += w[i];
-            nums[i] = sum;
+            prefixSum[i] = sum;
         }
         r = new Random();
     }
     
     public int pickIndex() {
-        int pick = r.nextInt(nums[nums.length - 1]) + 1;
+        int pick = r.nextInt(prefixSum[prefixSum.length - 1]) + 1;
+            
+        int l = 0;
+        int h = prefixSum.length - 1;
         
-       int lo = 0, hi = this.nums.length - 1;
-       while (lo < hi) {
-           int mid = lo + (hi - lo) / 2;
-           
-           // pulled the exact value of an index
-           if (this.nums[mid] == pick)
-               return mid;
-           else if (this.nums[mid] < pick)
-               lo = mid + 1;
-           else
-               hi = mid; // find the leftmost value incase two of the indexes are the same and one is zero
-       }
-       return lo;
+        while (l < h) {
+            int mid = l + (h - l) / 2;
+            
+            if (prefixSum[mid] == pick) {
+                return mid;
+            }
+            if (prefixSum[mid] < pick) {
+                l = mid + 1;
+            }
+            else {
+                h = mid;
+            }
+            
+        }
+        
+        return l;
     }
 }
 
