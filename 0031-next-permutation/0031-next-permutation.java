@@ -1,32 +1,51 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        int p = nums.length - 2;
-        while (p >= 0 && nums[p] >= nums[p + 1]) {
-            p--;
-        }
-        if (p >= 0) {
-            int idx = -1;
-            for (int i = nums.length - 1; i > p; i--) {
-                if (nums[p] < nums[i]) {
-                    idx = i;
-                    break;
-                }
-            }
-            int temp = nums[idx];
-            nums[idx] = nums[p];
-            nums[p] = temp;
+        int i = nums.length - 2;
+        while (i >= 0 && nums[i] >= nums[i + 1]) {
+            i--;
         }
         
-        reverse(nums, p + 1, nums.length - 1);
-    }
+        int s = i + 1;
+        int e = nums.length - 1;
+        
+        System.out.println(i);
+        
+        int temp;
+        if (i == -1) {
+            while (s < e) {
+                temp = nums[e];
+                nums[e] = nums[s];
+                nums[s] = temp;  
+                s++;
+                e--;
+            }
+            return;
+        }
     
-    private void reverse(int[] arr, int s, int e) {
+        int closest = Integer.MAX_VALUE;
+        int idx = -1;
+        int j = nums.length - 1;
+        while (j > i) {
+            if (nums[j] < closest && nums[j] > nums[i]) {
+                closest = nums[j];
+                idx = j;
+            }
+            j--;
+        }
+        
+        temp = nums[i];
+        nums[i] = nums[idx];
+        nums[idx] = temp;
+        
         while (s < e) {
-            int temp = arr[s];
-            arr[s] = arr[e];
-            arr[e] = temp;
+            temp = nums[e];
+            nums[e] = nums[s];
+            nums[s] = temp;  
             s++;
             e--;
         }
+        
+
+        
     }
 }
