@@ -7,9 +7,7 @@ class Solution {
         
         int s = i + 1;
         int e = nums.length - 1;
-        
-        //System.out.println(i);
-        
+                
         int temp;
         if (i == -1) {
             while (s < e) {
@@ -22,12 +20,10 @@ class Solution {
             return;
         }
     
-        int closest = Integer.MAX_VALUE;
         int idx = -1;
         int j = nums.length - 1;
         while (j > i) {
-            if (nums[j] < closest && nums[j] > nums[i]) {
-                closest = nums[j];
+            if (nums[j] > nums[i] && (idx == -1 || nums[j] < nums[idx])) {
                 idx = j;
             }
             j--;
