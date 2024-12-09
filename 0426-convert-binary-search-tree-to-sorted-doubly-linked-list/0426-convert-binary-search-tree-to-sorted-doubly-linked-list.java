@@ -22,16 +22,15 @@ class Node {
 class Solution {
     Node head;
     Node tail;
+    
     public Node treeToDoublyList(Node root) {
-        helper(root);
-        
-        if (head == null) {
-           return null;
+        if (root == null) {
+            return null;
         }
+        helper(root);
         
         head.left = tail;
         tail.right = head;
-        
         
         return head;
     }
@@ -41,7 +40,6 @@ class Solution {
         if (cur == null) {
             return;
         }
-        //System.out.println(cur.val);
         
         helper(cur.left);
         
@@ -51,10 +49,12 @@ class Solution {
         }
         else {
             tail.right = cur;
-            tail.right.left = tail;
+            cur.left = tail;
             tail = tail.right;
         }
         
-        helper(cur.right);  
+
+        
+        helper(cur.right);
     }
 }
