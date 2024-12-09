@@ -20,32 +20,35 @@ class Node {
 class Solution {
     public Node insert(Node head, int insertVal) {
         if (head == null) {
-            Node out = new Node(insertVal);
-            out.next = out;
-            return out;
+            head = new Node(insertVal);
+            head.next = head;
+            return head;
         }
         
         Node prev = head;
         Node next = head.next;
-        
         boolean insert = false;
+        
         while (true) {
-            if (prev.val <= insertVal && insertVal <= next.val) {
+            if (insertVal >= prev.val && insertVal <= next.val) {
                 prev.next = new Node(insertVal);
                 prev.next.next = next;
                 insert = true;
+                //System.out.println("Here1");
                 break;
             }
-            if (prev.val > next.val && insertVal >= prev.val) {
+            else if (prev.val > next.val && insertVal >= prev.val) {
                 prev.next = new Node(insertVal);
                 prev.next.next = next;
                 insert = true;
+                //System.out.println("Here2");
                 break;
             }
-            if (prev.val > next.val && insertVal <= next.val) {
+            else if (prev.val > next.val && insertVal <= next.val) {
                 prev.next = new Node(insertVal);
                 prev.next.next = next;
                 insert = true;
+                //System.out.println("Here3");
                 break;
             }
             prev = prev.next;
@@ -56,13 +59,11 @@ class Solution {
         }
         
         if (!insert) {
-            Node out = new Node(insertVal);
             Node temp = head.next;
-            head.next = out;
-            out.next = temp;
+            head.next = new Node(insertVal);
+            head.next.next = temp;
         }
         
         return head;
-        
     }
 }
