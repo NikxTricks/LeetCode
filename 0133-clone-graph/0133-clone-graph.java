@@ -19,24 +19,29 @@ class Node {
 */
 
 class Solution {
+    Map<Node, Node> custom = new HashMap<>();
     public Node cloneGraph(Node node) {
         if (node == null) {
             return null;
         }
-        HashMap<Integer, Node> data = new HashMap<>(); 
-        return helper(node, data);
+        return helper(node);
     }
     
-    public Node helper(Node cur, HashMap<Integer, Node> data) {
-        Node out = data.getOrDefault(cur.val, null);
-        if (out == null) {
-            out = new Node(cur.val);
-            data.put(cur.val, out);
-            for (Node neighbor: cur.neighbors) {
-                out.neighbors.add(helper(neighbor, data));
-            }    
+    private Node helper(Node cur) {
+        Node customCur = custom.getOrDefault(cur, null);
+        if (customCur == null) {
+            custom.put(cur, new Node(cur.val));
+            customCur = custom.get(cur);
+            for (int i = 0; i < cur.neighbors.size(); i++) {
+                Node neighbor = cur.neighbors.get(i);
+                Node customNeighbor = helper(neighbor);
+                custom.put(neighbor, customNeighbor);
+                customCur.neighbors.add(customNeighbor);
+            }
         }
         
-        return out;
+        return customCur;
+        
     }
+
 }
