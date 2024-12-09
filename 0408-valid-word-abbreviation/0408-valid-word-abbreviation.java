@@ -25,7 +25,6 @@ class Solution {
             num = 0;
         }
         
-        
         return j == word.length() && i == abbr.length();
     }
 }
