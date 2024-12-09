@@ -8,7 +8,7 @@ class Solution {
         int s = i + 1;
         int e = nums.length - 1;
         
-        System.out.println(i);
+        //System.out.println(i);
         
         int temp;
         if (i == -1) {
