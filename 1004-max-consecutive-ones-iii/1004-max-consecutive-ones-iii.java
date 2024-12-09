@@ -12,12 +12,12 @@ class Solution {
                 }
                 e++;
             }
-            if (count > k) {
+            // if (count > k) {
                 dist = Math.max(dist, e - s - 1);
-            }
-            else {
-                dist = Math.max(dist, e - s);
-            }
+            // }
+            // else {
+            //     dist = Math.max(dist, e - s);
+            // }
             while (s < nums.length && count > k) {
                 if (nums[s] == 0) {
                     count--;
@@ -27,7 +27,7 @@ class Solution {
         }
         
         
-        return dist;
+        return Math.max(dist, e - s);
         
         
         
