@@ -1,18 +1,31 @@
 class SparseVector {
-    Map<Integer, Integer> vals = new HashMap<>();
+    List<int[]> vals = new ArrayList<>();
     SparseVector(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != 0) {
-                vals.put(i, nums[i]);
+                vals.add(new int[]{i, nums[i]});
             }
         }
     }
     
 	// Return the dotProduct of two sparse vectors
     public int dotProduct(SparseVector vec) {
+        int i = 0;
+        int j = 0;
+        
         int sum = 0;
-        for (Map.Entry<Integer, Integer> e: vals.entrySet()) {
-            sum += e.getValue() * vec.vals.getOrDefault(e.getKey(), 0);
+        while (i < vals.size() && j < vec.vals.size()) {
+            if (vals.get(i)[0] > vec.vals.get(j)[0]) {
+                j++;
+            }
+            else if (vals.get(i)[0] < vec.vals.get(j)[0]) {
+                i++;
+            }
+            else {
+                sum += vals.get(i)[1] * vec.vals.get(j)[1];
+                i++;
+                j++;
+            }
         }
         
         return sum;
