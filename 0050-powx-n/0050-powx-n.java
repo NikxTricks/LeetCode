@@ -1,29 +1,29 @@
 class Solution {
     public double myPow(double x, int n) {
-        double out = 1.0;
-        long num = n;
-        if (n == 0) {
-            return out;
+      double odds = 1;
+        long exp = n;
+        
+        if (n < 0) {
+            x = 1/x;
+            exp *= -1;
         }
-        if (x == 1) {
-            return x;
-        }
-        if (x == -1) {
-            return n % 2 == 1 ? -1 : 1;
-        }
-        while (num < 0) {
-            x = 1 / x;
-            num *= -1;
-        } 
-        while (num > 0) {
-            if (num % 2 == 1) {
+        
+        
+        double base = x;
+        double out = 1;
+        while (exp > 0) {
+            if (exp % 2 == 1) {
                 out *= x;
+               // exp--;
             }
-            x *= x;
-            num /= 2;
-        }          
-
+                x *= x;
+                exp /= 2;
+            //System.out.printf("%f ,%f, %f\n", out, odds, x);
+        }
         
         return out;
+        
+        
+        
     }
 }
