@@ -14,26 +14,25 @@ class SparseVector {
         int j = 0;
         
         int sum = 0;
+        int prev = 0;
         while (i < vals.size()) {
-            //System.out.println(vals.get(i)[0]);
-            int idx = idx = find(vec.vals, vals.get(i)[0]);
+            int idx = idx = find(vec.vals, vals.get(i)[0], prev);
             if (idx != -1) {
-                
+                prev = idx;
                 sum += (vals.get(i)[1] * vec.vals.get(idx)[1]);
             }
+            prev = (prev == -1) ? 0 : prev;
             i++;
         }
         
         return sum;
     }
     
-    private int find(List<int[]> vals, int target) {
-        int s = 0;
+    private int find(List<int[]> vals, int target, int s) {
         int e = vals.size() - 1;
         
         while (s <= e) {
             int mid = (s + e) / 2;
-            //System.out.println(mid);
             if (vals.get(mid)[0] == target) {
                 return mid;
             }
