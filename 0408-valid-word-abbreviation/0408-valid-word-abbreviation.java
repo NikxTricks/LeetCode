@@ -7,18 +7,19 @@ class Solution {
         int num = 0;
         while (i < n) {
             while (i < n && Character.isDigit(abbr.charAt(i))) {
-                num *= 10;
-                if (num == 0 && abbr.charAt(i) - '0' == 0) {
+                int digit = abbr.charAt(i) - '0';
+                if (num == 0 && digit == 0) {
                     return false;
                 }
-                num += (abbr.charAt(i) - '0');
+                num *= 10;
+                num += digit;
                 i++;
             }
             j += num;
-            if (i >= n || j >= word.length()) {
+            if (j >= word.length() || i >= n) {
                 break;
             }
-            if (abbr.charAt(i) != word.charAt(j)) {
+            if (word.charAt(j) != abbr.charAt(i)) {
                 return false;
             }
             i++;
@@ -26,6 +27,6 @@ class Solution {
             num = 0;
         }
         
-        return j == word.length() && i == abbr.length();
+        return j == word.length() && i == n;
     }
 }
