@@ -10,14 +10,15 @@ class Node {
 
 class Solution {
     public Node lowestCommonAncestor(Node p, Node q) {
-        Node pn = p;
-        Node qn = q;
-        while (pn != qn) {
-            pn = (pn == null) ? p : pn.parent;
-            qn = (qn == null) ? q : qn.parent;
+        Node pp = p;
+        Node qq = q;
+        
+        while (pp != qq) {
+            pp = (pp.parent == null) ? q : pp.parent;
+            qq = (qq.parent == null) ? p : qq.parent;
         }
         
-        return pn;
+        return pp;
     }
 
 }
