@@ -1,44 +1,39 @@
 class Solution {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
-        List<List<String>> merged = new ArrayList<>();
-        Map<String, String> parents = new HashMap<>();
         Map<String, String> emailToName = new HashMap<>();
+        Map<String, String> parents = new HashMap<>();
         
         for (List<String> account: accounts) {
             String name = account.get(0);
-            String email = account.get(1);
+            String parent = account.get(1);
             for (int i = 1; i < account.size(); i++) {
+                parents.putIfAbsent(account.get(i), parent);
                 emailToName.put(account.get(i), name);
-                parents.putIfAbsent(account.get(i), email);
-                union(email, account.get(i), parents);
+                union(parent, account.get(i), parents);
             }
         }
         
+        Map<String, List<String>> merged = new HashMap<>();
         
-        Map<String, List<String>> mergedemails = new HashMap<>();
-        
-        for (Map.Entry<String, String> e: emailToName.entrySet()) {
-            String email = e.getKey();
-            String root = find(email, parents);
-            mergedemails.putIfAbsent(root, new ArrayList<>());
-            mergedemails.get(root).add(email);
+        for (String email: emailToName.keySet()) {
+            String parent = find(email, parents);
+            merged.putIfAbsent(parent, new ArrayList<>());
+            merged.get(parent).add(email);
         }
         
-        for (List<String> emails: mergedemails.values()) {
-            Collections.sort(emails);
-            emails.add(0, emailToName.get(emails.get(0)));
-            merged.add(emails);
+        List<List<String>> out = new ArrayList<>();
+        for (Map.Entry<String, List<String>> e: merged.entrySet()) {
+            List<String> cur = e.getValue();
+            Collections.sort(cur);
+            cur.add(0, emailToName.get(cur.get(0)));
+            out.add(cur);
         }
         
-       return merged;
+        return out;
     }
-    
-    
     
     private String find(String email, Map<String, String> parents) {
         if (!email.equals(parents.get(email))) {
-            //System.out.println(email);
-            //System.out.println(parents.get(email));
             parents.put(email, find(parents.get(email), parents));
         }
         
@@ -49,8 +44,6 @@ class Solution {
         String parenta = find(emaila, parents);
         String parentb = find(emailb, parents);
         
-        if (!parenta.equals(parentb)) {
-            parents.put(parenta, parentb); // Union by root
-        }
+        parents.put(parenta, parentb);
     }
 }
