@@ -4,7 +4,7 @@ class Solution {
         int e = nums.length - 1;
         
         while (s < e) {
-            int mid = s + (e - s) / 2;
+            int mid = (s + e)/2;
             
             if (nums[mid] < nums[mid + 1]) {
                 s = mid + 1;
@@ -13,7 +13,6 @@ class Solution {
                 e = mid;
             }
         }
-        
         
         return s;
     } 
